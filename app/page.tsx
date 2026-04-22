@@ -198,17 +198,17 @@ function Features() {
     {
       tag: "MATCHING",
       name: "Smart Matching™",
-      copy: "We reduce 7 billion humans to a compatibility score so you don't have to feel bad about swiping left on someone's entire existence.",
+      copy: "We reduce 7 billion humans to a compatibility score so you don't have to feel bad about swiping left on someone's entire existence. We also factor in the height preferences you'll publicly deny, the salary range you'll never admit to, and the caste filter you think nobody noticed you turned on.",
     },
     {
       tag: "CONVERSATION",
       name: "Ice Breaker AI",
-      copy: "Never think of something genuine to say again. Our AI generates the perfect opener. Connection, automated.",
+      copy: "Never think of something genuine to say or use your boring brain again. Our AI generates the perfect opener. Statistically, neither will they.",
     },
     {
       tag: "ASSESSMENT",
       name: "Vibe Check Score",
-      copy: "Because red flags are just green flags you haven't rationalised yet. We help you rationalise faster.",
+      copy: "You've dated three people with the exact same red flags and called it a type. We've named it. We've matched you with a fourth.",
     },
     {
       tag: "CLOSURE",
@@ -437,7 +437,7 @@ function AttachmentEngine() {
     {
       pairing: "Secure × Anyone",
       score: "Not available",
-      copy: "People with secure attachment styles are underrepresented on dating apps. They tend to meet people through proximity, shared context, and showing up. We're working on sourcing them.",
+      copy: "People with secure attachment styles are underrepresented on dating apps. They're not here. They met someone through their actual life. We're working on sourcing them.",
     },
   ];
 
@@ -521,7 +521,7 @@ function Science() {
     {
       number: "78%",
       unit: "ghosted",
-      copy: "78% of users report being ghosted. 65% admit to ghosting someone. The cruelty is distributed equally. Nobody signed up to become this.",
+      copy: "78% of users report being ghosted. 65% admit to ghosting someone. The cruelty is distributed equally. Nobody signed up to become this. You know which one kept you up at night.",
     },
     {
       number: "0.78",
@@ -595,7 +595,7 @@ function Testimonials() {
   const quotes = [
     { text: "I've been on 47 dates. I am so tired.", name: "Priya", age: 29, city: "Bengaluru" },
     { text: "We matched, talked for 3 weeks, met once, and now neither of us knows what to say.", name: "Arjun", age: 31, city: "Mumbai" },
-    { text: "The app knows me better than my therapist. My therapist is concerned.", name: "Dev", age: 34, city: "Delhi" },
+    { text: "She said she wasn't ready for a relationship. She got married eight months later. Arranged.", name: "Dev", age: 33, city: "Delhi" },
     { text: "I optimised everything. My profile is perfect. I am miserable.", name: "Ananya", age: 27, city: "Hyderabad" },
   ];
 
@@ -652,7 +652,7 @@ function LoveGPT() {
 
           <p style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)", color: "var(--cream)", maxWidth: "640px", lineHeight: 1.5, marginBottom: "2rem" }}>
             "Our AI reads your messages, predicts emotional availability, and suggests the perfect
-            response so you never have to be vulnerable again."
+            response so you never have to be vulnerable again. Because the last time you were, look what happened."
           </p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem", marginBottom: "2.5rem" }}>
