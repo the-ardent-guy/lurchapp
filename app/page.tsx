@@ -723,10 +723,6 @@ function FinePrint() {
             You don't need another app.
             You might need a Tuesday evening with strangers and clay.
           </p>
-          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "4rem" }}>
-            <Link href="/truth" className="btn-primary">I'm Curious</Link>
-            <Link href="/reads" className="btn-outline">Read the Research</Link>
-          </div>
           <div style={{ borderTop: "1px solid var(--border-dark)", paddingTop: "2rem" }}>
             <p className="fine-print" style={{ lineHeight: 2, color: "#4A4540" }}>
               LURCH is a satirical project. No user data is collected. No algorithm is running.
