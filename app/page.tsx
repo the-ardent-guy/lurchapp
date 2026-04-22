@@ -198,7 +198,7 @@ function Features() {
     {
       tag: "MATCHING",
       name: "Smart Matching™",
-      copy: "We reduce 7 billion humans to a compatibility score so you don't have to feel bad about swiping left on someone's entire existence. We also factor in the height preferences you'll publicly deny, the salary range you'll never admit to, and the caste filter you think nobody noticed you turned on.",
+      copy: "We reduce 7 billion humans to a compatibility score so you don't have to feel bad about swiping left on someone's entire existence.",
     },
     {
       tag: "CONVERSATION",
@@ -264,6 +264,7 @@ function AppMockup() {
             <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "var(--gray)", marginBottom: "2rem", maxWidth: "360px" }}>
               Every detail engineered for the moment before you realise it isn't working.
               Intuitive. Beautiful. Precisely as satisfying as a slot machine paying out at 2am.
+              We also factor in the height preferences you'll publicly deny, the salary range you'll never admit to, and the caste filter you think nobody noticed you turned on.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               {[
