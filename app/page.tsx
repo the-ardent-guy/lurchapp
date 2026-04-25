@@ -722,46 +722,6 @@ function Testimonials() {
   );
 }
 
-// ─── LOVEGPT™ ────────────────────────────────────────────────────────────────
-
-function LoveGPT() {
-  return (
-    <section className="bg-black-lurch section">
-      <div className="container-lurch">
-        <div style={{ border: "1px solid var(--border-dark)", padding: "clamp(2.5rem, 5vw, 4rem)", position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", top: 0, right: 0, background: "var(--acid)", color: "var(--black)", fontFamily: "var(--font-mono)", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", padding: "0.4rem 0.75rem" }}>
-            NEW
-          </div>
-
-          <p className="section-label">AI-POWERED INTIMACY</p>
-          <h2 className="headline text-cream" style={{ fontSize: "clamp(2.5rem, 7vw, 5rem)", marginBottom: "1.5rem" }}>
-            LoveGPT™
-          </h2>
-
-          <p style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)", color: "var(--cream)", maxWidth: "640px", lineHeight: 1.5, marginBottom: "2rem" }}>
-            "Our AI reads your messages, predicts emotional availability, and suggests the perfect
-            response so you never have to be vulnerable again. Because the last time you were, look what happened."
-          </p>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem", marginBottom: "2.5rem" }}>
-            {[["99.7%", "reduction in awkward silences"], ["0%", "increase in actual intimacy"], ["∞", "plausible deniability"]].map(([num, label]) => (
-              <div key={num} style={{ borderTop: "1px solid var(--border-dark)", paddingTop: "1rem" }}>
-                <p style={{ fontFamily: "var(--font-display)", fontWeight: 900, fontSize: "2rem", color: "var(--acid)", lineHeight: 1, marginBottom: "0.4rem" }}>{num}</p>
-                <p className="fine-print">{label}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="fine-print" style={{ color: "var(--gray)", maxWidth: "480px", lineHeight: 1.8 }}>
-            LoveGPT™ is trained on 4.7 billion messages. It knows what works.
-            It knows what you want to hear. These are different things. We chose the first one.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ─── CTA BREAK ───────────────────────────────────────────────────────────────
 
 function CTABreak() {
@@ -859,7 +819,6 @@ export default function Home() {
         <AttachmentEngine />
         <Science />
         <Testimonials />
-        <LoveGPT />
         <CTABreak />
         <FinePrint />
       </main>
