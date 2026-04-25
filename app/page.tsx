@@ -10,6 +10,9 @@ function Nav() {
         <Link href="/reads" className="fine-print text-gray-lurch" style={{ fontSize: "0.7rem", letterSpacing: "0.15em" }}>
           READS
         </Link>
+        <Link href="/shop" className="fine-print" style={{ fontSize: "0.7rem", letterSpacing: "0.15em", color: "var(--acid)" }}>
+          MERCH
+        </Link>
         <Link href="/truth" className="btn-primary" style={{ padding: "0.6rem 1.5rem", fontSize: "0.72rem" }}>
           Get Early Access
         </Link>
@@ -55,12 +58,30 @@ function Hero() {
         NOW IN PRIVATE BETA &nbsp;·&nbsp; 1.2M ON THE WAITLIST
       </p>
 
-      <h1
-        className="lurch-logo text-cream anim-1"
-        style={{ fontSize: "clamp(5rem, 22vw, 18rem)", marginBottom: "1rem" }}
-      >
-        Lurch
-      </h1>
+      <div style={{ position: "relative", marginBottom: "1rem", lineHeight: 1 }}>
+        <span
+          aria-hidden
+          className="lurch-logo anim-1"
+          style={{
+            fontSize: "clamp(5rem, 22vw, 18rem)",
+            color: "var(--oxblood)",
+            position: "absolute",
+            top: "8px",
+            left: "8px",
+            userSelect: "none",
+            lineHeight: 1,
+            pointerEvents: "none",
+          }}
+        >
+          Lurch
+        </span>
+        <h1
+          className="lurch-logo text-cream anim-1"
+          style={{ fontSize: "clamp(5rem, 22vw, 18rem)", position: "relative", lineHeight: 1 }}
+        >
+          Lurch
+        </h1>
+      </div>
 
       {/* The dating app line */}
       <p
@@ -193,6 +214,69 @@ function HowItWorks() {
 
 // ─── FEATURES ────────────────────────────────────────────────────────────────
 
+const C = "var(--oxblood-mid)";
+
+const featureIcons = {
+  // Signpost: two arrow signs on a post, pointing opposite directions
+  MATCHING: (
+    <svg width="44" height="52" viewBox="0 0 44 52" fill="none" aria-hidden="true">
+      <line x1="22" y1="50" x2="22" y2="2" stroke={C} strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M22 4 L36 4 L43 12 L36 20 L22 20" stroke={C} strokeWidth="1.5" strokeLinejoin="round"/>
+      <path d="M22 28 L8 28 L1 36 L8 44 L22 44" stroke={C} strokeWidth="1.5" strokeLinejoin="round"/>
+    </svg>
+  ),
+  // Notice board: pinned board with "HI" drawn in strokes
+  CONVERSATION: (
+    <svg width="48" height="52" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+      <rect x="8" y="14" width="40" height="36" rx="2" stroke={C} strokeWidth="1.5"/>
+      <circle cx="28" cy="9" r="3.5" stroke={C} strokeWidth="1.5"/>
+      <line x1="28" y1="12.5" x2="28" y2="14" stroke={C} strokeWidth="1.5"/>
+      {/* H */}
+      <line x1="16" y1="24" x2="16" y2="38" stroke={C} strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="24" y1="24" x2="24" y2="38" stroke={C} strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="16" y1="31" x2="24" y2="31" stroke={C} strokeWidth="1.5" strokeLinecap="round"/>
+      {/* I */}
+      <line x1="33" y1="24" x2="33" y2="38" stroke={C} strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="30" y1="24" x2="36" y2="24" stroke={C} strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="30" y1="38" x2="36" y2="38" stroke={C} strokeWidth="1.5" strokeLinecap="round"/>
+      {/* Formal stamp/seal in corner */}
+      <rect x="38" y="38" width="6" height="5" rx="1" stroke={C} strokeWidth="0.8" opacity="0.5"/>
+    </svg>
+  ),
+  // Gauge sign: framed meter with needle pointing below average
+  ASSESSMENT: (
+    <svg width="48" height="52" viewBox="0 0 56 52" fill="none" aria-hidden="true">
+      <rect x="4" y="6" width="48" height="40" rx="2" stroke={C} strokeWidth="1.5"/>
+      <circle cx="12" cy="12" r="1.5" stroke={C} strokeWidth="1"/>
+      <circle cx="44" cy="12" r="1.5" stroke={C} strokeWidth="1"/>
+      {/* Gauge arc */}
+      <path d="M14 38 A 14 14 0 0 1 42 38" stroke={C} strokeWidth="1.5" strokeLinecap="round"/>
+      {/* Tick marks */}
+      <line x1="14" y1="38" x2="14" y2="33" stroke={C} strokeWidth="1" strokeLinecap="round"/>
+      <line x1="28" y1="24" x2="28" y2="29" stroke={C} strokeWidth="1" strokeLinecap="round"/>
+      <line x1="42" y1="38" x2="42" y2="33" stroke={C} strokeWidth="1" strokeLinecap="round"/>
+      {/* Needle below centre — pointing left-ish, 38% */}
+      <line x1="28" y1="38" x2="20" y2="28" stroke={C} strokeWidth="1.5" strokeLinecap="round"/>
+      <circle cx="28" cy="38" r="2" stroke={C} strokeWidth="1.5"/>
+    </svg>
+  ),
+  // Missing-person placard: board with head silhouette + blank dashed date
+  CLOSURE: (
+    <svg width="40" height="52" viewBox="0 0 46 56" fill="none" aria-hidden="true">
+      <rect x="3" y="4" width="40" height="50" rx="2" stroke={C} strokeWidth="1.5"/>
+      {/* Hanging nails */}
+      <line x1="14" y1="2" x2="14" y2="4" stroke={C} strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="32" y1="2" x2="32" y2="4" stroke={C} strokeWidth="1.5" strokeLinecap="round"/>
+      {/* Head outline */}
+      <circle cx="23" cy="22" r="9" stroke={C} strokeWidth="1.3"/>
+      {/* Shoulders */}
+      <path d="M8 40 Q8 32 23 32 Q38 32 38 40" stroke={C} strokeWidth="1.3" strokeLinecap="round"/>
+      {/* Blank date line — dashed */}
+      <line x1="9" y1="47" x2="37" y2="47" stroke={C} strokeWidth="1" strokeLinecap="round" strokeDasharray="3 2"/>
+    </svg>
+  ),
+};
+
 function Features() {
   const features = [
     {
@@ -233,6 +317,9 @@ function Features() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1px", background: "var(--border-dark)" }}>
           {features.map((f) => (
             <div key={f.name} className="feature-card" style={{ background: "var(--black-soft)" }}>
+              <div style={{ marginBottom: "1.5rem" }}>
+                {featureIcons[f.tag as keyof typeof featureIcons]}
+              </div>
               <p className="section-label" style={{ marginBottom: "1rem" }}>{f.tag}</p>
               <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "1.3rem", color: "var(--cream)", marginBottom: "1rem", lineHeight: 1.2 }}>
                 {f.name}
@@ -749,7 +836,7 @@ function Footer() {
         <span className="lurch-logo text-cream" style={{ fontSize: "1.2rem" }}>Lurch</span>
         <p className="fine-print" style={{ color: "#4A4540" }}>© {new Date().getFullYear()} &nbsp;·&nbsp; Made with something between irony and sincerity</p>
         <div style={{ display: "flex", gap: "1.5rem" }}>
-          {[["Reads", "/reads"], ["Truth", "/truth"]].map(([label, href]) => (
+          {[["Reads", "/reads"], ["Truth", "/truth"], ["Shop", "/shop"]].map(([label, href]) => (
             <Link key={label} href={href} className="fine-print" style={{ color: "#4A4540", textDecoration: "none" }}>{label}</Link>
           ))}
         </div>
