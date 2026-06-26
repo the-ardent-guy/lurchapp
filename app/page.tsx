@@ -119,20 +119,17 @@ function ShockCards() {
         {/* Card 1 — Caste Filter (screenshot card) */}
         <div style={{
           background: "var(--black)",
-          padding: "clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem)",
+          padding: "clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem)",
           display: "flex", flexDirection: "column", justifyContent: "space-between",
           minHeight: "540px",
         }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-            <span className="fine-print" style={{ color: "var(--acid)", fontSize: "0.55rem", letterSpacing: "0.2em" }}>01 — 03</span>
-            <span className="fine-print" style={{ color: "rgba(242,237,227,0.3)", fontSize: "0.55rem", letterSpacing: "0.2em" }}>FEATURE</span>
+            <span className="fine-print" style={{ color: "var(--acid)", fontSize: "0.7rem", letterSpacing: "0.15em" }}>01 — 03</span>
+            <span className="fine-print" style={{ color: "rgba(242,237,227,0.4)", fontSize: "0.7rem", letterSpacing: "0.15em" }}>FEATURE</span>
           </div>
           <div>
-            <p className="fine-print" style={{ color: "var(--acid)", fontSize: "0.6rem", letterSpacing: "0.2em", marginBottom: "0.4rem" }}>
+            <p className="fine-print" style={{ color: "var(--acid)", fontSize: "0.65rem", letterSpacing: "0.2em", marginBottom: "1.5rem" }}>
               ENABLED BY DEFAULT
-            </p>
-            <p className="fine-print" style={{ color: "rgba(242,237,227,0.3)", fontSize: "0.55rem", letterSpacing: "0.08em", marginBottom: "1.5rem" }}>
-              India · Bangladesh · UK diaspora · "not my family, different"
             </p>
             <h3
               className="headline text-cream"
@@ -149,13 +146,13 @@ function ShockCards() {
         {/* Card 2 — Vibe Check */}
         <div style={{
           background: "var(--cream-dark)",
-          padding: "clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem)",
+          padding: "clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem)",
           display: "flex", flexDirection: "column", justifyContent: "space-between",
           minHeight: "540px",
         }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-            <span className="fine-print" style={{ color: "var(--oxblood)", fontSize: "0.55rem", letterSpacing: "0.2em" }}>02 — 03</span>
-            <span className="fine-print" style={{ color: "rgba(74,69,64,0.45)", fontSize: "0.55rem", letterSpacing: "0.2em" }}>FEATURE</span>
+            <span className="fine-print" style={{ color: "var(--oxblood)", fontSize: "0.7rem", letterSpacing: "0.15em" }}>02 — 03</span>
+            <span className="fine-print" style={{ color: "rgba(74,69,64,0.5)", fontSize: "0.7rem", letterSpacing: "0.15em" }}>FEATURE</span>
           </div>
           <div>
             <h3 className="headline" style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", color: "var(--black)", marginBottom: "1rem", lineHeight: 1.05 }}>
@@ -171,13 +168,13 @@ function ShockCards() {
         {/* Card 3 — Ghost Detector */}
         <div style={{
           background: "var(--oxblood)",
-          padding: "clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem)",
+          padding: "clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem)",
           display: "flex", flexDirection: "column", justifyContent: "space-between",
           minHeight: "540px",
         }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-            <span className="fine-print" style={{ color: "rgba(242,237,227,0.55)", fontSize: "0.55rem", letterSpacing: "0.2em" }}>03 — 03</span>
-            <span className="fine-print" style={{ color: "rgba(242,237,227,0.3)", fontSize: "0.55rem", letterSpacing: "0.2em" }}>FEATURE</span>
+            <span className="fine-print" style={{ color: "rgba(242,237,227,0.65)", fontSize: "0.7rem", letterSpacing: "0.15em" }}>03 — 03</span>
+            <span className="fine-print" style={{ color: "rgba(242,237,227,0.4)", fontSize: "0.7rem", letterSpacing: "0.15em" }}>FEATURE</span>
           </div>
           <div>
             <h3 className="headline text-cream" style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", marginBottom: "1rem", lineHeight: 1.05 }}>
@@ -326,21 +323,76 @@ function AIShade() {
   return (
     <section style={{ background: "var(--acid)", padding: "clamp(5rem, 9vw, 8rem) clamp(1.5rem, 5vw, 5rem)" }}>
       <div className="container-lurch">
-        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-          <p className="fine-print" style={{ color: "rgba(13,13,11,0.45)", fontSize: "0.6rem", letterSpacing: "0.2em", marginBottom: "2rem" }}>
-            A NOTE ON TECHNOLOGY
-          </p>
-          <h2 className="headline" style={{ fontSize: "clamp(3rem, 7vw, 6rem)", color: "var(--black)", lineHeight: 0.88, marginBottom: "2rem" }}>
-            Yes, we use AI.
-          </h2>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", lineHeight: 1.85, color: "rgba(13,13,11,0.75)", marginBottom: "1.5rem", maxWidth: "560px" }}>
-            Not to simulate connection. Not to optimise your loneliness into a retention metric.
-            Just to calculate, once, how long you've been running the same pattern — and show you the number.
-          </p>
-          <p className="fine-print" style={{ fontSize: "0.75rem", lineHeight: 1.7, color: "rgba(13,13,11,0.5)" }}>
-            One inference. Ruthlessly honest. We don't store it. We're not building a companion bot.
-            That's someone else's product. You know which one.
-          </p>
+        <p className="fine-print" style={{ color: "rgba(13,13,11,0.4)", fontSize: "0.65rem", letterSpacing: "0.2em", marginBottom: "2.5rem" }}>
+          A NOTE ON TECHNOLOGY
+        </p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(3rem, 7vw, 7rem)", alignItems: "start" }}>
+
+          {/* LEFT — the indictment */}
+          <div>
+            <h2 className="headline" style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", color: "var(--black)", lineHeight: 0.9, marginBottom: "2.5rem" }}>
+              Yes,<br />we use AI.
+            </h2>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.9, color: "rgba(13,13,11,0.8)", marginBottom: "2rem" }}>
+              So does everyone. Here's what everyone is doing with it:
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+              {[
+                "Writing your opening message. (Charming.)",
+                "Writing their reply. (Efficient.)",
+                "Coaching you mid-conversation on what to say next. (Natural.)",
+                "Generating your profile photos. (Authentic.)",
+                "Cloning your texting style so the app can respond while you sleep.",
+                "Building you a companion that never leaves, never judges, never needs anything from you.",
+              ].map((line, i) => (
+                <div
+                  key={i}
+                  style={{
+                    borderTop: "1px solid rgba(13,13,11,0.15)",
+                    padding: "0.85rem 0",
+                    display: "flex",
+                    gap: "1rem",
+                    alignItems: "baseline",
+                    borderBottom: i === 5 ? "1px solid rgba(13,13,11,0.15)" : "none",
+                  }}
+                >
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", color: "rgba(13,13,11,0.35)", letterSpacing: "0.1em", flexShrink: 0, paddingTop: "0.1rem" }}>
+                    0{i + 1}
+                  </span>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.88rem", lineHeight: 1.6, color: "rgba(13,13,11,0.75)" }}>{line}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT — the verdict */}
+          <div style={{ paddingTop: "clamp(0rem, 2vw, 1rem)" }}>
+            <p style={{ fontFamily: "var(--font-display)", fontWeight: 900, fontStyle: "italic", fontSize: "clamp(1.2rem, 2.5vw, 1.75rem)", color: "var(--black)", lineHeight: 1.3, marginBottom: "2rem" }}>
+              Here's where that ends up:
+            </p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", lineHeight: 1.9, color: "rgba(13,13,11,0.8)", marginBottom: "1.75rem" }}>
+              You matched. Their AI sent a message. Your AI replied.
+              Their AI asked a question. Your AI laughed at the joke.
+              Neither of you has read a single word of this conversation.
+            </p>
+            <p style={{ fontFamily: "var(--font-display)", fontWeight: 900, fontSize: "clamp(1.1rem, 2.2vw, 1.5rem)", color: "var(--black)", lineHeight: 1.3, marginBottom: "1.75rem" }}>
+              Two bots are falling in love.<br />
+              You'll get a notification when it's time to show up for the date.
+            </p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", lineHeight: 1.9, color: "rgba(13,13,11,0.8)", marginBottom: "2.5rem" }}>
+              Nobody is building a companion bot because people are lonely.
+              They're building it because lonely people pay subscriptions.
+            </p>
+            <div style={{ borderTop: "2px solid var(--black)", paddingTop: "1.75rem" }}>
+              <p className="fine-print" style={{ fontSize: "0.72rem", lineHeight: 1.8, color: "rgba(13,13,11,0.6)" }}>
+                We use AI once. To count how many times you've run the same
+                pattern and show you the number. One inference. We don't store it.
+                We're not building a companion. That's the whole thing.
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -486,101 +538,38 @@ function AttachmentEngine() {
 // ─── CURATED EXPERIENCES ─────────────────────────────────────────────────────
 
 function CuratedExperiences() {
-  const experiences = [
-    {
-      num: "01",
-      name: "Night Walks",
-      desc: "90 minutes. A neighbourhood you don't live in. A guide. Six strangers. No agenda.",
-      why: "Movement lowers social anxiety. Novelty creates genuine conversation.",
-    },
-    {
-      num: "02",
-      name: "Argument Dinners",
-      desc: "A contentious topic. Eight people who don't know each other. Real food, no phones.",
-      why: "Intellectual friction reveals character faster than small talk.",
-    },
-    {
-      num: "03",
-      name: "The Pottery Class",
-      desc: "Yes, this one. With actual artists. Not a corporate event with bad clay.",
-      why: "Making bad things together is more intimate than making good impressions.",
-    },
-    {
-      num: "04",
-      name: "Book Swaps",
-      desc: "Bring the book that changed you. Leave with someone else's. A short note inside.",
-      why: "Taste is the fastest autobiography.",
-    },
-    {
-      num: "05",
-      name: "Volunteer Mornings",
-      desc: "Real work. Useful work. With strangers who chose to be here.",
-      why: "Values disclosed through action, not conversation.",
-    },
-  ];
-
   return (
     <section className="bg-cream section">
       <div className="container-lurch">
-        <div className="experiences-grid">
-
-          {/* LEFT — proposition */}
-          <div>
-            <p className="section-label" style={{ color: "var(--black)" }}>WHAT LURCH ACTUALLY DOES</p>
-            <h2 className="headline" style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)", color: "var(--black)", lineHeight: 0.92, marginBottom: "2rem" }}>
-              You don't need<br />a better algorithm.
-            </h2>
-            <p className="headline-italic" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", color: "var(--oxblood)", marginBottom: "2rem", lineHeight: 1.2 }}>
-              You need a better<br />Tuesday evening.
-            </p>
-            <p style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#4A4540", marginBottom: "2.5rem" }}>
-              Lurch curates real-world experiences designed to surface your actual self — not the profile version.
-              Not a blind date. Situations where you'd naturally be interesting to the right person.
-              Where your eros and play come out without you having to announce them.
-            </p>
-            <p className="fine-print" style={{ fontSize: "0.65rem", color: "#9A8F85", lineHeight: 1.9, marginBottom: "2.5rem" }}>
-              Live in Mumbai and Bengaluru.<br />
-              Delhi · Hyderabad: Q3 2026.<br />
-              Not virtual. Not on Zoom.
-            </p>
-            <Link href="/truth" className="btn-primary" style={{ display: "inline-block" }}>
+        <div style={{ maxWidth: "680px" }}>
+          <p className="section-label" style={{ color: "var(--black)" }}>WHAT LURCH ACTUALLY DOES</p>
+          <h2 className="headline" style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)", color: "var(--black)", lineHeight: 0.92, marginBottom: "2rem" }}>
+            You don't need<br />a better algorithm.
+          </h2>
+          <p className="headline-italic" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", color: "var(--oxblood)", marginBottom: "2rem", lineHeight: 1.25 }}>
+            You need a better<br />Tuesday evening.
+          </p>
+          <p style={{ fontSize: "0.95rem", lineHeight: 1.9, color: "#4A4540", marginBottom: "1.5rem" }}>
+            Lurch curates real-world experiences designed to surface your actual self —
+            not the profile version. Not a blind date. Situations where your eros and play
+            come out without you having to announce them.
+          </p>
+          <p style={{ fontSize: "0.95rem", lineHeight: 1.9, color: "#4A4540", marginBottom: "3rem" }}>
+            We're building this now. Events go live in Mumbai and Bengaluru first.
+            If you want in before anyone else, you know what to do.
+          </p>
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+            <Link href="/events" className="btn-primary" style={{ display: "inline-block" }}>
+              See The Events
+            </Link>
+            <Link href="/truth" className="btn-outline" style={{
+              display: "inline-block",
+              color: "var(--black)",
+              borderColor: "var(--black)",
+            }}>
               Join the Waitlist
             </Link>
           </div>
-
-          {/* RIGHT — experience list */}
-          <div>
-            {experiences.map((e, i) => (
-              <div
-                key={e.num}
-                style={{
-                  borderTop: "1px solid var(--border-light)",
-                  borderBottom: i === experiences.length - 1 ? "1px solid var(--border-light)" : "none",
-                  padding: "1.5rem 0",
-                  display: "grid",
-                  gridTemplateColumns: "2rem 1fr",
-                  gap: "1.5rem",
-                  alignItems: "start",
-                }}
-              >
-                <span className="fine-print" style={{ color: "var(--oxblood)", fontSize: "0.6rem", letterSpacing: "0.15em", paddingTop: "0.15rem" }}>
-                  {e.num}
-                </span>
-                <div>
-                  <p style={{ fontFamily: "var(--font-display)", fontWeight: 900, fontSize: "1rem", color: "var(--black)", marginBottom: "0.4rem", letterSpacing: "-0.01em" }}>
-                    {e.name}
-                  </p>
-                  <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#4A4540", marginBottom: "0.75rem" }}>
-                    {e.desc}
-                  </p>
-                  <p className="fine-print" style={{ fontSize: "0.62rem", letterSpacing: "0.12em", color: "var(--oxblood)", textTransform: "uppercase" }}>
-                    {e.why}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
         </div>
       </div>
     </section>

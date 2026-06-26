@@ -306,7 +306,8 @@ body::after {
 
 @media (max-width: 900px) {
   .app-grid,
-  .experiences-grid {
+  .experiences-grid,
+  .ai-shade-grid {
     grid-template-columns: 1fr;
   }
 
