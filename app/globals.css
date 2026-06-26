@@ -245,16 +245,100 @@ body::after {
   margin-bottom: 1.5rem;
 }
 
-/* Shock cards grid — Caste Filter card is weighted heavier on desktop */
+/* Shock cards — Caste Filter weighted heavier */
 .shock-cards-grid {
   display: grid;
-  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 1px;
+  background: var(--border-light);
+  width: 100%;
+}
+
+/* App section — features list + phone */
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(4rem, 8vw, 7rem);
+  align-items: start;
+}
+
+/* Attachment engine — explicit 4 columns */
+.attachment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--border-light);
 }
 
+/* Curated experiences — proposition + list */
+.experiences-grid {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: clamp(4rem, 8vw, 7rem);
+  align-items: start;
+}
+
+/* Testimonials — 2x2 dark cards */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border-light);
+}
+
+/* Science — 3 equal columns */
+.science-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: transparent;
+}
+
+/* Honest version — label column + content */
+.honest-grid {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: start;
+}
+
+/* ─── Responsive breakpoints ─── */
+
+@media (max-width: 900px) {
+  .app-grid,
+  .experiences-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .attachment-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 700px) {
-  .shock-cards-grid {
+  .shock-cards-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .attachment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .science-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .science-grid > div {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(242, 237, 227, 0.12);
+  }
+
+  .science-grid > div:last-child {
+    border-bottom: none;
+  }
+
+  .honest-grid {
     grid-template-columns: 1fr;
   }
 }
