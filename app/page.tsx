@@ -194,129 +194,6 @@ function ShockCards() {
 
 // ─── APP MOCKUP ──────────────────────────────────────────────────────────────
 
-function AppMockup() {
-  const features = [
-    { name: "Trauma Matching™", tag: "We don't match on interests. We match on wounds." },
-    { name: "Caste Filter", tag: "Enabled by default. Tap to disable. (Your mother will know.)" },
-    { name: "Ghost Detector™", tag: "Closure, as a service. 3–5 business days." },
-    { name: "Vibe Check Score™", tag: "You've dated this person before. Different name." },
-    { name: "Therapy Referral™", tag: "For when your pattern is worse than you thought." },
-  ];
-
-  return (
-    <section id="features" className="bg-black-lurch section">
-      <div className="container-lurch">
-        <div className="app-grid">
-
-          {/* LEFT — features list */}
-          <div>
-            <p className="section-label" style={{ color: "var(--acid)", letterSpacing: "0.2em" }}>WHAT YOU GET</p>
-            <h2 className="headline text-cream" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 0.92, marginBottom: "3rem" }}>
-              Real features.<br />For real damage.
-            </h2>
-
-            {features.map((f, i) => (
-              <div
-                key={f.name}
-                style={{
-                  borderTop: "1px solid var(--border-dark)",
-                  borderBottom: i === features.length - 1 ? "1px solid var(--border-dark)" : "none",
-                  padding: "1.25rem 0",
-                  display: "flex", alignItems: "flex-start", gap: "1.25rem",
-                }}
-              >
-                <div style={{ width: "2px", height: "2.5rem", background: "var(--oxblood)", flexShrink: 0, marginTop: "0.15rem" }} />
-                <div>
-                  <p style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.95rem", color: "var(--cream)", marginBottom: "0.35rem" }}>
-                    {f.name}
-                  </p>
-                  <p className="fine-print" style={{ fontSize: "0.7rem", color: "var(--gray)" }}>{f.tag}</p>
-                </div>
-              </div>
-            ))}
-
-            <Link href="/truth" className="btn-primary" style={{ display: "inline-block", marginTop: "2rem" }}>
-              Get Early Access
-            </Link>
-          </div>
-
-          {/* RIGHT — phone mockup */}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", paddingTop: "1rem" }}>
-            <div style={{ width: "clamp(220px, 28vw, 290px)" }}>
-              <div style={{
-                borderRadius: "44px",
-                border: "1.5px solid rgba(242,237,227,0.1)",
-                background: "var(--black-soft)",
-                padding: "10px",
-                boxShadow: "0 0 0 1px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(242,237,227,0.04)",
-              }}>
-                <div style={{ borderRadius: "36px", overflow: "hidden", background: "var(--black)" }}>
-                  {/* Status bar */}
-                  <div style={{ background: "var(--black-soft)", display: "flex", justifyContent: "space-between", padding: "10px 16px 8px", alignItems: "center" }}>
-                    <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "var(--cream)", fontWeight: 600 }}>9:41</span>
-                    <div style={{ display: "flex", gap: "3px", alignItems: "flex-end" }}>
-                      {[3, 4, 5, 6].map(h => (
-                        <div key={h} style={{ width: "3px", height: `${h}px`, background: "var(--cream)", borderRadius: "1px", opacity: 0.7 }} />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Profile card */}
-                  <div style={{ height: "230px", background: "linear-gradient(160deg, var(--oxblood) 0%, #1A0B0E 60%, var(--black) 100%)", position: "relative" }}>
-                    <div style={{ position: "absolute", bottom: "14px", left: "14px" }}>
-                      <p style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontStyle: "italic", fontSize: "1.25rem", color: "var(--cream)", marginBottom: "5px" }}>
-                        Priya, 28
-                      </p>
-                      <p className="fine-print" style={{ fontSize: "0.6rem", color: "var(--acid)", letterSpacing: "0.12em" }}>
-                        Caste: [REDACTED]
-                      </p>
-                    </div>
-                    <div style={{ position: "absolute", top: "12px", right: "12px" }}>
-                      <span style={{ background: "var(--acid)", color: "var(--black)", fontFamily: "var(--font-mono)", fontSize: "8px", fontWeight: 700, padding: "2px 6px", letterSpacing: "0.1em" }}>
-                        94% MATCH
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Detail strip */}
-                  <div style={{ padding: "14px 16px", background: "var(--black)" }}>
-                    <p className="fine-print" style={{ fontSize: "0.6rem", color: "var(--gray)", marginBottom: "8px" }}>
-                      Brahmin · CA · "open-minded"
-                    </p>
-                    <div style={{ height: "1px", background: "var(--border-dark)", marginBottom: "8px" }} />
-                    <p className="fine-print" style={{ fontSize: "0.58rem", color: "var(--gray)", marginBottom: "4px" }}>Last active: 2 minutes ago</p>
-                    <p className="fine-print" style={{ fontSize: "0.58rem", color: "var(--oxblood-mid)", marginBottom: "4px" }}>Trauma score: 74 / 100</p>
-                    <p className="fine-print" style={{ fontSize: "0.58rem", color: "var(--acid)" }}>⬆ 12 pts above your average</p>
-                  </div>
-
-                  {/* Action bar */}
-                  <div style={{ display: "flex", justifyContent: "space-around", padding: "12px 0 16px", borderTop: "1px solid var(--border-dark)" }}>
-                    {[
-                      { label: "✕", color: "var(--gray)" },
-                      { label: "♥", color: "var(--oxblood-mid)" },
-                      { label: "★", color: "var(--acid)" },
-                    ].map(btn => (
-                      <div key={btn.label} style={{
-                        width: "34px", height: "34px", borderRadius: "50%",
-                        border: "1px solid var(--border-dark)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        color: btn.color, fontSize: "0.85rem", cursor: "default",
-                      }}>
-                        {btn.label}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ─── AI SHADE ────────────────────────────────────────────────────────────────
 
 function AIShade() {
@@ -327,72 +204,39 @@ function AIShade() {
           A NOTE ON TECHNOLOGY
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(3rem, 7vw, 7rem)", alignItems: "start" }}>
+        <h2 className="headline" style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)", color: "var(--black)", lineHeight: 0.9, marginBottom: "2.5rem", maxWidth: "700px" }}>
+          What if you had an MCP?
+        </h2>
 
-          {/* LEFT — the indictment */}
-          <div>
-            <h2 className="headline" style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", color: "var(--black)", lineHeight: 0.9, marginBottom: "2.5rem" }}>
-              Yes,<br />we use AI.
-            </h2>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.9, color: "rgba(13,13,11,0.8)", marginBottom: "2rem" }}>
-              So does everyone. Here's what everyone is doing with it:
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-              {[
-                "Writing your opening message. (Charming.)",
-                "Writing their reply. (Efficient.)",
-                "Coaching you mid-conversation on what to say next. (Natural.)",
-                "Generating your profile photos. (Authentic.)",
-                "Cloning your texting style so the app can respond while you sleep.",
-                "Building you a companion that never leaves, never judges, never needs anything from you.",
-              ].map((line, i) => (
-                <div
-                  key={i}
-                  style={{
-                    borderTop: "1px solid rgba(13,13,11,0.15)",
-                    padding: "0.85rem 0",
-                    display: "flex",
-                    gap: "1rem",
-                    alignItems: "baseline",
-                    borderBottom: i === 5 ? "1px solid rgba(13,13,11,0.15)" : "none",
-                  }}
-                >
-                  <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", color: "rgba(13,13,11,0.35)", letterSpacing: "0.1em", flexShrink: 0, paddingTop: "0.1rem" }}>
-                    0{i + 1}
-                  </span>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: "0.88rem", lineHeight: 1.6, color: "rgba(13,13,11,0.75)" }}>{line}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div style={{ maxWidth: "680px", marginBottom: "clamp(3rem, 6vw, 5rem)" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.9, color: "rgba(13,13,11,0.78)", marginBottom: "1.75rem" }}>
+            If you were a language model, here's what your context window would look like:
+            847 unread messages from people you're no longer seeing. 12 years of attachment
+            patterns, poorly documented. Your mother's match parameters (caste, height, income
+            band — she's done the tokenisation). Three ex-partners saved under different names.
+            One good photo from 2019 you keep deploying.
+          </p>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "1rem", lineHeight: 1.9, color: "rgba(13,13,11,0.78)" }}>
+            Every other app is building an MCP for your love life. Tools that pipe your
+            loneliness into their infrastructure. They call it personalisation. They mean
+            retention.
+          </p>
+        </div>
 
-          {/* RIGHT — the verdict */}
-          <div style={{ paddingTop: "clamp(0rem, 2vw, 1rem)" }}>
-            <p style={{ fontFamily: "var(--font-display)", fontWeight: 900, fontStyle: "italic", fontSize: "clamp(1.2rem, 2.5vw, 1.75rem)", color: "var(--black)", lineHeight: 1.3, marginBottom: "2rem" }}>
-              Here's where that ends up:
-            </p>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", lineHeight: 1.9, color: "rgba(13,13,11,0.8)", marginBottom: "1.75rem" }}>
-              You matched. Their AI sent a message. Your AI replied.
-              Their AI asked a question. Your AI laughed at the joke.
-              Neither of you has read a single word of this conversation.
-            </p>
-            <p style={{ fontFamily: "var(--font-display)", fontWeight: 900, fontSize: "clamp(1.1rem, 2.2vw, 1.5rem)", color: "var(--black)", lineHeight: 1.3, marginBottom: "1.75rem" }}>
-              Two bots are falling in love.<br />
-              You'll get a notification when it's time to show up for the date.
-            </p>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", lineHeight: 1.9, color: "rgba(13,13,11,0.8)", marginBottom: "2.5rem" }}>
-              Nobody is building a companion bot because people are lonely.
-              They're building it because lonely people pay subscriptions.
-            </p>
-            <div style={{ borderTop: "2px solid var(--black)", paddingTop: "1.75rem" }}>
-              <p className="fine-print" style={{ fontSize: "0.72rem", lineHeight: 1.8, color: "rgba(13,13,11,0.6)" }}>
-                We use AI once. To count how many times you've run the same
-                pattern and show you the number. One inference. We don't store it.
-                We're not building a companion. That's the whole thing.
-              </p>
-            </div>
-          </div>
-
+        <div style={{ borderTop: "1.5px solid rgba(13,13,11,0.2)", paddingTop: "clamp(2.5rem, 5vw, 4rem)" }}>
+          <p
+            className="lurch-logo"
+            style={{
+              fontSize: "clamp(1.6rem, 4vw, 3rem)",
+              color: "var(--black)",
+              lineHeight: 1.15,
+              maxWidth: "760px",
+              transform: "rotate(-1.5deg)",
+              display: "inline-block",
+            }}
+          >
+            Our AI will make sure you don't have to do anything — because you're dead, anyways.
+          </p>
         </div>
       </div>
     </section>
@@ -750,7 +594,6 @@ export default function Home() {
       <main>
         <Hero />
         <ShockCards />
-        <AppMockup />
         <AIShade />
         <Testimonials />
         <AttachmentEngine />
