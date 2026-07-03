@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScreenWrapper } from "@/components/layout/ScreenWrapper";
@@ -70,6 +71,20 @@ export default function GenderPage() {
   const router = useRouter();
   const { gender, setGender, setTransitionDirection } = useLurchStore();
 
+  const [showScrollComment, setShowScrollComment] = useState(false);
+  const scrollTimerStarted = useRef(false);
+  const scrollCommentShown = useRef(false);
+
+  const handleListScroll = () => {
+    if (scrollTimerStarted.current || scrollCommentShown.current) return;
+    scrollTimerStarted.current = true;
+    setTimeout(() => {
+      scrollCommentShown.current = true;
+      setShowScrollComment(true);
+      setTimeout(() => setShowScrollComment(false), 3000);
+    }, 8000);
+  };
+
   const handleContinue = () => {
     setTransitionDirection("up");
     router.push("/onboarding/preference");
@@ -80,6 +95,7 @@ export default function GenderPage() {
 
   return (
     <ScreenWrapper>
+      <div style={{ position: "relative", height: "100%" }}>
       <OnboardingShell step={1}>
         {/* Header */}
         <div style={{ marginBottom: "24px", flexShrink: 0 }}>
@@ -103,12 +119,16 @@ export default function GenderPage() {
               color: "#939192",
             }}
           >
-            Take your time. We have all of them.
+            Take your time. We have all of them. Even the ones you just invented.
           </p>
         </div>
 
         {/* Scrollable gender list */}
-        <div className="flex-1 overflow-y-auto lurch-scroll" style={{ marginRight: "-4px", paddingRight: "4px" }}>
+        <div
+          className="flex-1 overflow-y-auto lurch-scroll"
+          style={{ marginRight: "-4px", paddingRight: "4px" }}
+          onScroll={handleListScroll}
+        >
           <div style={{ display: "flex", flexDirection: "column", gap: "10px", paddingBottom: "8px" }}>
             {allGenders.map((g) => (
               <GenderRow
@@ -155,6 +175,36 @@ export default function GenderPage() {
           </CTAButton>
         </div>
       </OnboardingShell>
+
+      {/* Floating aside — the app commenting on how long you've been scrolling */}
+      <AnimatePresence>
+        {showScrollComment && (
+          <motion.p
+            key="scroll-comment"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.7 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "45%",
+              transform: "translate(-50%, -50%)",
+              width: "80%",
+              textAlign: "center",
+              fontFamily: "var(--font-ui)",
+              fontSize: "12px",
+              fontStyle: "italic",
+              color: "#C97B2A",
+              pointerEvents: "none",
+              userSelect: "none",
+            }}
+          >
+            Damn, I know right.
+          </motion.p>
+        )}
+      </AnimatePresence>
+      </div>
     </ScreenWrapper>
   );
 }

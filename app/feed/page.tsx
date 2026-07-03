@@ -97,13 +97,13 @@ export default function FeedPage() {
             />
           </div>
 
-          {/* "how is it like feeling like an object?" */}
+          {/* "what is it like feeling like an object?" */}
           <p style={{
             fontFamily: "var(--font-ui)", fontSize: "11px", fontStyle: "italic",
             color: "#4A4540", textAlign: "center",
             paddingTop: "6px", paddingBottom: "2px", flexShrink: 0,
           }}>
-            how is it like feeling like an object?
+            what is it like feeling like an object?
           </p>
 
           <ActionRow

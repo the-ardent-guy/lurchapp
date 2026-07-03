@@ -8,6 +8,7 @@ import { useLurchStore } from "@/lib/store";
 import { useColors } from "@/lib/theme";
 import { WoundBadge } from "@/components/cards/WoundBadge";
 import { AttachmentBadge } from "@/components/cards/AttachmentBadge";
+import { TraitBadge } from "@/components/cards/TraitBadge";
 
 interface Props {
   profile: Profile | null;
@@ -70,6 +71,7 @@ function PhotoCard({ profile }: { profile: Profile }) {
       {/* Info */}
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "14px 16px 18px" }}>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginBottom: "10px" }}>
+          {profile.extraBadges?.map((b) => <TraitBadge key={b.label} label={b.label} small={b.small} />)}
           {profile.wounds.slice(0, 2).map((w) => <WoundBadge key={w} label={w} />)}
           {profile.attachmentLabel && <AttachmentBadge label={profile.attachmentLabel} />}
         </div>
@@ -214,6 +216,38 @@ function TruthsAndLieCard({ profile, colors }: { profile: Profile; colors: Retur
   );
 }
 
+function ShadowPromptCard({ profile, colors }: { profile: Profile; colors: ReturnType<typeof useColors> }) {
+  if (!profile.shadowPrompt) return null;
+
+  return (
+    <div style={{
+      background: colors.surface, borderRadius: "16px",
+      padding: "22px 20px", flexShrink: 0,
+      border: `1px solid ${colors.border}`,
+    }}>
+      <p style={{
+        fontFamily: "var(--font-display)", fontSize: "10px",
+        textTransform: "uppercase", letterSpacing: "0.15em",
+        color: "#E94057", marginBottom: "12px",
+      }}>
+        Lurch Prompt
+      </p>
+      <p style={{
+        fontFamily: "var(--font-display)", fontSize: "13px",
+        color: colors.muted, lineHeight: 1.4, marginBottom: "12px",
+      }}>
+        {profile.shadowPrompt.question}
+      </p>
+      <p style={{
+        fontFamily: "var(--font-display)", fontSize: "20px", fontWeight: 600,
+        color: colors.text, lineHeight: 1.5,
+      }}>
+        {profile.shadowPrompt.answer}
+      </p>
+    </div>
+  );
+}
+
 function ExReviewCard({ profile, colors }: { profile: Profile; colors: ReturnType<typeof useColors> }) {
   const { openPaywall } = useLurchStore();
   return (
@@ -345,6 +379,7 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
               <PhotoCard profile={profile} />
               <PromptCard profile={profile} colors={colors} />
               <TruthsAndLieCard profile={profile} colors={colors} />
+              <ShadowPromptCard profile={profile} colors={colors} />
               <ExReviewCard profile={profile} colors={colors} />
             </div>
           </div>

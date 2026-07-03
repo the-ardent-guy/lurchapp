@@ -9,9 +9,10 @@ interface Props {
   totalSteps?: number;
   showBack?: boolean;
   onBack?: () => void;
+  bonusStep?: boolean;
 }
 
-export function OnboardingShell({ children, step, totalSteps = 4, showBack = true, onBack }: Props) {
+export function OnboardingShell({ children, step, totalSteps = 4, showBack = true, onBack, bonusStep = false }: Props) {
   return (
     <div className="flex flex-col h-full" style={{ background: "#0F0D0B" }}>
       <div
@@ -24,7 +25,7 @@ export function OnboardingShell({ children, step, totalSteps = 4, showBack = tru
         }}
       >
         {showBack ? <BackButton onBack={onBack} /> : <div style={{ width: "56px" }} />}
-        <OnboardingProgress step={step} totalSteps={totalSteps} />
+        <OnboardingProgress step={step} totalSteps={totalSteps} bonus={bonusStep} />
       </div>
 
       <div className="flex-1 overflow-hidden flex flex-col" style={{ padding: "20px 28px 32px" }}>

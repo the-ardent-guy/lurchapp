@@ -22,7 +22,6 @@ export const GENDER_LIST: string[] = [
   "Cosmicgender",
   "Novigender",
   "Greygender",
-  "Damn, I know right",
   "Human",
 ];
 

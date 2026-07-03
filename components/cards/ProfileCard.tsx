@@ -6,6 +6,7 @@ import type { PanInfo } from "framer-motion";
 import type { Profile } from "@/lib/store";
 import { WoundBadge } from "./WoundBadge";
 import { AttachmentBadge } from "./AttachmentBadge";
+import { TraitBadge } from "./TraitBadge";
 
 interface Props {
   profile: Profile;
@@ -253,9 +254,27 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
         )}
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "12px" }}>
+          {profile.extraBadges?.map((b) => <TraitBadge key={b.label} label={b.label} small={b.small} />)}
           {profile.wounds.slice(0, 2).map((w) => <WoundBadge key={w} label={w} />)}
           {profile.attachmentLabel && <AttachmentBadge label={profile.attachmentLabel} />}
         </div>
+
+        {profile.matchedBecause && (
+          <div style={{ marginBottom: "10px" }}>
+            <p style={{
+              fontFamily: "var(--font-ui)", fontSize: "9px", textTransform: "uppercase",
+              letterSpacing: "0.08em", color: "#8A8070", marginBottom: "3px",
+            }}>
+              Matched because
+            </p>
+            <p style={{
+              fontFamily: "var(--font-ui)", fontSize: "12px", fontStyle: "italic",
+              color: "rgba(217,216,216,0.85)", lineHeight: 1.4,
+            }}>
+              {profile.matchedBecause}
+            </p>
+          </div>
+        )}
 
         <div style={{ display: "flex", gap: "28px" }}>
           <div>

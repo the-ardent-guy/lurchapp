@@ -62,6 +62,11 @@ export const STATIC_PROFILES: Profile[] = [
       ],
       lieIndex: 3,
     },
+    matchedBecause: "you both know what the slowfade feels like from the inside.",
+    shadowPrompt: {
+      question: "The version of me I bring to dating:",
+      answer: "Cooler than I am. Less needy than I feel. Busy enough to seem like I have options.",
+    },
   },
   {
     id: "mehak",
@@ -92,6 +97,11 @@ export const STATIC_PROFILES: Profile[] = [
       ],
       lieIndex: 1,
     },
+    matchedBecause: "you both called it complicated. it wasn't complicated.",
+    shadowPrompt: {
+      question: "What I'm actually looking for:",
+      answer: "Someone patient enough to wait while I figure out why I keep leaving before they can.",
+    },
   },
   {
     id: "aisha",
@@ -121,6 +131,11 @@ export const STATIC_PROFILES: Profile[] = [
         "I have performed confidence so long I don't know what it feels like without an audience.",
       ],
       lieIndex: 2,
+    },
+    matchedBecause: "you've both been told you're too much by someone who wasn't enough.",
+    shadowPrompt: {
+      question: "What I do when someone gets too close:",
+      answer: "I find something wrong with them. I'm good at this. I've had practice.",
     },
   },
   {
@@ -232,6 +247,12 @@ export const STATIC_PROFILES: Profile[] = [
       ],
       lieIndex: 0,
     },
+    matchedBecause: "you checked his location once. he needed space for four months.",
+    shadowPrompt: {
+      question: "The last time I was fully honest with someone I was dating:",
+      answer: "I'll let you know when it happens.",
+    },
+    extraBadges: [{ label: "His ex was the problem" }],
   },
   {
     id: "arjun",
@@ -262,6 +283,7 @@ export const STATIC_PROFILES: Profile[] = [
       ],
       lieIndex: 2,
     },
+    extraBadges: [{ label: "Emotionally unavailable but great taste in music" }],
   },
   {
     id: "vikram",
@@ -353,6 +375,10 @@ export const STATIC_PROFILES: Profile[] = [
       ],
       lieIndex: 0,
     },
+    extraBadges: [
+      { label: "Got generational wealth" },
+      { label: "Startup guy", small: true },
+    ],
   },
   {
     id: "siddharth",
@@ -413,5 +439,6 @@ export const STATIC_PROFILES: Profile[] = [
       ],
       lieIndex: 2,
     },
+    extraBadges: [{ label: "Will explain cricket to you unprompted" }],
   },
 ];

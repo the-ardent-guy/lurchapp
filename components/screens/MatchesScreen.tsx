@@ -7,6 +7,7 @@ import { X } from "lucide-react";
 import { useLurchStore } from "@/lib/store";
 import { STATIC_PROFILES } from "@/lib/data/profiles";
 import { formatCountdown } from "@/lib/utils";
+import { DarkPatternLabel } from "@/components/typography/DarkPatternLabel";
 
 const LIKED_PROFILES = STATIC_PROFILES.filter((p) => p.id !== "unavailable").slice(0, 6);
 
@@ -202,12 +203,9 @@ export function MatchesScreen() {
           <MatchesCountdown expiryTimestamp={expiry} />
         </p>
 
-        <p style={{
-          fontFamily: "var(--font-ui)", fontSize: "11px", fontStyle: "italic",
-          color: "#323232", marginBottom: "16px",
-        }}>
+        <DarkPatternLabel className="mb-4">
           Technique: Loss Aversion + Artificial Scarcity
-        </p>
+        </DarkPatternLabel>
 
         <div style={{
           background: "#FDFDFD", borderRadius: "14px",

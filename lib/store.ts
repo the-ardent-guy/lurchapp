@@ -37,6 +37,9 @@ export interface Profile {
     statements: [string, string, string, string];
     lieIndex: 0 | 1 | 2 | 3;
   };
+  matchedBecause?: string;
+  shadowPrompt?: { question: string; answer: string };
+  extraBadges?: { label: string; small?: boolean }[];
 }
 
 export interface Notification {
@@ -57,17 +60,19 @@ export interface ScorePayload {
 
 interface OnboardingSlice {
   gender: string | null;
-  preference: "men" | "women" | "everyone" | "no-one" | null;
+  preference: string | null;
   attachmentStyle: AttachmentStyle | null;
   secureLoopRound: number;
   wounds: string[];
   honestAnswer: string | null;
+  shadowWorkAnswer: string | null;
   setGender: (gender: string) => void;
-  setPreference: (pref: "men" | "women" | "everyone" | "no-one") => void;
+  setPreference: (pref: string) => void;
   setAttachmentStyle: (style: AttachmentStyle) => void;
   incrementSecureLoop: () => void;
   toggleWound: (wound: string) => void;
   setHonestAnswer: (answer: string) => void;
+  setShadowWorkAnswer: (answer: string) => void;
   resetOnboarding: () => void;
 }
 
@@ -137,8 +142,8 @@ type LurchStore = OnboardingSlice &
 
 // ─── Slice creators ───────────────────────────────────────────────────────────
 
-function filterProfiles(pref: "men" | "women" | "everyone" | "no-one" | null): Profile[] {
-  if (!pref || pref === "everyone" || pref === "no-one") return STATIC_PROFILES;
+function filterProfiles(pref: string | null): Profile[] {
+  if (pref !== "women" && pref !== "men") return STATIC_PROFILES;
   return STATIC_PROFILES.filter((p) => !p.gender || p.gender === (pref === "men" ? "man" : "woman"));
 }
 
@@ -149,6 +154,7 @@ const createOnboardingSlice: StateCreator<LurchStore, [], [], OnboardingSlice> =
   secureLoopRound: 0,
   wounds: [],
   honestAnswer: null,
+  shadowWorkAnswer: null,
   setGender: (gender) => set({ gender }),
   setPreference: (pref) => set({ preference: pref, profiles: filterProfiles(pref), currentCardIndex: 0 }),
   setAttachmentStyle: (style) => set({ attachmentStyle: style }),
@@ -161,6 +167,7 @@ const createOnboardingSlice: StateCreator<LurchStore, [], [], OnboardingSlice> =
         : [...s.wounds, wound],
     })),
   setHonestAnswer: (answer) => set({ honestAnswer: answer }),
+  setShadowWorkAnswer: (answer) => set({ shadowWorkAnswer: answer }),
   resetOnboarding: () =>
     set({
       gender: null,
@@ -169,6 +176,7 @@ const createOnboardingSlice: StateCreator<LurchStore, [], [], OnboardingSlice> =
       secureLoopRound: 0,
       wounds: [],
       honestAnswer: null,
+      shadowWorkAnswer: null,
     }),
 });
 

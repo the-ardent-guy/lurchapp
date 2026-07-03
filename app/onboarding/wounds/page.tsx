@@ -64,6 +64,27 @@ export default function WoundsPage() {
           <CTAButton onClick={handleContinue} disabled={wounds.length === 0}>
             Continue
           </CTAButton>
+          <button
+            onClick={() => {
+              setTransitionDirection("up");
+              router.push("/onboarding/shadow-work");
+            }}
+            style={{
+              display: "block",
+              width: "100%",
+              textAlign: "center",
+              marginTop: "14px",
+              background: "transparent",
+              border: "none",
+              fontFamily: "var(--font-ui)",
+              fontSize: "12px",
+              fontStyle: "italic",
+              color: "#6A6060",
+              cursor: "pointer",
+            }}
+          >
+            Want to go deeper? One more question.
+          </button>
         </div>
       </OnboardingShell>
     </ScreenWrapper>

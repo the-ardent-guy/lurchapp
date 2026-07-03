@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLurchStore } from "@/lib/store";
 import { formatCountdown } from "@/lib/utils";
+import { DarkPatternLabel } from "@/components/typography/DarkPatternLabel";
 
 const CHECK_ICON = (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -60,12 +61,9 @@ export function PaywallPage() {
       )}
 
       {/* Technique label */}
-      <p style={{
-        fontFamily: "var(--font-ui)", fontSize: "11px", fontStyle: "italic",
-        color: "#323232", marginBottom: "16px",
-      }}>
+      <DarkPatternLabel className="mb-4">
         Technique: Loss Aversion + Artificial Scarcity
-      </p>
+      </DarkPatternLabel>
 
       {/* White inner card */}
       <div style={{

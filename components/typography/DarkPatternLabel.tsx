@@ -8,8 +8,15 @@ interface Props {
 export function DarkPatternLabel({ children, className = "" }: Props) {
   return (
     <p
-      className={`text-xs leading-snug ${className}`}
-      style={{ fontFamily: "var(--font-ui)", color: "#8A8070", fontStyle: "italic" }}
+      className={`leading-snug ${className}`}
+      style={{
+        fontFamily: "var(--font-ui)",
+        fontSize: "11px",
+        color: "#C97B2A",
+        opacity: 0.7,
+        fontStyle: "italic",
+        letterSpacing: "0.06em",
+      }}
     >
       {children}
     </p>
