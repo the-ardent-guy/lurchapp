@@ -202,7 +202,7 @@ export default function AttachmentPage() {
       <OnboardingShell step={3}>
         <div style={{ marginBottom: "20px", flexShrink: 0 }}>
           <h1 style={{
-            fontFamily: "var(--font-display)", fontSize: "38px", fontWeight: 600,
+            fontFamily: "var(--font-heading)", fontSize: "40px", fontWeight: 600,
             lineHeight: "1.15", color: "#F0EDED", marginBottom: "10px",
           }}>
             What&apos;s your attachment style?

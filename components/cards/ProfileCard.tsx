@@ -168,6 +168,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
           alt=""
           aria-hidden
           loading={isTop ? "eager" : "lazy"}
+          onError={(e) => { e.currentTarget.style.display = "none"; }}
           style={{
             position: "absolute", inset: 0,
             width: "100%", height: "100%",

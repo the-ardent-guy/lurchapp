@@ -250,6 +250,11 @@ function ShadowPromptCard({ profile, colors }: { profile: Profile; colors: Retur
 
 function ExReviewCard({ profile, colors }: { profile: Profile; colors: ReturnType<typeof useColors> }) {
   const { openPaywall } = useLurchStore();
+  const review = profile.exReview ?? "She was incredible. The closer I got, the further she became.";
+  const splitAt = review.indexOf(". ");
+  const teaser = splitAt === -1 ? review : review.slice(0, splitAt + 1);
+  const reveal = splitAt === -1 ? "" : review.slice(splitAt + 2);
+
   return (
     <div style={{
       background: colors.surface, borderRadius: "16px",
@@ -272,11 +277,20 @@ function ExReviewCard({ profile, colors }: { profile: Profile; colors: ReturnTyp
       <p style={{
         fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 500,
         color: colors.text, lineHeight: 1.55,
-        filter: "blur(5px)", userSelect: "none", pointerEvents: "none",
-        marginBottom: "20px",
+        marginBottom: reveal ? "4px" : "20px",
       }}>
-        {profile.exReview ?? "She was incredible. The closer I got, the further she became."}
+        {teaser}
       </p>
+      {reveal && (
+        <p style={{
+          fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 500,
+          color: colors.text, lineHeight: 1.55,
+          filter: "blur(5px)", userSelect: "none", pointerEvents: "none",
+          marginBottom: "20px",
+        }}>
+          {reveal}
+        </p>
+      )}
       <button
         onClick={() => openPaywall(profile.name)}
         style={{

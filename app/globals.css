@@ -8,6 +8,56 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Cravelo';
+  src: url('/fonts/CraveloDEMO.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Softique Demo';
+  src: url('/fonts/SoftiqueDemo-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Softique Demo';
+  src: url('/fonts/SoftiqueDemo-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Softique Demo';
+  src: url('/fonts/SoftiqueDemo-Light.otf') format('opentype');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Softique Demo';
+  src: url('/fonts/SoftiqueDemo-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Softique Demo';
+  src: url('/fonts/SoftiqueDemo-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Softique Demo';
+  src: url('/fonts/SoftiqueDemo-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Softique Demo';
+  src: url('/fonts/SoftiqueDemo-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
 @theme {
   /* Colours */
   --color-bg:        #0F0D0B;
@@ -25,6 +75,8 @@
   --font-display: 'Cal Sans', 'Clash Display', sans-serif;
   --font-ui:      var(--font-inter), sans-serif;
   --font-serif:   var(--font-instrument), Georgia, serif;
+  --font-cravelo: 'Cravelo', var(--font-serif);
+  --font-heading: 'Softique Demo', var(--font-serif);
 
   /* Radius */
   --radius-card:   12px;

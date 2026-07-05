@@ -60,8 +60,8 @@ export default function InterestsPage() {
         <div style={{ marginBottom: "32px" }}>
           <h1
             style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "38px",
+              fontFamily: "var(--font-heading)",
+              fontSize: "40px",
               fontWeight: 600,
               lineHeight: "1.1",
               color: "#F0EDED",

@@ -1,11 +1,27 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLurchStore } from "@/lib/store";
+
+const BLR_AREAS = [
+  "Koramangala, BLR",
+  "Indiranagar, BLR",
+  "HSR Layout, BLR",
+  "Whitefield, BLR",
+  "Jayanagar, BLR",
+  "MG Road, BLR",
+];
 
 export function TopBar() {
   const router = useRouter();
   const { setTransitionDirection, isDark, toggleTheme } = useLurchStore();
+  const [area, setArea] = useState(BLR_AREAS[0]);
+
+  /* Randomised only after mount — avoids SSR/client hydration mismatch */
+  useEffect(() => {
+    setArea(BLR_AREAS[Math.floor(Math.random() * BLR_AREAS.length)]);
+  }, []);
 
   const handleAI = () => {
     setTransitionDirection("up");
@@ -79,7 +95,7 @@ export function TopBar() {
             marginTop: "4px",
           }}
         >
-          Mumbai, MH
+          {area}
         </span>
       </div>
 

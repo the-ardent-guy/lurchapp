@@ -3,9 +3,10 @@
 interface Props {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function DarkPatternLabel({ children, className = "" }: Props) {
+export function DarkPatternLabel({ children, className = "", style }: Props) {
   return (
     <p
       className={`leading-snug ${className}`}
@@ -16,6 +17,7 @@ export function DarkPatternLabel({ children, className = "" }: Props) {
         opacity: 0.7,
         fontStyle: "italic",
         letterSpacing: "0.06em",
+        ...style,
       }}
     >
       {children}

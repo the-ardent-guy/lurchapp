@@ -51,7 +51,7 @@ export default function HonestPage() {
       <OnboardingShell step={6}>
         <div style={{ marginBottom: "24px", flexShrink: 0 }}>
           <h1
-            style={{ fontFamily: "var(--font-display)", fontSize: "38px", fontWeight: 600, lineHeight: "1.1", color: "#F0EDED", marginBottom: "8px" }}
+            style={{ fontFamily: "var(--font-heading)", fontSize: "40px", fontWeight: 600, lineHeight: "1.1", color: "#F0EDED", marginBottom: "8px" }}
           >
             What are you actually here for?
           </h1>

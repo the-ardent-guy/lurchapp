@@ -49,7 +49,7 @@ export default function TruthPage() {
         {/* Header */}
         <div>
           <h1
-            style={{ fontFamily: "var(--font-display)", fontSize: "38px", fontWeight: 600, lineHeight: "1.1", color: "#F0EDED", marginBottom: "12px" }}
+            style={{ fontFamily: "var(--font-heading)", fontSize: "40px", fontWeight: 600, lineHeight: "1.1", color: "#F0EDED", marginBottom: "12px" }}
           >
             THE HONEST VERSION.
           </h1>

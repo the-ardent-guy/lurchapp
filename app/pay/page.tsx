@@ -21,7 +21,7 @@ export default function PayPage() {
           </p>
 
           <h1 style={{
-            fontFamily: "var(--font-display)", fontSize: "40px", fontWeight: 600,
+            fontFamily: "var(--font-heading)", fontSize: "40px", fontWeight: 600,
             lineHeight: 1.05, color: "#F0EDED", marginBottom: "12px",
           }}>
             You&apos;re ready to pay for this crap?

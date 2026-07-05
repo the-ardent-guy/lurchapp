@@ -18,7 +18,7 @@ export function ModalOverlay({ isOpen, onClose, children, backdropOpacity = 0.92
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.25, ease: "easeOut" } }}
           exit={{ opacity: 0, transition: { duration: 0.2, ease: "easeIn" } }}
-          className="fixed inset-0 z-50 flex items-end justify-center"
+          className="fixed inset-0 z-[100] flex items-end justify-center"
           style={{ background: `rgba(15, 13, 11, ${backdropOpacity})` }}
           onClick={!preventClose ? onClose : undefined}
         >

@@ -20,8 +20,8 @@ export default function SecureExitPage() {
         <div className="flex-1 flex flex-col justify-center gap-6">
           <h1
             style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "38px",
+              fontFamily: "var(--font-heading)",
+              fontSize: "40px",
               fontWeight: 600,
               lineHeight: "1.1",
               color: "#F0EDED",
