@@ -61,7 +61,7 @@ export function PaywallPage() {
       )}
 
       {/* Technique label */}
-      <DarkPatternLabel style={{ fontSize: "14px", marginBottom: "20px" }}>
+      <DarkPatternLabel style={{ fontSize: "14px", marginBottom: "24px" }}>
         Technique: Loss Aversion + Artificial Scarcity
       </DarkPatternLabel>
 

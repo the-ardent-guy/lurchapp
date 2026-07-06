@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeApplicator } from "@/components/layout/ThemeApplicator";
@@ -27,7 +27,22 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "LURCH — Finally, love optimised.",
   description: "We match you on your trauma.",
-  viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
+  openGraph: {
+    title: "LURCH — Finally, love optimised.",
+    description: "We match you on your trauma.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LURCH — Finally, love optimised.",
+    description: "We match you on your trauma.",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -39,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link
-          href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap"
           rel="stylesheet"
         />
       </head>

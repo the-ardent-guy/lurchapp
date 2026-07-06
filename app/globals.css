@@ -1,14 +1,6 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'Cal Sans';
-  src: url('https://cdn.jsdelivr.net/npm/@calcom/cal-sans@1.0.1/fonts/CalSans-SemiBold.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/npm/@calcom/cal-sans@1.0.1/fonts/CalSans-SemiBold.woff') format('woff');
-  font-weight: 600;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'Cravelo';
   src: url('/fonts/CraveloDEMO.otf') format('opentype');
   font-weight: 400;
@@ -72,7 +64,7 @@
   --color-ghost:     #C0392B;
 
   /* Fonts */
-  --font-display: 'Cal Sans', 'Clash Display', sans-serif;
+  --font-display: 'Clash Display', sans-serif;
   --font-ui:      var(--font-inter), sans-serif;
   --font-serif:   var(--font-instrument), Georgia, serif;
   --font-cravelo: 'Cravelo', var(--font-serif);

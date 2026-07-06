@@ -196,35 +196,35 @@ export function MatchesScreen() {
         }}
       >
         <p style={{
-          fontFamily: "var(--font-display)", fontSize: "16px",
-          color: "#323232", lineHeight: 1.31, marginBottom: "6px",
+          fontFamily: "var(--font-display)", fontSize: "17px",
+          color: "#323232", lineHeight: 1.35, marginBottom: "6px",
         }}>
           Your matches will expire in{" "}
           <MatchesCountdown expiryTimestamp={expiry} />
         </p>
 
-        <DarkPatternLabel className="mb-4">
+        <DarkPatternLabel style={{ fontSize: "14px", marginBottom: "24px" }}>
           Technique: Loss Aversion + Artificial Scarcity
         </DarkPatternLabel>
 
         <div style={{
           background: "#FDFDFD", borderRadius: "14px",
-          padding: "16px 16px 14px", marginBottom: "16px",
+          padding: "18px 18px 16px", marginBottom: "16px",
         }}>
           <p style={{
-            fontFamily: "var(--font-display)", fontSize: "18px",
-            color: "#323232", marginBottom: "14px",
+            fontFamily: "var(--font-display)", fontSize: "22px",
+            color: "#323232", marginBottom: "16px",
           }}>
-            INR 499<span style={{ fontSize: "14px", color: "#707070" }}>/month</span>
+            INR 499<span style={{ fontSize: "16px", color: "#707070" }}>/month</span>
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {FEATURES.map((f) => (
               <div key={f} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
-                <span style={{ flexShrink: 0, marginTop: "1px" }}>{CHECK_ICON}</span>
+                <span style={{ flexShrink: 0, marginTop: "2px" }}>{CHECK_ICON}</span>
                 <p style={{
-                  fontFamily: "var(--font-ui)", fontSize: "10px", fontStyle: "italic",
-                  color: "#323232", lineHeight: 1.4,
+                  fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic",
+                  color: "#323232", lineHeight: 1.45,
                 }}>{f}</p>
               </div>
             ))}
@@ -232,8 +232,8 @@ export function MatchesScreen() {
         </div>
 
         <p style={{
-          fontFamily: "var(--font-ui)", fontSize: "11px", fontStyle: "italic",
-          fontWeight: 500, color: "#323232", lineHeight: 1.5, marginBottom: "16px",
+          fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic",
+          fontWeight: 500, color: "#323232", lineHeight: 1.55, marginBottom: "16px",
         }}>
           You would pay anything just to have someone talk to you. Not because you&apos;re desperate. Because you&apos;re human and you&apos;re lonely and this app has spent the last ten minutes engineering exactly that feeling.
         </p>
@@ -241,9 +241,10 @@ export function MatchesScreen() {
         <button
           onClick={handleSubscribe}
           style={{
-            display: "block", width: "100%", height: "42px",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            width: "100%", height: "46px",
             background: "#8B1A1A", borderRadius: "14px",
-            fontFamily: "var(--font-display)", fontSize: "15px",
+            fontFamily: "var(--font-display)", fontSize: "16px",
             fontWeight: 600, color: "#EAE6E6", textAlign: "center",
           }}
         >
@@ -254,7 +255,7 @@ export function MatchesScreen() {
           onClick={handleGoToFeed}
           style={{
             display: "block", width: "100%", textAlign: "center",
-            fontFamily: "var(--font-ui)", fontSize: "11px",
+            fontFamily: "var(--font-ui)", fontSize: "12px",
             fontStyle: "italic", fontWeight: 500,
             color: "rgba(50,50,50,0.5)", marginTop: "10px",
             background: "transparent", border: "none", cursor: "pointer",
