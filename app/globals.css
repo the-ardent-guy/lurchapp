@@ -69,6 +69,7 @@
   --font-serif:   var(--font-instrument), Georgia, serif;
   --font-cravelo: 'Cravelo', var(--font-serif);
   --font-heading: 'Softique Demo', var(--font-serif);
+  --font-stamp:   var(--font-condensed), 'Arial Narrow', sans-serif;
 
   /* Radius */
   --radius-card:   12px;

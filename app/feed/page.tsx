@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { ScreenWrapper } from "@/components/layout/ScreenWrapper";
 import { FeedShell } from "@/components/layout/FeedShell";
 import { CardStack } from "@/components/cards/CardStack";
-import { ActionRow } from "@/components/screens/ActionRow";
 import { NotificationPill } from "@/components/overlays/NotificationPill";
 import { ModalOverlay } from "@/components/layout/ModalOverlay";
 import { MatchOverlay } from "@/components/overlays/MatchOverlay";
@@ -86,7 +85,7 @@ export default function FeedPage() {
           {/* Notification pill */}
           <NotificationPill />
 
-          {/* Card area */}
+          {/* Card area — fills all remaining space down to the tab bar */}
           <div className="flex-1 relative">
             <CardStack
               profiles={profiles}
@@ -96,21 +95,6 @@ export default function FeedPage() {
               onSwipeUp={handleSwipeUp}
             />
           </div>
-
-          {/* "what is it like feeling like an object?" */}
-          <p style={{
-            fontFamily: "var(--font-ui)", fontSize: "11px", fontStyle: "italic",
-            color: "#4A4540", textAlign: "center",
-            paddingTop: "6px", paddingBottom: "2px", flexShrink: 0,
-          }}>
-            what is it like feeling like an object?
-          </p>
-
-          <ActionRow
-            onNope={() => handleSwipe("left")}
-            onLike={() => handleSwipe("right")}
-            disabled={profiles.length === 0}
-          />
 
           {/* Profile detail — slides up over feed */}
           <ProfileDetailPanel

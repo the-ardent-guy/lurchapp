@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Instrument_Serif, Plus_Jakarta_Sans, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import { ThemeApplicator } from "@/components/layout/ThemeApplicator";
 
@@ -21,6 +21,13 @@ const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["700", "800"],
   variable: "--font-jakarta",
+  display: "swap",
+});
+
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-condensed",
   display: "swap",
 });
 
@@ -49,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} ${plusJakarta.variable}`}
+      className={`${inter.variable} ${instrumentSerif.variable} ${plusJakarta.variable} ${bebasNeue.variable}`}
     >
       <head>
         <link rel="preconnect" href="https://api.fontshare.com" />

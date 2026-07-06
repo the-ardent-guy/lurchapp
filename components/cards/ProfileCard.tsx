@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import type { PanInfo } from "framer-motion";
 import type { Profile } from "@/lib/store";
 import { WoundBadge } from "./WoundBadge";
@@ -18,18 +18,19 @@ interface Props {
 }
 
 const SWIPE_THRESHOLD = 100;
+const FADE_START = SWIPE_THRESHOLD * 0.3;
+const FADE_END = SWIPE_THRESHOLD * 0.6;
 
 const STACK_SPRING = { type: "spring" as const, stiffness: 300, damping: 28 };
+const SETTLE_SPRING = { type: "spring" as const, stiffness: 300, damping: 40 };
+const FLY_OFF_SPRING = { type: "spring" as const, stiffness: 200, damping: 24 };
 
 export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isTop, stackIndex }: Props) {
   const x = useMotionValue(0);
+  const y = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-12, 12]);
-  const lurchOpacity = useTransform(x, [30, 80], [0, 1]);
-  const lurchScale = useTransform(x, [30, 120], [0.7, 1.05]);
-  const lurchRotate = useTransform(x, [30, 120], [-10, 0]);
-  const passOpacity = useTransform(x, [-80, -30], [1, 0]);
-  const passScale = useTransform(x, [-120, -30], [1.05, 0.7]);
-  const passRotate = useTransform(x, [-120, -30], [0, 10]);
+  const lurchOpacity = useTransform(x, [FADE_START, FADE_END], [0, 1]);
+  const passOpacity = useTransform(x, [-FADE_END, -FADE_START], [1, 0]);
   const [isDragging, setIsDragging] = useState(false);
 
   const isUnavailable = profile.id === "unavailable";
@@ -42,10 +43,24 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
 
     if (absY > absX) {
       if (offset.y < -80 || velocity.y < -500) onSwipeUp?.();
-    } else {
-      if (offset.x > SWIPE_THRESHOLD) onSwipeRight();
-      else if (offset.x < -SWIPE_THRESHOLD) onSwipeLeft();
+      animate(y, 0, SETTLE_SPRING);
+      return;
     }
+
+    if (offset.x > SWIPE_THRESHOLD || velocity.x > 600) {
+      const flightTarget = window.innerWidth + 200;
+      animate(x, flightTarget, { ...FLY_OFF_SPRING, velocity: velocity.x }).then(() => onSwipeRight());
+      return;
+    }
+    if (offset.x < -SWIPE_THRESHOLD || velocity.x < -600) {
+      const flightTarget = -(window.innerWidth + 200);
+      animate(x, flightTarget, { ...FLY_OFF_SPRING, velocity: velocity.x }).then(() => onSwipeLeft());
+      return;
+    }
+
+    // Threshold not met — natural settle back to center, no bounce
+    animate(x, 0, SETTLE_SPRING);
+    animate(y, 0, SETTLE_SPRING);
   };
 
   const scale = 1 - stackIndex * 0.04;
@@ -57,6 +72,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
       <motion.div
         style={{
           x: isTop ? x : 0,
+          y: isTop ? y : undefined,
           rotate: isTop ? rotate : 0,
           zIndex: 10 - stackIndex,
           position: "absolute",
@@ -69,9 +85,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
         animate={{ scale, y: yOffset, opacity: depthOpacity }}
         transition={STACK_SPRING}
         drag={isTop}
-        dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-        dragElastic={0.5}
-        dragTransition={{ bounceStiffness: 500, bounceDamping: 28 }}
+        dragDirectionLock
         onDragStart={() => setIsDragging(true)}
         onDragEnd={handleDragEnd}
       >
@@ -138,6 +152,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
     <motion.div
       style={{
         x: isTop ? x : 0,
+        y: isTop ? y : undefined,
         rotate: isTop ? rotate : 0,
         zIndex: 10 - stackIndex,
         position: "absolute",
@@ -153,9 +168,6 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
       transition={STACK_SPRING}
       drag={isTop ? true : false}
       dragDirectionLock
-      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-      dragElastic={0.5}
-      dragTransition={{ bounceStiffness: 500, bounceDamping: 28 }}
       onDragStart={() => setIsDragging(true)}
       onDragEnd={handleDragEnd}
     >
@@ -222,18 +234,22 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
       )}
 
       {isTop && (
-        <motion.div style={{ opacity: lurchOpacity, scale: lurchScale, rotate: lurchRotate, position: "absolute", top: 20, left: 18, zIndex: 20 }}>
-          <div style={{ border: "3px solid #4A7C59", borderRadius: "6px", padding: "4px 12px", transform: "rotate(-6deg)" }}>
-            <span style={{ fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: "bold", color: "#4A7C59" }}>LURCH</span>
-          </div>
+        <motion.div style={{ opacity: lurchOpacity, position: "absolute", top: 20, left: 18, zIndex: 20 }}>
+          <span style={{
+            display: "inline-block", transform: "rotate(-8deg)",
+            fontFamily: "var(--font-stamp)", fontSize: "44px", letterSpacing: "0.02em",
+            color: "#8B1A1A", lineHeight: 1,
+          }}>LURCH</span>
         </motion.div>
       )}
 
       {isTop && (
-        <motion.div style={{ opacity: passOpacity, scale: passScale, rotate: passRotate, position: "absolute", top: 20, right: 18, zIndex: 20 }}>
-          <div style={{ border: "3px solid #C0392B", borderRadius: "6px", padding: "4px 12px", transform: "rotate(6deg)" }}>
-            <span style={{ fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: "bold", color: "#C0392B" }}>PASS</span>
-          </div>
+        <motion.div style={{ opacity: passOpacity, position: "absolute", top: 20, right: 18, zIndex: 20 }}>
+          <span style={{
+            display: "inline-block", transform: "rotate(8deg)",
+            fontFamily: "var(--font-stamp)", fontSize: "44px", letterSpacing: "0.02em",
+            color: "#EDE8DF", lineHeight: 1,
+          }}>PASS</span>
         </motion.div>
       )}
 
