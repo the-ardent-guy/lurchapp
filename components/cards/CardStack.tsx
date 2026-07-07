@@ -36,7 +36,7 @@ export function CardStack({ profiles, currentIndex, onSwipeLeft, onSwipeRight, o
   }
 
   return (
-    <div className="absolute" style={{ inset: "8px 40px 0" }}>
+    <div className="absolute" style={{ inset: "8px 20px 12px" }}>
       {[...visible].reverse().map((profile, reversedIndex) => {
         const stackIndex = visible.length - 1 - reversedIndex;
         const isTop = stackIndex === 0;

@@ -253,7 +253,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
         </motion.div>
       )}
 
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "16px 18px 22px" }}>
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "16px 20px 22px" }}>
         <p style={{
           fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: 600,
           color: "#FFFFFF", lineHeight: "1.4", marginBottom: "2px",
