@@ -170,7 +170,7 @@ export default function PreferencePage() {
               </div>
             ))}
 
-            {/* Emotionally available — permanently unselectable */}
+            {/* Emotionally available - permanently unselectable */}
             <div>
               <div
                 style={{

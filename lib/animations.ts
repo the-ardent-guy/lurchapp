@@ -34,7 +34,7 @@ export const fadeUpItem: Variants = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
 };
 
-// whileTap only — use directly as prop, not as variant
+// whileTap only - use directly as prop, not as variant
 export const scalePressProps = {
   whileTap: { scale: 0.96, transition: { duration: 0.08 } },
 };

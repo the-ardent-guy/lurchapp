@@ -60,20 +60,20 @@ export default function SettingsPage() {
             </div>
           </Row>
 
-          {/* About — the paradox */}
+          {/* About - the paradox */}
           <Row>
             <p style={{ fontFamily: "var(--font-display)", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.16em", color: "#C44B4B", marginBottom: "12px" }}>About</p>
             <p style={{ fontFamily: "var(--font-ui)", fontSize: "15px", fontStyle: "italic", color: "#F5F0E8", lineHeight: 1.6, marginBottom: "8px" }}>{COPY.aboutParadox}</p>
             <p style={{ fontFamily: "var(--font-ui)", fontSize: "15px", fontStyle: "italic", color: "#9A958C", lineHeight: 1.6 }}>{COPY.aboutChurn}</p>
             <p style={{ fontFamily: "var(--font-ui)", fontSize: "12px", color: "#5C5852", lineHeight: 1.6, marginTop: "14px" }}>
-              Lurch parodies dark patterns. It does not charge real money in this build. Every paywall here has a free way out.
+              Lurch is a parody of dark patterns. No real money changes hands here, and every paywall has a way out.
             </p>
           </Row>
 
           {/* Reduced motion note */}
           <Row>
             <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", lineHeight: 1.6 }}>
-              Reduced motion is respected throughout — if your device requests it, the score theatre, sheets and swipe physics all calm down automatically.
+              If your device asks for reduced motion, the score theatre, the sheets and the swipe physics all calm down on their own.
             </p>
           </Row>
 
@@ -102,7 +102,7 @@ export default function SettingsPage() {
         </div>
       </div>
 
-      {/* Exit interceptor — 3 stages, always escapable, ends at /truth */}
+      {/* Exit interceptor - 3 stages, always escapable, ends at /truth */}
       <ExitInterceptModal />
     </ScreenWrapper>
   );

@@ -140,7 +140,7 @@ export default function FiltersPage() {
               <FilterCard
                 title="They text first"
                 sub="Only show people who'll open with something other than silence."
-                caption="Statistically, you will still text first. Hope is a feature."
+                caption="You'll still text first. You always do."
                 on={initiators}
                 onChange={setInitiators}
               />
@@ -151,7 +151,7 @@ export default function FiltersPage() {
             <FilterCard
               title="No More Fish"
               sub="Hide men holding a fish they caught once, in 2019, for the personality."
-              caption="Also filters the gym-mirror selfie and the “my ex was crazy” bio. You're welcome."
+              caption="Also the gym-mirror selfie, and the “my ex was crazy” bio."
               accentTitle
               on={noFish}
               onChange={setNoFish}

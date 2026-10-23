@@ -11,7 +11,7 @@ import { COPY } from "@/lib/copy";
 
 interface Props {
   open: boolean;
-  onClose: () => void; // the secondary escape MUST call this — never blocked
+  onClose: () => void; // the secondary escape MUST call this - never blocked
   title: string;
   body: string;
   technique: string;
@@ -35,7 +35,7 @@ function Countdown({ to }: { to: Date }) {
 
 /**
  * Dark bottom-sheet paywall (spec §4). Never pastel. Secondary dismiss is
- * always available — this build does not trap anyone or take real money.
+ * always available - this build does not trap anyone or take real money.
  */
 export function PaywallSheet({
   open,

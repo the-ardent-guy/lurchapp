@@ -25,7 +25,7 @@ const NOTIFICATIONS = [
   "3 people visited your profile and didn't swipe. You'll never know why.",
   "Kavya looked at your profile again. Still deciding.",
   "Someone super-lurched you. We can't tell you who without a subscription.",
-  "Priya is active right now — she's typed and deleted twice.",
+  "Priya is active right now. She's typed and deleted twice.",
 ];
 
 export default function FeedPage() {
@@ -43,7 +43,7 @@ export default function FeedPage() {
   const [fatigueOpen, setFatigueOpen] = useState(false);
   const [fatigueShown, setFatigueShown] = useState(false);
 
-  // Swipe-fatigue interstitial — once, after 12 swipes (P1-12).
+  // Swipe-fatigue interstitial - once, after 12 swipes (P1-12).
   useEffect(() => {
     if (!fatigueShown && swipeHistory.length >= SWIPE_FATIGUE_AFTER) {
       setFatigueOpen(true);
@@ -82,7 +82,7 @@ export default function FeedPage() {
     if (current) setDetailProfile(current);
   };
 
-  // Pass/like from within the detail panel — closes panel and records swipe
+  // Pass/like from within the detail panel - closes panel and records swipe
   const handleDetailPass = () => {
     setDetailProfile(null);
     handleSwipe("left");
@@ -106,7 +106,7 @@ export default function FeedPage() {
           {/* Notification pill */}
           <NotificationPill />
 
-          {/* Card area — fills all remaining space down to the tab bar */}
+          {/* Card area - fills all remaining space down to the tab bar */}
           <div className="flex-1 relative">
             <CardStack
               profiles={profiles}
@@ -130,7 +130,7 @@ export default function FeedPage() {
             }}
           />
 
-          {/* Profile detail — slides up over feed */}
+          {/* Profile detail - slides up over feed */}
           <ProfileDetailPanel
             profile={detailProfile}
             onClose={() => setDetailProfile(null)}

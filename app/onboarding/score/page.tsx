@@ -10,11 +10,11 @@ import { WarmNote } from "@/components/screens/WarmNote";
 import { CTAButton } from "@/components/inputs/CTAButton";
 import { useLurchStore } from "@/lib/store";
 
-// LURCH-P0-02 — staged score gag:
+// LURCH-P0-02 - staged score gag:
 //   0–900ms   chaos (meters scramble)
 //   900–1300  settle (snap to fake targets)
 //   1300–1900 hold
-//   1900ms+   confess — "None of those numbers are real." + dim/strike meters
+//   1900ms+   confess - "None of those numbers are real." + dim/strike meters
 // Reduced motion: skip straight to confess with static fakes, no re-roll loop.
 
 export default function ScorePage() {

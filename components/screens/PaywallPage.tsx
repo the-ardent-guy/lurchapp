@@ -9,7 +9,7 @@ import { CURIOSITY_TAX_LABEL } from "@/lib/pricing";
 import { COPY } from "@/lib/copy";
 
 // Shown over the feed when Ex on Record (ProfileDetailPanel) is tapped.
-// Dark sheet content (not pastel). Primary simulates the unlock — no real money.
+// Dark sheet content (not pastel). Primary simulates the unlock - no real money.
 export function PaywallPage() {
   const { matchName, closePaywall, unlockEx } = useLurchStore();
   const [declined, setDeclined] = useState(false);

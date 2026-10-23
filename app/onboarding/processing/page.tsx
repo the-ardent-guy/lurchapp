@@ -62,7 +62,7 @@ export default function ProcessingPage() {
           <ProgressBar durationMs={DURATION_MS} onComplete={handleComplete} />
         </div>
 
-        {/* Middle: status lines — fills remaining space */}
+        {/* Middle: status lines - fills remaining space */}
         <div className="flex-1">
           <ProcessingStatus reducedMotion={reduced} onSequenceComplete={() => setDone(true)} />
         </div>

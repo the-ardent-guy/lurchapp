@@ -1,6 +1,6 @@
 import type { ScorePayload } from "./store";
 
-// Deterministic score computation — same answers always produce same scores.
+// Deterministic score computation - same answers always produce same scores.
 // Scores are satirically arbitrary by design. lurchScore (woundDepth) is always high.
 export function computeScores(wounds: string[], honestAnswer: string | null): ScorePayload {
   const woundDepth = Math.min(55 + wounds.length * 5, 100);
@@ -31,7 +31,7 @@ export function formatCountdown(ms: number): string {
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
-// Non-linear progress — fast → slow → fast
+// Non-linear progress - fast → slow → fast
 export function progressKeyframes(durationMs: number): [number, number][] {
   return [
     [0, 0],

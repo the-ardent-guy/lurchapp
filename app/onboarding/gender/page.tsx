@@ -176,7 +176,7 @@ export default function GenderPage() {
         </div>
       </OnboardingShell>
 
-      {/* Floating aside — the app commenting on how long you've been scrolling */}
+      {/* Floating aside - the app commenting on how long you've been scrolling */}
       <AnimatePresence>
         {showScrollComment && (
           <motion.p

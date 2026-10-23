@@ -15,7 +15,7 @@ interface Props {
 
 const REEL = ["12 people", "0 replies", "a bot", "your ex", "nobody", "7 ghosts", "1 maybe"];
 
-// LURCH-P1-05 — slot-style boost. The result is always disappointing. Reduced
+// LURCH-P1-05 - slot-style boost. The result is always disappointing. Reduced
 // motion skips the spin and shows the result immediately. No real payment.
 export function BoostRoulette({ open, onClose }: Props) {
   const reduced = useReducedMotion();
@@ -73,7 +73,7 @@ export function BoostRoulette({ open, onClose }: Props) {
               fontFamily: "var(--font-mono, var(--font-display))", fontSize: "28px", fontWeight: 700,
               color: phase === "spinning" ? "#C44B4B" : "#5C5852", letterSpacing: "0.02em",
             }}>
-              {phase === "spinning" ? face : "— — —"}
+              {phase === "spinning" ? face : "· · ·"}
             </p>
           )}
         </div>

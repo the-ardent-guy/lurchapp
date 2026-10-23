@@ -41,7 +41,7 @@ export default function ProfilePage() {
   const attachmentLabelValue = attachmentStyle;
   const [boostOpen, setBoostOpen] = useState(false);
 
-  // Empty fallback — only when the visitor never did onboarding.
+  // Empty fallback - only when the visitor never did onboarding.
   if (!hasData) {
     return (
       <ScreenWrapper>

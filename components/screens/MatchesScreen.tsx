@@ -15,10 +15,10 @@ import { COPY } from "@/lib/copy";
 const LIKED_PROFILES = STATIC_PROFILES.filter((p) => p.id !== "unavailable").slice(0, 6);
 
 const FEATURES = [
-  "See who liked you — 4 people are waiting",
+  "See who liked you. 4 people are waiting.",
   "Send the first message before she forgets you exist",
-  "5 Boosts/month, brief expensive bursts of hope",
-  "Read Receipts — know exactly when you were ignored",
+  "5 Boosts a month, brief expensive bursts of hope",
+  "Read receipts, so you know exactly when you were ignored",
 ];
 
 function MiniCard({ profile, blurred }: { profile: typeof STATIC_PROFILES[0]; blurred: boolean }) {
@@ -137,7 +137,7 @@ export function MatchesScreen() {
         {unlocked && (
           <div style={{ background: "#141414", border: "1px solid #2A2A2A", borderRadius: "12px", padding: "14px 16px", marginBottom: "20px" }}>
             <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic", color: "#9A958C", lineHeight: 1.5 }}>
-              You paid nothing — no real money changes hands here. The faces are unblurred. They still will not message you. That was always the product.
+              You paid nothing. No real money changes hands here. The faces are unblurred now, and they still won&apos;t message you. That was always the product.
             </p>
           </div>
         )}
@@ -152,7 +152,7 @@ export function MatchesScreen() {
           {yesterdayProfiles.map((p) => <MiniCard key={p.id} profile={p} blurred={locked} />)}
         </div>
 
-        {/* Escaped the paywall but still locked — honest reopen affordance */}
+        {/* Escaped the paywall but still locked - honest reopen affordance */}
         {locked && !paywallOpen && (
           <button
             onClick={() => setPaywallOpen(true)}
@@ -167,7 +167,7 @@ export function MatchesScreen() {
         )}
       </div>
 
-      {/* Curiosity Tax — dark sheet, not pastel (P0-04) */}
+      {/* Curiosity Tax - dark sheet, not pastel (P0-04) */}
       <AnimatePresence>
         {paywallOpen && locked && (
           <>
@@ -191,7 +191,7 @@ export function MatchesScreen() {
                 {COPY.curiosityTitle}
               </h3>
               <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic", color: "#9A958C", lineHeight: 1.55, marginBottom: "16px" }}>
-                {COPY.curiosityBody} You would pay anything just to have someone talk to you — this app has spent the last ten minutes engineering exactly that feeling.
+                {COPY.curiosityBody} You would pay anything just to have someone talk to you, and this app has spent the last ten minutes building exactly that feeling.
               </p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: "9px", marginBottom: "18px" }}>

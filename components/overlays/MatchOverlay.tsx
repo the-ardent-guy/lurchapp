@@ -11,9 +11,9 @@ import type { Profile } from "@/lib/store";
 
 interface Props {
   profile: Profile;
-  // Primary action — the honest one. Stay on the feed.
+  // Primary action - the honest one. Stay on the feed.
   onKeepSwiping: () => void;
-  // Secondary — go through the Ghost Probability gate to a conversation.
+  // Secondary - go through the Ghost Probability gate to a conversation.
   onConversation: () => void;
 }
 

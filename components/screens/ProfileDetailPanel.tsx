@@ -343,7 +343,7 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
             overflow: "hidden",
           }}
         >
-          {/* Drag handle — swipe down to close */}
+          {/* Drag handle - swipe down to close */}
           <motion.div
             drag="y"
             dragConstraints={{ top: 0, bottom: 0 }}
@@ -392,7 +392,7 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
             )}
           </div>
 
-          {/* Scrollable cards — interleaved like a real dating profile */}
+          {/* Scrollable cards - interleaved like a real dating profile */}
           <div
             className="lurch-scroll"
             style={{ flex: 1, overflowY: "auto", padding: "0 18px" }}
@@ -409,7 +409,7 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
             </div>
           </div>
 
-          {/* Action bar — pass / like (matches feed chrome) */}
+          {/* Action bar - pass / like (matches feed chrome) */}
           <div style={{
             flexShrink: 0,
             display: "flex",

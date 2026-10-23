@@ -90,7 +90,7 @@ export default function TruthPage() {
           </div>
         </div>
 
-        {/* Research — real, sourced, linked (no invented peer-reviewed stats). */}
+        {/* Research - real, sourced, linked (no invented peer-reviewed stats). */}
         <div>
           <p
             style={{ fontFamily: "var(--font-display)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.12em", color: "#AEADAD", marginBottom: "6px" }}
@@ -98,7 +98,7 @@ export default function TruthPage() {
             RESEARCH WE ACTUALLY READ
           </p>
           <p style={{ fontFamily: "var(--font-ui)", fontSize: "12px", fontStyle: "italic", color: "#5C5852", marginBottom: "16px" }}>
-            Real, peer-reviewed or reported sources — tap to read them yourself. We don&apos;t invent statistics to sell you a feeling.
+            Real, peer-reviewed or reported sources. Tap any of them. We don&apos;t invent statistics to sell you a feeling.
           </p>
           <div className="space-y-2">
             {TRUTH_CITATIONS.map((c) => (

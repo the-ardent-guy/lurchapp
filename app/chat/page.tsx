@@ -26,7 +26,7 @@ function ChatInner() {
   const [composerOpen, setComposerOpen] = useState(true);
 
   const send = (tier: Tier) => {
-    const text = tier.id === "premium" ? "Hey — your profile said you walked out of two first dates. Respect." : tier.label;
+    const text = tier.id === "premium" ? "Hey, your profile said you walked out of two first dates. Respect." : tier.label;
     setMessages((m) => [...m, text]);
     setComposerOpen(false);
     // The classic Lurch outcome: they start typing, forever.

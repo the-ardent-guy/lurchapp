@@ -18,7 +18,7 @@ export function TopBar() {
   const { setTransitionDirection, isDark, toggleTheme } = useLurchStore();
   const [area, setArea] = useState(BLR_AREAS[0]);
 
-  /* Randomised only after mount — avoids SSR/client hydration mismatch */
+  /* Randomised only after mount - avoids SSR/client hydration mismatch */
   useEffect(() => {
     setArea(BLR_AREAS[Math.floor(Math.random() * BLR_AREAS.length)]);
   }, []);
@@ -46,7 +46,7 @@ export function TopBar() {
         gap: "12px",
       }}
     >
-      {/* Theme toggle — left */}
+      {/* Theme toggle - left */}
       <button
         onClick={toggleTheme}
         className="flex items-center justify-center shrink-0"
@@ -78,7 +78,7 @@ export function TopBar() {
         )}
       </button>
 
-      {/* Center — title + city */}
+      {/* Center - title + city */}
       <div className="flex-1 flex flex-col items-center">
         <span
           style={{
@@ -104,7 +104,7 @@ export function TopBar() {
         </span>
       </div>
 
-      {/* Filters — right */}
+      {/* Filters - right */}
       <button
         onClick={handleFilters}
         className="flex items-center justify-center shrink-0"
@@ -122,7 +122,7 @@ export function TopBar() {
         </svg>
       </button>
 
-      {/* AI button — right */}
+      {/* AI button - right */}
       <button
         onClick={handleAI}
         className="flex items-center justify-center shrink-0"

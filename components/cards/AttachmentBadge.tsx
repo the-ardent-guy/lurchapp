@@ -4,7 +4,7 @@ interface Props {
   label: string;
 }
 
-// Attachment label — neutral brutalist outline chip.
+// Attachment label - neutral brutalist outline chip.
 export function AttachmentBadge({ label }: Props) {
   return (
     <span

@@ -44,7 +44,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
 
   const isUnavailable = profile.id === "unavailable";
 
-  // Button-driven swipe — matches the gesture fly-off (or instant under
+  // Button-driven swipe - matches the gesture fly-off (or instant under
   // reduced motion). Fires the matching handler when the card is off-screen.
   const lastNonce = useRef(swipeSignal?.nonce ?? 0);
   useEffect(() => {
@@ -88,7 +88,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
       return;
     }
 
-    // Threshold not met — natural settle back to center, no bounce
+    // Threshold not met - natural settle back to center, no bounce
     animate(x, 0, SETTLE_SPRING);
     animate(y, 0, SETTLE_SPRING);
   };
@@ -201,7 +201,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
       onDragStart={() => setIsDragging(true)}
       onDragEnd={handleDragEnd}
     >
-      {/* Color always renders first — card is never transparent while photo loads */}
+      {/* Color always renders first - card is never transparent while photo loads */}
       <div style={{ position: "absolute", inset: 0, background: profile.photoColor }} />
 
       {profile.photoUrl ? (
@@ -327,7 +327,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
           </div>
         )}
 
-        {/* Stat pills — glassy, modern */}
+        {/* Stat pills - glassy, modern */}
         <div style={{ display: "flex", gap: "8px" }}>
           <div style={{
             display: "flex", alignItems: "baseline", gap: "6px",

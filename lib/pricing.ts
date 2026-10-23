@@ -1,5 +1,5 @@
 // ─── Lurch pricing constants ────────────────────────────────────────────────
-// Single source of truth for every price in the app. Showcase only — no real
+// Single source of truth for every price in the app. Showcase only - no real
 // payment processor is wired anywhere. Pay CTAs simulate success / satire.
 //
 // Curiosity Tax (the subscription paywall) is ₹299/mo EVERYWHERE: /matches,
@@ -11,8 +11,8 @@ export const SUPER_LURCH_INR = 99; // priority like
 export const BOOST_SPIN_INR = 99; // boost roulette spin
 export const OPENER_SMILE_INR = 49; // "Hey :)" opening line tier
 export const MERCH_TEE_INR = 699; // marketing shop tee
-export const PAY_JOKE_TEE_INR = 799; // /pay absurdist tee — do NOT "fix" into 299
-export const PAY_JOKE_PUFF_INR = 20; // /pay veg puff — India gag, keep
+export const PAY_JOKE_TEE_INR = 799; // /pay absurdist tee - do NOT "fix" into 299
+export const PAY_JOKE_PUFF_INR = 20; // /pay veg puff - India gag, keep
 
 export const ONBOARDING_STEPS = 7; // gender, preference, attachment, wounds, interests, processing, score
 export const SWIPE_FATIGUE_AFTER = 12; // swipes before the fatigue interstitial

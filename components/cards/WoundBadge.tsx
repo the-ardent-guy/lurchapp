@@ -4,7 +4,7 @@ interface Props {
   label: string;
 }
 
-// Wound tag — oxblood-tinted, not candy pink. One accent system.
+// Wound tag - oxblood-tinted, not candy pink. One accent system.
 export function WoundBadge({ label }: Props) {
   return (
     <span

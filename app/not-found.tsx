@@ -46,7 +46,7 @@ export default function NotFound() {
           marginBottom: "12px",
         }}
       >
-        This page saw your message, started typing, and left. Very on brand.
+        It saw your message, started typing, and never finished.
       </p>
 
       <Link

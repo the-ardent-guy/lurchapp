@@ -187,7 +187,7 @@ export default function AttachmentPage() {
 
   return (
     <ScreenWrapper>
-      {/* Popup at ScreenWrapper level — clears OnboardingShell overflow-hidden */}
+      {/* Popup at ScreenWrapper level - clears OnboardingShell overflow-hidden */}
       <AnimatePresence>
         {showPopup && currentRound && (
           <SecurePopup

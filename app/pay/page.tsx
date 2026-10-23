@@ -68,7 +68,7 @@ export default function PayPage() {
                   fontWeight: 600, color: "#FFFFFF",
                 }}
               >
-                ₹799 — Worth it
+                ₹799, worth it
               </button>
             </div>
 
@@ -105,7 +105,7 @@ export default function PayPage() {
                   border: "1px solid #3A3028",
                 }}
               >
-                ₹20 — One puff
+                ₹20, one puff
               </button>
             </div>
 

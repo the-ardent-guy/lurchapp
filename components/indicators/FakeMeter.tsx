@@ -39,7 +39,7 @@ export function FakeMeter({ label, phase, target, suffix = "", format = "integer
     }
 
     if (phase === "chaos") {
-      // Rapid random scramble, ~4Hz (new value every ~240ms) — reads as the
+      // Rapid random scramble, ~4Hz (new value every ~240ms) - reads as the
       // algorithm "thinking", not as a janky animation.
       const max = format === "decimal" ? 9.9 : 100;
       const tick = () => {
@@ -66,7 +66,7 @@ export function FakeMeter({ label, phase, target, suffix = "", format = "integer
       return () => cancelAnimationFrame(rafRef.current);
     }
 
-    // confess — hold the fake target, dimmed/struck-through
+    // confess - hold the fake target, dimmed/struck-through
     setValue(target);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, reducedMotion, target]);

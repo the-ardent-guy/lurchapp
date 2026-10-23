@@ -40,7 +40,7 @@ export default function SplashPage() {
           }}
         />
 
-        {/* Top gradient — keeps status bar / logo legible over the photo */}
+        {/* Top gradient - keeps status bar / logo legible over the photo */}
         <div
           style={{
             position: "absolute",
@@ -91,7 +91,7 @@ export default function SplashPage() {
             </h1>
           </div>
 
-          {/* Headline — centered but pushed a bit below true center */}
+          {/* Headline - centered but pushed a bit below true center */}
           <div
             style={{
               position: "absolute",
@@ -195,7 +195,7 @@ export default function SplashPage() {
         </div>
       </div>
 
-      {/* Sign In — satire sheet. No auth vendor; guest-only showcase. */}
+      {/* Sign In - satire sheet. No auth vendor; guest-only showcase. */}
       <ModalOverlay isOpen={signInOpen} onClose={() => setSignInOpen(false)}>
         <div style={{ padding: "32px 28px calc(env(safe-area-inset-bottom, 0px) + 28px)" }}>
           <p
@@ -232,8 +232,8 @@ export default function SplashPage() {
               marginBottom: "28px",
             }}
           >
-            There is nothing to sign into. There never was. But you can start a damage profile
-            right now — no password, no waiting, no one checking.
+            There is nothing to sign into. There never was. You can start a damage profile
+            right now. No password. No one checking.
           </p>
           <CTAButton onClick={handleGuestContinue}>Continue as guest</CTAButton>
           <GhostButton dim onClick={() => setSignInOpen(false)}>

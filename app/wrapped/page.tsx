@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { ScreenWrapper } from "@/components/layout/ScreenWrapper";
 import { COPY } from "@/lib/copy";
 
-// LURCH-P2-01 — Weekly Lurch Wrapped. Demo numbers, clearly framed as satire.
+// LURCH-P2-01 - Weekly Lurch Wrapped. Demo numbers, clearly framed as satire.
 const STATS = [
   { big: "400", label: "people swiped left (satirical demo figure)" },
   { big: "11 min", label: "spent judging strangers today" },

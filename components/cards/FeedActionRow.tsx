@@ -11,7 +11,7 @@ interface Props {
   disabled?: boolean;
 }
 
-// LURCH-P0-03 — visible Like/Pass chrome. Same handlers as the swipe gesture.
+// LURCH-P0-03 - visible Like/Pass chrome. Same handlers as the swipe gesture.
 // Modern circular buttons: clear X (pass) + heart (like), lime Super Lurch star.
 export function FeedActionRow({ onPass, onLike, onDetails, onSuper, disabled = false }: Props) {
   return (
