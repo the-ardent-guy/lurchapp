@@ -329,10 +329,10 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
       {profile && (
         <motion.div
           key="profile-detail"
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          exit={{ y: "100%" }}
-          transition={{ type: "spring", stiffness: 340, damping: 36 }}
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
           style={{
             position: "absolute",
             inset: 0,
@@ -367,30 +367,6 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
               transition: "background-color 0.15s, transform 0.15s",
             }} />
           </motion.div>
-
-          {/* Header */}
-          <div style={{
-            flexShrink: 0,
-            display: "flex",
-            alignItems: "baseline",
-            justifyContent: "space-between",
-            padding: "0 20px 14px",
-          }}>
-            <p style={{
-              fontFamily: "var(--font-display)", fontSize: "26px", fontWeight: 600,
-              color: colors.text, lineHeight: 1.2,
-            }}>
-              {profile.name.charAt(0) + profile.name.slice(1).toLowerCase()}, {profile.age}
-            </p>
-            {profile.location && (
-              <p style={{
-                fontFamily: "var(--font-ui)", fontSize: "12px",
-                color: colors.whisper,
-              }}>
-                {profile.location}
-              </p>
-            )}
-          </div>
 
           {/* Scrollable cards - interleaved like a real dating profile */}
           <div

@@ -72,8 +72,14 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
     const absY = Math.abs(offset.y);
 
     if (absY > absX) {
-      if (offset.y < -80 || velocity.y < -500) onSwipeUp?.();
-      animate(y, 0, SETTLE_SPRING);
+      if (offset.y < -80 || velocity.y < -500) {
+        // Reset instantly so the card doesn't spring back behind the opening
+        // detail panel (that bounce was the "it comes again" glitch).
+        y.set(0);
+        onSwipeUp?.();
+      } else {
+        animate(y, 0, SETTLE_SPRING);
+      }
       return;
     }
 

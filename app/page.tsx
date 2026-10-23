@@ -159,19 +159,20 @@ export default function SplashPage() {
               style={{
                 display: "block",
                 width: "100%",
-                background: "#6B1E23",
-                border: "1px solid rgba(245,240,232,0.14)",
-                borderRadius: "4px",
+                background: "linear-gradient(180deg, #7E2A31 0%, #661D22 100%)",
+                border: "1px solid rgba(245,240,232,0.16)",
+                borderRadius: "16px",
                 padding: "18px 24px",
+                minHeight: "58px",
                 fontFamily: "var(--font-ui)",
                 fontSize: "16px",
                 fontWeight: 600,
-                color: "#F5F0E8",
+                color: "#FBF7F0",
                 cursor: "pointer",
-                boxShadow: "0 6px 28px rgba(107,30,35,0.45)",
+                boxShadow: "0 12px 30px -8px rgba(107,30,35,0.6), inset 0 1px 0 rgba(245,240,232,0.18)",
               }}
             >
-              Begin Your Damage Profile
+              Create account
             </motion.button>
 
             <motion.button
