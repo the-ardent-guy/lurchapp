@@ -7,15 +7,17 @@ interface Props {
   onPass: () => void;
   onLike: () => void;
   onDetails: () => void;
+  onSuper?: () => void;
   disabled?: boolean;
 }
 
 // LURCH-P0-03 — visible Like/Pass chrome. Same handlers as the swipe gesture.
-export function FeedActionRow({ onPass, onLike, onDetails, disabled = false }: Props) {
+// Includes Super Lurch (P1-14).
+export function FeedActionRow({ onPass, onLike, onDetails, onSuper, disabled = false }: Props) {
   return (
     <div
       className="shrink-0 flex items-center justify-center"
-      style={{ gap: "28px", padding: "10px 20px 14px" }}
+      style={{ gap: "22px", padding: "10px 20px 14px" }}
     >
       {/* Pass */}
       <motion.button
@@ -64,6 +66,32 @@ export function FeedActionRow({ onPass, onLike, onDetails, disabled = false }: P
           <path d="M4 10L8 5L12 10" stroke="#9A958C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </motion.button>
+
+      {/* Super Lurch (priority like) */}
+      {onSuper && (
+        <motion.button
+          {...scalePressProps}
+          onClick={onSuper}
+          disabled={disabled}
+          aria-label="Super Lurch"
+          style={{
+            width: "44px",
+            height: "44px",
+            borderRadius: "2px",
+            background: "transparent",
+            border: "1px solid #3D3D3D",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: disabled ? "not-allowed" : "pointer",
+            opacity: disabled ? 0.4 : 1,
+          }}
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 1.5l2.1 4.6 5 .5-3.8 3.4 1.1 5L9 12.9 4.6 15l1.1-5L1.9 6.6l5-.5L9 1.5z" fill="none" stroke="#C8F000" strokeWidth="1.3" strokeLinejoin="round" />
+          </svg>
+        </motion.button>
+      )}
 
       {/* Like */}
       <motion.button

@@ -13,8 +13,11 @@ import { MatchOverlay } from "@/components/overlays/MatchOverlay";
 import { ExitInterceptModal } from "@/components/overlays/ExitInterceptModal";
 import { PaywallPage } from "@/components/screens/PaywallPage";
 import { ProfileDetailPanel } from "@/components/screens/ProfileDetailPanel";
+import { GhostButton } from "@/components/inputs/GhostButton";
 import { useLurchStore } from "@/lib/store";
 import type { Profile } from "@/lib/store";
+import { SWIPE_FATIGUE_AFTER } from "@/lib/pricing";
+import { COPY } from "@/lib/copy";
 
 const NOTIFICATIONS = [
   "Your ex just joined. We thought you should know.",
@@ -29,7 +32,7 @@ export default function FeedPage() {
   const router = useRouter();
   const {
     profiles, currentCardIndex, matchedProfile,
-    isPaywallOpen,
+    isPaywallOpen, swipeHistory,
     advanceCard, recordSwipe,
     closePaywall, clearMatch,
     pushNotification,
@@ -37,6 +40,16 @@ export default function FeedPage() {
 
   const [detailProfile, setDetailProfile] = useState<Profile | null>(null);
   const [swipeSignal, setSwipeSignal] = useState<SwipeSignal | null>(null);
+  const [fatigueOpen, setFatigueOpen] = useState(false);
+  const [fatigueShown, setFatigueShown] = useState(false);
+
+  // Swipe-fatigue interstitial — once, after 12 swipes (P1-12).
+  useEffect(() => {
+    if (!fatigueShown && swipeHistory.length >= SWIPE_FATIGUE_AFTER) {
+      setFatigueOpen(true);
+      setFatigueShown(true);
+    }
+  }, [swipeHistory.length, fatigueShown]);
 
   const triggerSwipe = (dir: "left" | "right" | "up") =>
     setSwipeSignal((s) => ({ dir, nonce: (s?.nonce ?? 0) + 1 }));
@@ -105,12 +118,16 @@ export default function FeedPage() {
             />
           </div>
 
-          {/* Visible Like / Pass chrome (P0-03) */}
+          {/* Visible Like / Pass chrome (P0-03) + Super Lurch (P1-14) */}
           <FeedActionRow
             disabled={!profiles[currentCardIndex]}
             onPass={() => triggerSwipe("left")}
             onLike={() => triggerSwipe("right")}
             onDetails={() => triggerSwipe("up")}
+            onSuper={() => {
+              pushNotification({ message: COPY.superResult, autoDismissMs: 3500 });
+              triggerSwipe("right");
+            }}
           />
 
           {/* Profile detail — slides up over feed */}
@@ -137,6 +154,30 @@ export default function FeedPage() {
       {/* Paywall */}
       <ModalOverlay isOpen={isPaywallOpen} onClose={closePaywall}>
         <PaywallPage />
+      </ModalOverlay>
+
+      {/* Swipe fatigue (P1-12) */}
+      <ModalOverlay isOpen={fatigueOpen} onClose={() => setFatigueOpen(false)}>
+        <div style={{ padding: "32px 24px calc(env(safe-area-inset-bottom, 0px) + 24px)" }}>
+          <p style={{ fontFamily: "var(--font-display)", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.18em", color: "#C44B4B", marginBottom: "14px" }}>
+            A quick check-in
+          </p>
+          <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "26px", fontWeight: 600, lineHeight: 1.2, color: "#F5F0E8", marginBottom: "20px" }}>
+            {COPY.fatigue}
+          </h2>
+          <a
+            href="https://www.google.com/maps/search/parks+near+me"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setFatigueOpen(false)}
+            style={{ display: "block", width: "100%", textAlign: "center", background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)", borderRadius: "2px", padding: "16px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#F5F0E8", textDecoration: "none", marginBottom: "4px" }}
+          >
+            Touch grass
+          </a>
+          <GhostButton dim onClick={() => setFatigueOpen(false)}>
+            Continue damaging
+          </GhostButton>
+        </div>
       </ModalOverlay>
 
       {/* Exit intercept */}

@@ -221,8 +221,9 @@ const createFeedSlice: StateCreator<LurchStore, [], [], FeedSlice> = (set, get) 
       const matchProfile = profiles[currentCardIndex];
       get().setMatch(matchProfile);
     }
+    // Advance without wrapping so the end-of-deck state is reachable.
     set((s) => ({
-      currentCardIndex: (s.currentCardIndex + 1) % s.profiles.length,
+      currentCardIndex: Math.min(s.currentCardIndex + 1, s.profiles.length),
     }));
   },
   setMatch: (profile) => set({ matchedProfile: profile, hasMatched: true }),

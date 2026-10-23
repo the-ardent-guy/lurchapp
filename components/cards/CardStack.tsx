@@ -1,7 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { ProfileCard, type SwipeSignal } from "./ProfileCard";
 import type { Profile } from "@/lib/store";
+import { COPY } from "@/lib/copy";
 
 interface Props {
   profiles: Profile[];
@@ -13,24 +15,40 @@ interface Props {
 }
 
 export function CardStack({ profiles, currentIndex, onSwipeLeft, onSwipeRight, onSwipeUp, swipeSignal }: Props) {
+  const router = useRouter();
   const visible = profiles.slice(currentIndex, currentIndex + 3);
 
   if (visible.length === 0) {
     return (
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center px-8">
+        <div className="text-center" style={{ padding: "0 28px", maxWidth: "340px" }}>
           <p
-            className="text-2xl font-bold mb-2"
-            style={{ fontFamily: "var(--font-display)", color: "#2E2720" }}
+            className="mb-2"
+            style={{ fontFamily: "var(--font-display)", fontSize: "26px", fontWeight: 700, color: "#3D3D3D" }}
           >
             NO MORE PROFILES
           </p>
           <p
-            className="text-sm italic"
-            style={{ fontFamily: "var(--font-serif)", color: "#8A8070" }}
+            style={{ fontFamily: "var(--font-serif)", fontSize: "14px", fontStyle: "italic", lineHeight: 1.6, color: "#9A958C", marginBottom: "24px" }}
           >
-            You&apos;ve seen everyone. They&apos;ve seen you. No one has moved.
+            {COPY.emptySecure}
           </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <button
+              onClick={() => router.push("/filters")}
+              style={{ padding: "13px", background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)", borderRadius: "2px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "#F5F0E8", cursor: "pointer" }}
+            >
+              Adjust filters
+            </button>
+            <a
+              href="https://www.google.com/maps/search/parks+near+me"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ padding: "12px", background: "transparent", border: "1px solid #3D3D3D", borderRadius: "2px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", textDecoration: "none" }}
+            >
+              Touch grass
+            </a>
+          </div>
         </div>
       </div>
     );
