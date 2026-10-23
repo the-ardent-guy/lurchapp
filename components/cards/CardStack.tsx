@@ -1,6 +1,6 @@
 "use client";
 
-import { ProfileCard } from "./ProfileCard";
+import { ProfileCard, type SwipeSignal } from "./ProfileCard";
 import type { Profile } from "@/lib/store";
 
 interface Props {
@@ -9,9 +9,10 @@ interface Props {
   onSwipeLeft: () => void;
   onSwipeRight: () => void;
   onSwipeUp: () => void;
+  swipeSignal?: SwipeSignal | null;
 }
 
-export function CardStack({ profiles, currentIndex, onSwipeLeft, onSwipeRight, onSwipeUp }: Props) {
+export function CardStack({ profiles, currentIndex, onSwipeLeft, onSwipeRight, onSwipeUp, swipeSignal }: Props) {
   const visible = profiles.slice(currentIndex, currentIndex + 3);
 
   if (visible.length === 0) {
@@ -49,6 +50,7 @@ export function CardStack({ profiles, currentIndex, onSwipeLeft, onSwipeRight, o
             onSwipeLeft={isTop ? onSwipeLeft : () => {}}
             onSwipeRight={isTop ? onSwipeRight : () => {}}
             onSwipeUp={isTop ? onSwipeUp : undefined}
+            swipeSignal={isTop ? swipeSignal : null}
           />
         );
       })}

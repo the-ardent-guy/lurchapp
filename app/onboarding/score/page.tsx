@@ -1,33 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useReducedMotion } from "framer-motion";
 import { ScreenWrapper } from "@/components/layout/ScreenWrapper";
-import { ScoreCountUp } from "@/components/indicators/ScoreCountUp";
+import { FakeMeter, type MeterPhase } from "@/components/indicators/FakeMeter";
 import { DividerLine } from "@/components/indicators/DividerLine";
 import { WarmNote } from "@/components/screens/WarmNote";
 import { CTAButton } from "@/components/inputs/CTAButton";
 import { useLurchStore } from "@/lib/store";
 
+// LURCH-P0-02 — staged score gag:
+//   0–900ms   chaos (meters scramble)
+//   900–1300  settle (snap to fake targets)
+//   1300–1900 hold
+//   1900ms+   confess — "None of those numbers are real." + dim/strike meters
+// Reduced motion: skip straight to confess with static fakes, no re-roll loop.
+
 export default function ScorePage() {
   const router = useRouter();
+  const reduced = !!useReducedMotion();
   const { woundDepth, ghostRisk, patternRepeat, readiness, setTransitionDirection } = useLurchStore();
-  const [scoresComplete, setScoresComplete] = useState(false);
-  const [dividerComplete, setDividerComplete] = useState(false);
-  const [scoreCount, setScoreCount] = useState(0);
 
-  const handleScoreComplete = () => {
-    setScoreCount((c) => {
-      const next = c + 1;
-      if (next >= 4) setScoresComplete(true);
-      return next;
-    });
-  };
+  const [phase, setPhase] = useState<MeterPhase>(reduced ? "confess" : "chaos");
+  const [confessed, setConfessed] = useState(reduced);
+  const [dividerDone, setDividerDone] = useState(reduced);
+
+  useEffect(() => {
+    if (reduced) return;
+    const t1 = setTimeout(() => setPhase("settle"), 900);
+    const t2 = setTimeout(() => setPhase("confess"), 1900);
+    const t3 = setTimeout(() => setConfessed(true), 1900);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, [reduced]);
 
   const handleContinue = () => {
     setTransitionDirection("up");
     router.push("/feed");
   };
+
+  const meters = [
+    { label: "Wound Depth", target: woundDepth ?? 73, suffix: "/100", format: "integer" as const },
+    { label: "Ghost Risk (you)", target: ghostRisk ?? 87, suffix: "", format: "percent" as const },
+    { label: "Pattern Repeat Index", target: patternRepeat ?? 4.2, suffix: "x", format: "decimal" as const },
+    { label: "Readiness for Real Intimacy", target: readiness ?? 31, suffix: "", format: "percent" as const },
+  ];
 
   return (
     <ScreenWrapper>
@@ -35,73 +56,51 @@ export default function ScorePage() {
         className="h-full flex flex-col overflow-y-auto lurch-scroll"
         style={{
           padding: "calc(env(safe-area-inset-top, 0px) + 40px) 40px calc(env(safe-area-inset-bottom, 0px) + 32px)",
-          background: "#0F0D0B",
+          background: "#0A0A0A",
         }}
       >
-        {/* Eyebrow */}
         <p
           style={{
             fontFamily: "var(--font-display)",
             fontSize: "11px",
             textTransform: "uppercase",
             letterSpacing: "0.12em",
-            color: "#AEADAD",
+            color: "#9A958C",
             marginBottom: "24px",
           }}
         >
           YOUR DAMAGE PROFILE
         </p>
 
-        {/* Stats card — brief: distinct bg, 1px border, 24px internal padding */}
         <div
           style={{
-            background: "#1A1612",
-            border: "1px solid #2E2720",
-            borderRadius: "16px",
+            background: "#141414",
+            border: "1px solid #2A2A2A",
+            borderRadius: "2px",
             padding: "0 24px",
             marginBottom: "32px",
           }}
         >
-          <ScoreCountUp
-            label="Wound Depth"
-            target={woundDepth ?? 73}
-            suffix="/100"
-            delayMs={200}
-            format="integer"
-            onComplete={handleScoreComplete}
-          />
-          <ScoreCountUp
-            label="Ghost Risk (you)"
-            target={ghostRisk ?? 41}
-            delayMs={800}
-            format="percent"
-            onComplete={handleScoreComplete}
-          />
-          <ScoreCountUp
-            label="Pattern Repeat Index"
-            target={patternRepeat ?? 4.2}
-            suffix="x"
-            delayMs={1400}
-            format="decimal"
-            onComplete={handleScoreComplete}
-          />
-          <ScoreCountUp
-            label="Readiness for Real Intimacy"
-            target={readiness ?? 31}
-            delayMs={2000}
-            format="percent"
-            onComplete={handleScoreComplete}
-            isLast
-          />
-          {/* Footnote inside card */}
+          {meters.map((m, i) => (
+            <FakeMeter
+              key={m.label}
+              label={m.label}
+              phase={phase}
+              target={m.target}
+              suffix={m.suffix}
+              format={m.format}
+              reducedMotion={reduced}
+              isLast={i === meters.length - 1}
+            />
+          ))}
           <p
             style={{
               fontFamily: "var(--font-ui)",
               fontSize: "12px",
               fontStyle: "italic",
               lineHeight: "1.6",
-              color: "#AEADAD",
-              borderTop: "1px solid #2E2720",
+              color: "#9A958C",
+              borderTop: "1px solid #2A2A2A",
               padding: "14px 0",
             }}
           >
@@ -109,18 +108,13 @@ export default function ScorePage() {
           </p>
         </div>
 
-        {/* brief: accent divider signals tonal shift before emotional copy */}
-        {scoresComplete && (
-          <DividerLine
-            accent
-            className="mb-8"
-            onComplete={() => setDividerComplete(true)}
-          />
+        {confessed && (
+          <DividerLine accent className="mb-8" onComplete={() => setDividerDone(true)} />
         )}
 
-        <WarmNote visible={dividerComplete} />
+        <WarmNote visible={dividerDone} />
 
-        {dividerComplete && (
+        {dividerDone && (
           <div style={{ marginTop: "32px" }}>
             <CTAButton onClick={handleContinue}>ENTER THE APP</CTAButton>
           </div>

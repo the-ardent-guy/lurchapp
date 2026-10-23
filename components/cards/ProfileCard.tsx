@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useTransform, animate, useReducedMotion } from "framer-motion";
 import type { PanInfo } from "framer-motion";
 import type { Profile } from "@/lib/store";
 import { WoundBadge } from "./WoundBadge";
 import { AttachmentBadge } from "./AttachmentBadge";
 import { TraitBadge } from "./TraitBadge";
+
+export interface SwipeSignal {
+  dir: "left" | "right" | "up";
+  nonce: number;
+}
 
 interface Props {
   profile: Profile;
@@ -15,6 +20,9 @@ interface Props {
   onSwipeUp?: () => void;
   isTop: boolean;
   stackIndex: number;
+  // Incremented by the visible Like/Pass buttons to fly the top card the same
+  // way a gesture does.
+  swipeSignal?: SwipeSignal | null;
 }
 
 const SWIPE_THRESHOLD = 100;
@@ -25,15 +33,37 @@ const STACK_SPRING = { type: "spring" as const, stiffness: 300, damping: 28 };
 const SETTLE_SPRING = { type: "spring" as const, stiffness: 300, damping: 40 };
 const FLY_OFF_SPRING = { type: "spring" as const, stiffness: 200, damping: 24 };
 
-export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isTop, stackIndex }: Props) {
+export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isTop, stackIndex, swipeSignal }: Props) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-12, 12]);
   const lurchOpacity = useTransform(x, [FADE_START, FADE_END], [0, 1]);
   const passOpacity = useTransform(x, [-FADE_END, -FADE_START], [1, 0]);
   const [isDragging, setIsDragging] = useState(false);
+  const reduced = useReducedMotion();
 
   const isUnavailable = profile.id === "unavailable";
+
+  // Button-driven swipe — matches the gesture fly-off (or instant under
+  // reduced motion). Fires the matching handler when the card is off-screen.
+  const lastNonce = useRef(swipeSignal?.nonce ?? 0);
+  useEffect(() => {
+    if (!isTop || !swipeSignal || swipeSignal.nonce === lastNonce.current) return;
+    lastNonce.current = swipeSignal.nonce;
+    if (swipeSignal.dir === "up") {
+      onSwipeUp?.();
+      return;
+    }
+    const right = swipeSignal.dir === "right";
+    const handler = right ? onSwipeRight : onSwipeLeft;
+    if (reduced) {
+      handler();
+      return;
+    }
+    const target = right ? window.innerWidth + 200 : -(window.innerWidth + 200);
+    animate(x, target, FLY_OFF_SPRING).then(() => handler());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [swipeSignal, isTop]);
 
   const handleDragEnd = (_: unknown, info: PanInfo) => {
     setIsDragging(false);

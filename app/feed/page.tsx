@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { ScreenWrapper } from "@/components/layout/ScreenWrapper";
 import { FeedShell } from "@/components/layout/FeedShell";
 import { CardStack } from "@/components/cards/CardStack";
+import { FeedActionRow } from "@/components/cards/FeedActionRow";
+import type { SwipeSignal } from "@/components/cards/ProfileCard";
 import { NotificationPill } from "@/components/overlays/NotificationPill";
 import { ModalOverlay } from "@/components/layout/ModalOverlay";
 import { MatchOverlay } from "@/components/overlays/MatchOverlay";
@@ -23,15 +26,20 @@ const NOTIFICATIONS = [
 ];
 
 export default function FeedPage() {
+  const router = useRouter();
   const {
     profiles, currentCardIndex, matchedProfile,
     isPaywallOpen,
     advanceCard, recordSwipe,
-    openPaywall, closePaywall, clearMatch,
+    closePaywall, clearMatch,
     pushNotification,
   } = useLurchStore();
 
   const [detailProfile, setDetailProfile] = useState<Profile | null>(null);
+  const [swipeSignal, setSwipeSignal] = useState<SwipeSignal | null>(null);
+
+  const triggerSwipe = (dir: "left" | "right" | "up") =>
+    setSwipeSignal((s) => ({ dir, nonce: (s?.nonce ?? 0) + 1 }));
 
   // Schedule randomised notifications
   useEffect(() => {
@@ -72,10 +80,10 @@ export default function FeedPage() {
     handleSwipe("right");
   };
 
-  const handleMessage = () => {
+  const handleConversation = () => {
     const name = matchedProfile?.name ?? "your match";
     clearMatch();
-    openPaywall(name);
+    router.push(`/chat?with=${encodeURIComponent(name)}`);
   };
 
   return (
@@ -93,8 +101,17 @@ export default function FeedPage() {
               onSwipeLeft={() => handleSwipe("left")}
               onSwipeRight={() => handleSwipe("right")}
               onSwipeUp={handleSwipeUp}
+              swipeSignal={swipeSignal}
             />
           </div>
+
+          {/* Visible Like / Pass chrome (P0-03) */}
+          <FeedActionRow
+            disabled={!profiles[currentCardIndex]}
+            onPass={() => triggerSwipe("left")}
+            onLike={() => triggerSwipe("right")}
+            onDetails={() => triggerSwipe("up")}
+          />
 
           {/* Profile detail — slides up over feed */}
           <ProfileDetailPanel
@@ -111,8 +128,8 @@ export default function FeedPage() {
         {matchedProfile && (
           <MatchOverlay
             profile={matchedProfile}
-            onMessage={handleMessage}
-            onKeepLurching={() => clearMatch()}
+            onKeepSwiping={() => clearMatch()}
+            onConversation={handleConversation}
           />
         )}
       </ModalOverlay>

@@ -3,23 +3,23 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AvatarPairAnimation } from "@/components/screens/AvatarPairAnimation";
+import { CTAButton } from "@/components/inputs/CTAButton";
+import { GhostButton } from "@/components/inputs/GhostButton";
 import { fadeUpStagger, fadeUpItem } from "@/lib/animations";
+import { COPY } from "@/lib/copy";
 import type { Profile } from "@/lib/store";
 
 interface Props {
   profile: Profile;
-  onMessage: () => void;
-  onKeepLurching: () => void;
+  // Primary action — the honest one. Stay on the feed.
+  onKeepSwiping: () => void;
+  // Secondary — go through the Ghost Probability gate to a conversation.
+  onConversation: () => void;
 }
 
-const CHECK_SVG = (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <path d="M2.5 7L5.5 10L11.5 4" stroke="#4A5C45" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-export function MatchOverlay({ profile, onMessage, onKeepLurching }: Props) {
+export function MatchOverlay({ profile, onKeepSwiping, onConversation }: Props) {
   const [statsVisible, setStatsVisible] = useState(false);
+  const [gateOpen, setGateOpen] = useState(false);
 
   const stats = [
     { label: "Wound Compatibility", value: "74%" },
@@ -29,16 +29,42 @@ export function MatchOverlay({ profile, onMessage, onKeepLurching }: Props) {
     { label: "Therapy Bills Projected", value: "48,000" },
   ];
 
+  const prettyName = profile.name.charAt(0) + profile.name.slice(1).toLowerCase();
+
+  // ─── Ghost Probability gate ──────────────────────────────────────────────
+  if (gateOpen) {
+    return (
+      <div style={{ background: "#161616", border: "1px solid #2A2A2A", borderBottom: "none", padding: "32px 24px 28px", display: "flex", flexDirection: "column", gap: "18px" }}>
+        <p style={{ fontFamily: "var(--font-display)", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.18em", color: "#C44B4B" }}>
+          Ghost Probability
+        </p>
+        <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "28px", fontWeight: 600, lineHeight: 1.15, color: "#F5F0E8" }}>
+          {profile.ghostRisk}% chance this goes nowhere.
+        </h2>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "14px", fontStyle: "italic", lineHeight: 1.6, color: "#9A958C" }}>
+          {COPY.ghostGate}
+        </p>
+        <div style={{ marginTop: "6px" }}>
+          <CTAButton onClick={onConversation}>Open chat anyway</CTAButton>
+          <GhostButton dim onClick={onKeepSwiping}>
+            {COPY.matchPrimary}
+          </GhostButton>
+        </div>
+      </div>
+    );
+  }
+
+  // ─── Match reveal ────────────────────────────────────────────────────────
   return (
     <div style={{
-      background: "#1A1612",
-      border: "1px solid #3A2E24",
+      background: "#161616",
+      border: "1px solid #2A2A2A",
+      borderBottom: "none",
       padding: "28px 24px 24px",
       display: "flex",
       flexDirection: "column",
       gap: "20px",
     }}>
-      {/* Avatars */}
       <div style={{ display: "flex", justifyContent: "center" }}>
         <AvatarPairAnimation
           userAvatarColor="#6B1E23"
@@ -48,42 +74,36 @@ export function MatchOverlay({ profile, onMessage, onKeepLurching }: Props) {
         />
       </div>
 
-      {/* Heading */}
       <div style={{ textAlign: "center" }}>
         <p style={{
           fontFamily: "var(--font-display)", fontSize: "10px",
           textTransform: "uppercase", letterSpacing: "0.18em",
-          color: "#6B1E23", marginBottom: "8px",
+          color: "#C44B4B", marginBottom: "8px",
         }}>
-          It&apos;s a Lurch
+          {COPY.matchTitle}
         </p>
         <h2 style={{
           fontFamily: "var(--font-display)", fontSize: "34px",
-          fontWeight: 600, lineHeight: 1.1, color: "#F0EDED",
+          fontWeight: 600, lineHeight: 1.1, color: "#F5F0E8",
           marginBottom: "8px",
         }}>
           You matched.
         </h2>
         <p style={{
           fontFamily: "var(--font-ui)", fontSize: "14px", fontStyle: "italic",
-          color: "#AEADAD", lineHeight: 1.5,
+          color: "#9A958C", lineHeight: 1.5,
         }}>
-          You and {profile.name.charAt(0) + profile.name.slice(1).toLowerCase()} have compatible damage.
+          You and {prettyName} have compatible damage.
         </p>
       </div>
 
-      {/* Stats card */}
       <AnimatePresence>
         {statsVisible && (
           <motion.div
             variants={fadeUpStagger}
             initial="initial"
             animate="animate"
-            style={{
-              background: "#231E18",
-              borderRadius: "14px",
-              overflow: "hidden",
-            }}
+            style={{ background: "#141414", borderRadius: "2px", overflow: "hidden" }}
           >
             {stats.map(({ label, value }, i) => (
               <motion.div
@@ -93,13 +113,13 @@ export function MatchOverlay({ profile, onMessage, onKeepLurching }: Props) {
                   display: "flex", alignItems: "center",
                   justifyContent: "space-between",
                   padding: "11px 16px",
-                  borderBottom: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none",
+                  borderBottom: i < stats.length - 1 ? "1px solid rgba(245,240,232,0.06)" : "none",
                 }}
               >
-                <span style={{ fontFamily: "var(--font-ui)", fontSize: "12px", color: "#8A8070" }}>
+                <span style={{ fontFamily: "var(--font-ui)", fontSize: "12px", color: "#9A958C" }}>
                   {label}
                 </span>
-                <span style={{ fontFamily: "var(--font-display)", fontSize: "13px", fontWeight: 600, color: "#EDE8DF" }}>
+                <span style={{ fontFamily: "var(--font-mono, var(--font-display))", fontSize: "13px", fontWeight: 600, color: "#F5F0E8" }}>
                   {value}
                 </span>
               </motion.div>
@@ -108,39 +128,20 @@ export function MatchOverlay({ profile, onMessage, onKeepLurching }: Props) {
         )}
       </AnimatePresence>
 
-      {/* Disclaimer */}
       <p style={{
         fontFamily: "var(--font-ui)", fontSize: "11px", fontStyle: "italic",
-        color: "#AEADAD", lineHeight: 1.5, textAlign: "center",
+        color: "#9A958C", lineHeight: 1.5, textAlign: "center",
       }}>
         These numbers were generated by an algorithm. They will feel true.
       </p>
 
-      {/* CTA */}
-      <button
-        onClick={onMessage}
-        style={{
-          display: "block", width: "100%", height: "44px",
-          background: "#6B1E23", borderRadius: "14px",
-          fontFamily: "var(--font-display)", fontSize: "15px",
-          fontWeight: 600, color: "#EAE6E6", textAlign: "center",
-        }}
-      >
-        Send a message
-      </button>
-
-      {/* Ghost */}
-      <button
-        onClick={onKeepLurching}
-        style={{
-          display: "block", width: "100%", textAlign: "center",
-          fontFamily: "var(--font-ui)", fontSize: "11px",
-          fontStyle: "italic", fontWeight: 500, color: "#AEADAD",
-          marginTop: "-8px",
-        }}
-      >
-        keep lurching
-      </button>
+      {/* Inverted hierarchy: Keep Swiping is the primary visual weight. */}
+      <div>
+        <CTAButton onClick={onKeepSwiping}>{COPY.matchPrimary}</CTAButton>
+        <GhostButton dim onClick={() => setGateOpen(true)}>
+          {COPY.matchSecondary}
+        </GhostButton>
+      </div>
     </div>
   );
 }
