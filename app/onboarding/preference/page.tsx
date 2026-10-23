@@ -88,12 +88,15 @@ function PreferenceRow({
 
 export default function PreferencePage() {
   const router = useRouter();
-  const { preference, setPreference, setTransitionDirection } = useLurchStore();
+  const { preference, setPreference, setTransitionDirection, setHeightIndustryStandard, setClassistMode } = useLurchStore();
   const [showWealthNote, setShowWealthNote] = useState(false);
 
   const handleSelect = (value: string) => {
     setPreference(value);
+    // Seed the Filters sheet defaults from the bias the user just confessed.
+    if (value === "tall-guys") setHeightIndustryStandard(true);
     if (value === "gen-wealth") {
+      setClassistMode(true);
       setShowWealthNote(true);
       setTimeout(() => setShowWealthNote(false), 2000);
     }

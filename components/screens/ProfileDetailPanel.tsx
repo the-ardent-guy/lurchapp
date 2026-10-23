@@ -249,7 +249,7 @@ function ShadowPromptCard({ profile, colors }: { profile: Profile; colors: Retur
 }
 
 function ExReviewCard({ profile, colors }: { profile: Profile; colors: ReturnType<typeof useColors> }) {
-  const { openPaywall } = useLurchStore();
+  const { openPaywall, exUnlocked } = useLurchStore();
   const review = profile.exReview ?? "She was incredible. The closer I got, the further she became.";
   const splitAt = review.indexOf(". ");
   const teaser = splitAt === -1 ? review : review.slice(0, splitAt + 1);
@@ -285,24 +285,36 @@ function ExReviewCard({ profile, colors }: { profile: Profile; colors: ReturnTyp
         <p style={{
           fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 500,
           color: colors.text, lineHeight: 1.55,
-          filter: "blur(5px)", userSelect: "none", pointerEvents: "none",
+          filter: exUnlocked ? "none" : "blur(5px)",
+          userSelect: exUnlocked ? "auto" : "none",
+          pointerEvents: "none",
           marginBottom: "20px",
+          transition: "filter 0.4s ease-out",
         }}>
           {reveal}
         </p>
       )}
-      <button
-        onClick={() => openPaywall(profile.name)}
-        style={{
-          background: "rgba(107,30,35,0.08)",
-          border: "1px solid rgba(107,30,35,0.32)",
-          borderRadius: "10px", padding: "10px 18px",
-          fontFamily: "var(--font-ui)", fontSize: "12px",
-          fontWeight: 600, color: "#C44B4B", letterSpacing: "0.03em",
-        }}
-      >
-        Unlock for ₹299/mo
-      </button>
+      {exUnlocked ? (
+        <p style={{
+          fontFamily: "var(--font-ui)", fontSize: "12px", fontStyle: "italic",
+          color: colors.muted, letterSpacing: "0.02em",
+        }}>
+          Unlocked. No money changed hands. The review was never going to help you.
+        </p>
+      ) : (
+        <button
+          onClick={() => openPaywall(profile.name)}
+          style={{
+            background: "rgba(107,30,35,0.08)",
+            border: "1px solid rgba(107,30,35,0.32)",
+            borderRadius: "2px", padding: "10px 18px",
+            fontFamily: "var(--font-ui)", fontSize: "12px",
+            fontWeight: 600, color: "#C44B4B", letterSpacing: "0.03em",
+          }}
+        >
+          Unlock for ₹299/mo
+        </button>
+      )}
     </div>
   );
 }
