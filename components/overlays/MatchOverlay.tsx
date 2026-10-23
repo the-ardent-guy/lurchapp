@@ -14,7 +14,7 @@ interface Props {
 
 const CHECK_SVG = (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <path d="M2.5 7L5.5 10L11.5 4" stroke="#4A7C59" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M2.5 7L5.5 10L11.5 4" stroke="#4A5C45" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
@@ -41,7 +41,7 @@ export function MatchOverlay({ profile, onMessage, onKeepLurching }: Props) {
       {/* Avatars */}
       <div style={{ display: "flex", justifyContent: "center" }}>
         <AvatarPairAnimation
-          userAvatarColor="#8B1A1A"
+          userAvatarColor="#6B1E23"
           matchAvatarColor={profile.photoColor}
           matchName={profile.name}
           onAnimationComplete={() => setStatsVisible(true)}
@@ -53,7 +53,7 @@ export function MatchOverlay({ profile, onMessage, onKeepLurching }: Props) {
         <p style={{
           fontFamily: "var(--font-display)", fontSize: "10px",
           textTransform: "uppercase", letterSpacing: "0.18em",
-          color: "#8B1A1A", marginBottom: "8px",
+          color: "#6B1E23", marginBottom: "8px",
         }}>
           It&apos;s a Lurch
         </p>
@@ -121,7 +121,7 @@ export function MatchOverlay({ profile, onMessage, onKeepLurching }: Props) {
         onClick={onMessage}
         style={{
           display: "block", width: "100%", height: "44px",
-          background: "#8B1A1A", borderRadius: "14px",
+          background: "#6B1E23", borderRadius: "14px",
           fontFamily: "var(--font-display)", fontSize: "15px",
           fontWeight: 600, color: "#EAE6E6", textAlign: "center",
         }}

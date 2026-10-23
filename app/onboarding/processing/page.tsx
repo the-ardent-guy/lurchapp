@@ -42,7 +42,7 @@ export default function ProcessingPage() {
             fontSize: "10px",
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: "#E94057",
+            color: "#C44B4B",
             marginBottom: "14px",
           }}>
             LURCH DIAGNOSTIC SYSTEM

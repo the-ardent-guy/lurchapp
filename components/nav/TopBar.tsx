@@ -117,7 +117,7 @@ export function TopBar() {
             fontFamily: "var(--font-display)",
             fontSize: "16px",
             fontWeight: 600,
-            color: "#E94057",
+            color: "#C44B4B",
           }}
         >
           AI

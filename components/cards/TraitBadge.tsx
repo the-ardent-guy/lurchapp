@@ -10,7 +10,7 @@ export function TraitBadge({ label, small = false }: Props) {
     <span
       style={{
         background: "transparent",
-        border: "1px solid #8B1A1A",
+        border: "1px solid #6B1E23",
         borderRadius: "12px",
         height: "24px",
         padding: "0 10px",
@@ -18,7 +18,7 @@ export function TraitBadge({ label, small = false }: Props) {
         alignItems: "center",
         fontFamily: "var(--font-ui)",
         fontSize: small ? "10px" : "11.5px",
-        color: "#C0392B",
+        color: "#C44B4B",
         whiteSpace: "nowrap",
         flexShrink: 0,
       }}

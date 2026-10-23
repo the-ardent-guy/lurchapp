@@ -83,7 +83,7 @@ function PhotoCard({ profile }: { profile: Profile }) {
             </p>
             <p style={{
               fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 600,
-              color: profile.ghostRisk >= 65 ? "#E94057" : "#FFFFFF",
+              color: profile.ghostRisk >= 65 ? "#C44B4B" : "#FFFFFF",
             }}>
               {profile.ghostRisk}%
             </p>
@@ -114,7 +114,7 @@ function PromptCard({ profile, colors }: { profile: Profile; colors: ReturnType<
       <p style={{
         fontFamily: "var(--font-display)", fontSize: "10px",
         textTransform: "uppercase", letterSpacing: "0.15em",
-        color: "#E94057", marginBottom: "12px",
+        color: "#C44B4B", marginBottom: "12px",
       }}>
         Lurch Prompt
       </p>
@@ -152,7 +152,7 @@ function TruthsAndLieCard({ profile, colors }: { profile: Profile; colors: Retur
       <p style={{
         fontFamily: "var(--font-display)", fontSize: "10px",
         textTransform: "uppercase", letterSpacing: "0.15em",
-        color: "#E94057", marginBottom: "6px",
+        color: "#C44B4B", marginBottom: "6px",
       }}>
         Three or a Lie
       </p>
@@ -228,7 +228,7 @@ function ShadowPromptCard({ profile, colors }: { profile: Profile; colors: Retur
       <p style={{
         fontFamily: "var(--font-display)", fontSize: "10px",
         textTransform: "uppercase", letterSpacing: "0.15em",
-        color: "#E94057", marginBottom: "12px",
+        color: "#C44B4B", marginBottom: "12px",
       }}>
         Lurch Prompt
       </p>
@@ -264,7 +264,7 @@ function ExReviewCard({ profile, colors }: { profile: Profile; colors: ReturnTyp
       <p style={{
         fontFamily: "var(--font-display)", fontSize: "10px",
         textTransform: "uppercase", letterSpacing: "0.15em",
-        color: "#E94057", marginBottom: "12px",
+        color: "#C44B4B", marginBottom: "12px",
       }}>
         Ex on Record
       </p>
@@ -294,11 +294,11 @@ function ExReviewCard({ profile, colors }: { profile: Profile; colors: ReturnTyp
       <button
         onClick={() => openPaywall(profile.name)}
         style={{
-          background: "rgba(233,64,87,0.08)",
-          border: "1px solid rgba(233,64,87,0.32)",
+          background: "rgba(107,30,35,0.08)",
+          border: "1px solid rgba(107,30,35,0.32)",
           borderRadius: "10px", padding: "10px 18px",
           fontFamily: "var(--font-ui)", fontSize: "12px",
-          fontWeight: 600, color: "#E94057", letterSpacing: "0.03em",
+          fontWeight: 600, color: "#C44B4B", letterSpacing: "0.03em",
         }}
       >
         Unlock for ₹299/mo
@@ -354,7 +354,7 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
           >
             <div style={{
               width: "40px", height: "4px", borderRadius: "2px",
-              backgroundColor: isDraggingHandle ? "#E94057" : colors.border,
+              backgroundColor: isDraggingHandle ? "#C44B4B" : colors.border,
               transform: isDraggingHandle ? "scaleX(1.6)" : "scaleX(1)",
               transition: "background-color 0.15s, transform 0.15s",
             }} />
@@ -429,9 +429,9 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
               onClick={onLike}
               style={{
                 width: "68px", height: "68px", borderRadius: "50%",
-                background: "#E94057",
+                background: "#6B1E23",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 4px 16px rgba(233,64,87,0.35)",
+                boxShadow: "0 4px 16px rgba(107,30,35,0.45)",
               }}
             >
               <svg width="26" height="26" viewBox="0 0 22 22" fill="none">

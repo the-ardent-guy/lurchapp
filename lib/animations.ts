@@ -65,9 +65,9 @@ export const avatarPulseProps = {
   animate: {
     scale: [1, 1.12, 1],
     boxShadow: [
-      "0 0 0 0px rgba(233,64,87,0)",
-      "0 0 0 18px rgba(233,64,87,0.3)",
-      "0 0 0 36px rgba(233,64,87,0)",
+      "0 0 0 0px rgba(107,30,35,0)",
+      "0 0 0 18px rgba(107,30,35,0.3)",
+      "0 0 0 36px rgba(107,30,35,0)",
     ],
     transition: {
       scale: { duration: 0.4, ease: "easeInOut" as const, delay: 0.5 },

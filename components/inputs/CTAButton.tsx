@@ -12,8 +12,9 @@ interface Props {
 }
 
 export function CTAButton({ children, onClick, disabled = false, className = "", variant = "primary" }: Props) {
-  const bg = variant === "warning" ? "#C97B2A" : "#8B1A1A";
-  const glowColor = variant === "warning" ? "rgba(201,123,42,0.45)" : "rgba(139,26,26,0.5)";
+  const bg = variant === "warning" ? "#C97B2A" : "#6B1E23";
+  const glowColor = variant === "warning" ? "rgba(201,123,42,0.45)" : "rgba(107,30,35,0.5)";
+  // Brutalist hard edge; off-white text on oxblood.
 
   return (
     <motion.button
@@ -26,12 +27,12 @@ export function CTAButton({ children, onClick, disabled = false, className = "",
         fontSize: "13px",
         fontWeight: 600,
         letterSpacing: "0.09em",
-        color: disabled ? "#8A8070" : "#FFFFFF",
-        background: disabled ? "#2A221A" : bg,
-        /* layered look: inner highlight + outer glow */
-        border: disabled ? "1px solid #2E2720" : `1px solid rgba(255,255,255,0.12)`,
-        boxShadow: disabled ? "none" : `0 6px 28px ${glowColor}, inset 0 1px 0 rgba(255,255,255,0.1)`,
-        borderRadius: "8px",
+        color: disabled ? "#5C5852" : "#F5F0E8",
+        background: disabled ? "#141414" : bg,
+        /* brutalist hard edge; inner highlight + outer glow */
+        border: disabled ? "1px solid #2A2A2A" : `1px solid rgba(245,240,232,0.14)`,
+        boxShadow: disabled ? "none" : `0 6px 28px ${glowColor}, inset 0 1px 0 rgba(245,240,232,0.08)`,
+        borderRadius: "2px",
         /* generous padding so it outweighs everything else */
         padding: "18px 24px",
         cursor: disabled ? "not-allowed" : "pointer",

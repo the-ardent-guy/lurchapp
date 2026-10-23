@@ -102,7 +102,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
             <p style={{
               fontFamily: "var(--font-display)", fontSize: "10px",
               textTransform: "uppercase", letterSpacing: "0.18em",
-              color: "#E94057", marginBottom: "20px",
+              color: "#C44B4B", marginBottom: "20px",
             }}>
               Profile Unavailable
             </p>
@@ -238,7 +238,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
           <span style={{
             display: "inline-block", transform: "rotate(-8deg)",
             fontFamily: "var(--font-stamp)", fontSize: "44px", letterSpacing: "0.02em",
-            color: "#8B1A1A", lineHeight: 1,
+            color: "#6B1E23", lineHeight: 1,
           }}>LURCH</span>
         </motion.div>
       )}
@@ -300,7 +300,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
             </p>
             <p style={{
               fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 600,
-              color: profile.ghostRisk >= 65 ? "#E94057" : "#FFFFFF",
+              color: profile.ghostRisk >= 65 ? "#C44B4B" : "#FFFFFF",
             }}>
               {profile.ghostRisk}%
             </p>

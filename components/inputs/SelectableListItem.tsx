@@ -41,7 +41,7 @@ export function SelectableListItem({ label, selected, onSelect, isSpecial = fals
           </span>
         )}
       </span>
-      {selected && <Check size={14} color="#8B1A1A" />}
+      {selected && <Check size={14} color="#6B1E23" />}
     </motion.button>
   );
 }

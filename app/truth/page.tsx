@@ -53,7 +53,7 @@ export default function TruthPage() {
           >
             THE HONEST VERSION.
           </h1>
-          <div style={{ height: "1px", background: "#E94057", width: "100%" }} />
+          <div style={{ height: "1px", background: "#6B1E23", width: "100%" }} />
         </div>
 
         {/* What happened */}

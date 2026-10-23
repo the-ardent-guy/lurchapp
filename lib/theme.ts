@@ -12,6 +12,11 @@ const DARK = {
   whisper: "#6A6060",
   cardTile: "rgba(255,255,255,0.04)",
   cardTileBorder: "rgba(255,255,255,0.08)",
+  // One accent: oxblood. danger = readable warm-red for urgent text on dark.
+  accent: "#6B1E23",
+  accentHot: "#8F2A31",
+  accentText: "#F5F0E8",
+  danger: "#C44B4B",
 };
 
 const LIGHT = {
@@ -24,6 +29,10 @@ const LIGHT = {
   whisper: "#9A9590",
   cardTile: "rgba(0,0,0,0.04)",
   cardTileBorder: "rgba(0,0,0,0.10)",
+  accent: "#6B1E23",
+  accentHot: "#8F2A31",
+  accentText: "#F5F0E8",
+  danger: "#B03A3A",
 };
 
 export function useColors() {

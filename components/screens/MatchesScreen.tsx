@@ -13,7 +13,7 @@ const LIKED_PROFILES = STATIC_PROFILES.filter((p) => p.id !== "unavailable").sli
 
 const CHECK_ICON = (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <path d="M2.5 7L5.5 10L11.5 4" stroke="#4A7C59" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M2.5 7L5.5 10L11.5 4" stroke="#4A5C45" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
@@ -32,7 +32,7 @@ function MatchesCountdown({ expiryTimestamp }: { expiryTimestamp: number }) {
     return () => clearInterval(id);
   }, [expiryTimestamp]);
 
-  return <span style={{ color: "#E94057" }}>{formatCountdown(remaining)}</span>;
+  return <span style={{ color: "#C44B4B" }}>{formatCountdown(remaining)}</span>;
 }
 
 function MiniCard({ profile, index }: { profile: typeof STATIC_PROFILES[0]; index: number }) {
@@ -111,13 +111,13 @@ function MiniCard({ profile, index }: { profile: typeof STATIC_PROFILES[0]; inde
         }}>
           <div style={{
             width: "28px", height: "28px",
-            background: "rgba(233,64,87,0.15)",
-            border: "1px solid rgba(233,64,87,0.35)",
+            background: "rgba(107,30,35,0.15)",
+            border: "1px solid rgba(107,30,35,0.35)",
             borderRadius: "50%",
             display: "flex", alignItems: "center", justifyContent: "center",
           }}>
             <svg width="14" height="14" viewBox="0 0 18 18" fill="none">
-              <path d="M9 15.5C9 15.5 2.5 11 2.5 6.5C2.5 4.5 4 3 6 3C7.2 3 8.2 3.6 9 4.6C9.8 3.6 10.8 3 12 3C14 3 15.5 4.5 15.5 6.5C15.5 11 9 15.5 9 15.5Z" fill="#E94057" stroke="#E94057" strokeWidth={1.5}/>
+              <path d="M9 15.5C9 15.5 2.5 11 2.5 6.5C2.5 4.5 4 3 6 3C7.2 3 8.2 3.6 9 4.6C9.8 3.6 10.8 3 12 3C14 3 15.5 4.5 15.5 6.5C15.5 11 9 15.5 9 15.5Z" fill="#C44B4B" stroke="#C44B4B" strokeWidth={1.5}/>
             </svg>
           </div>
         </div>
@@ -159,7 +159,7 @@ export function MatchesScreen() {
       <div style={{ padding: "40px 20px 0" }}>
         <p style={{
           fontFamily: "var(--font-display)", fontSize: "30px", fontWeight: 600,
-          color: "#F9E8E8", lineHeight: 1.3, marginBottom: "6px",
+          color: "#F5F0E8", lineHeight: 1.3, marginBottom: "6px",
         }}>
           Matches
         </p>
@@ -243,7 +243,7 @@ export function MatchesScreen() {
           style={{
             display: "flex", alignItems: "center", justifyContent: "center",
             width: "100%", height: "46px",
-            background: "#8B1A1A", borderRadius: "14px",
+            background: "#6B1E23", borderRadius: "14px",
             fontFamily: "var(--font-display)", fontSize: "16px",
             fontWeight: 600, color: "#EAE6E6", textAlign: "center",
           }}

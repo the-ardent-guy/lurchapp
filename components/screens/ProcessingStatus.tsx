@@ -34,7 +34,7 @@ export function ProcessingStatus({ onSequenceComplete }: Props) {
               fontSize: "11px",
               lineHeight: "1.8",
               flexShrink: 0,
-              color: isDone ? "#E94057" : "#4A4540",
+              color: isDone ? "#C44B4B" : "#4A4540",
               letterSpacing: "0.05em",
             }}>
               {isDone ? "✓" : "▸"}

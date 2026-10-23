@@ -38,7 +38,7 @@ export function LikesLockPanel() {
         className="text-xs font-semibold px-3 py-1.5 rounded"
         style={{
           fontFamily: "var(--font-ui)",
-          background: "#8B1A1A",
+          background: "#6B1E23",
           color: "#EDE8DF",
           borderRadius: "4px",
           letterSpacing: "0.05em",

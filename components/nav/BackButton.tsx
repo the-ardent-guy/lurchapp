@@ -41,7 +41,7 @@ export function BackButton({ onBack }: Props) {
       }}
     >
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M14 5L8 11L14 17" stroke="#E94057" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M14 5L8 11L14 17" stroke="#C44B4B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </motion.button>
   );

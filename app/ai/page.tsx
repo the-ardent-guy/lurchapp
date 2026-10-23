@@ -21,7 +21,7 @@ export default function AIPage() {
             fontSize: "11px",
             textTransform: "uppercase",
             letterSpacing: "0.18em",
-            color: "#E94057",
+            color: "#C44B4B",
             marginBottom: "14px",
           }}>
             LURCH AI

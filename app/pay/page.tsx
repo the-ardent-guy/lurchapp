@@ -15,7 +15,7 @@ export default function PayPage() {
           <p style={{
             fontFamily: "var(--font-display)", fontSize: "10px",
             textTransform: "uppercase", letterSpacing: "0.18em",
-            color: "#E94057", marginBottom: "16px",
+            color: "#C44B4B", marginBottom: "16px",
           }}>
             Oh. You clicked.
           </p>
@@ -63,7 +63,7 @@ export default function PayPage() {
               <button
                 style={{
                   height: "40px", padding: "0 20px",
-                  background: "#E94057", borderRadius: "10px",
+                  background: "#6B1E23", borderRadius: "4px",
                   fontFamily: "var(--font-display)", fontSize: "13px",
                   fontWeight: 600, color: "#FFFFFF",
                 }}

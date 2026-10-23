@@ -108,7 +108,7 @@ export function WarmNote({ visible }: Props) {
                   display: "inline-block",
                   width: "2px",
                   height: "1em",
-                  background: "#E94057",
+                  background: "#C44B4B",
                   marginLeft: "2px",
                   verticalAlign: "text-bottom",
                   animation: "cursorBlink 0.9s step-end infinite",

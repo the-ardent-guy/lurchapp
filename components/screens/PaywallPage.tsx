@@ -8,7 +8,7 @@ import { DarkPatternLabel } from "@/components/typography/DarkPatternLabel";
 
 const CHECK_ICON = (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <path d="M2.5 7L5.5 10L11.5 4" stroke="#4A7C59" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M2.5 7L5.5 10L11.5 4" stroke="#4A5C45" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
@@ -32,7 +32,7 @@ function MatchCountdown({ expiryTimestamp, matchName }: { expiryTimestamp: numbe
       color: "#323232", lineHeight: 1.35, marginBottom: "6px",
     }}>
       {matchName}&apos;s message will expire in{" "}
-      <span style={{ color: "#E94057" }}>{formatCountdown(remaining)}</span>
+      <span style={{ color: "#C44B4B" }}>{formatCountdown(remaining)}</span>
     </p>
   );
 }
@@ -56,7 +56,7 @@ export function PaywallPage() {
           color: "#323232", lineHeight: 1.35, marginBottom: "6px",
         }}>
           Your matches will expire in{" "}
-          <span style={{ color: "#E94057" }}>{formatCountdown(expiry - Date.now())}</span>
+          <span style={{ color: "#C44B4B" }}>{formatCountdown(expiry - Date.now())}</span>
         </p>
       )}
 
@@ -106,7 +106,7 @@ export function PaywallPage() {
         style={{
           display: "flex", alignItems: "center", justifyContent: "center",
           width: "100%", height: "46px",
-          background: "#8B1A1A", borderRadius: "14px",
+          background: "#6B1E23", borderRadius: "14px",
           fontFamily: "var(--font-display)", fontSize: "16px",
           fontWeight: 600, color: "#EAE6E6", textAlign: "center",
           marginBottom: "12px",
