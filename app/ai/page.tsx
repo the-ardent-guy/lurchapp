@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ScreenWrapper } from "@/components/layout/ScreenWrapper";
 import { FeedShell } from "@/components/layout/FeedShell";
@@ -10,6 +11,7 @@ import { useColors } from "@/lib/theme";
 export default function AIPage() {
   const router = useRouter();
   const colors = useColors();
+  const [simulated, setSimulated] = useState(false);
 
   return (
     <ScreenWrapper>
@@ -77,8 +79,21 @@ export default function AIPage() {
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-            <CTAButton onClick={() => router.push("/pay")}>LET AI BE YOU — ₹299/MO</CTAButton>
-            <GhostButton dim>I&apos;ll embarrass myself, thanks</GhostButton>
+            {simulated ? (
+              <div style={{ background: colors.surface, border: `1px solid ${colors.border}`, borderRadius: "2px", padding: "18px 20px" }}>
+                <p style={{ fontFamily: "var(--font-ui)", fontSize: "14px", fontStyle: "italic", color: colors.text, lineHeight: 1.6 }}>
+                  No real money changed hands — this is a showcase. But imagine: your wingman is now live, saying &ldquo;hey&rdquo; on your behalf, with a smiley, to people who will not reply.
+                </p>
+                <GhostButton dim onClick={() => router.push("/chat")}>
+                  Watch it get left on read
+                </GhostButton>
+              </div>
+            ) : (
+              <>
+                <CTAButton onClick={() => setSimulated(true)}>LET AI BE YOU — ₹299/MO</CTAButton>
+                <GhostButton dim onClick={() => router.push("/feed")}>I&apos;ll embarrass myself, thanks</GhostButton>
+              </>
+            )}
           </div>
 
         </div>

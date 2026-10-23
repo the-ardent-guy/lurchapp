@@ -6,6 +6,7 @@ import { ScreenWrapper } from "@/components/layout/ScreenWrapper";
 import { GhostButton } from "@/components/inputs/GhostButton";
 import { CTAButton } from "@/components/inputs/CTAButton";
 import { fadeUpStagger, fadeUpItem } from "@/lib/animations";
+import { TRUTH_CITATIONS } from "@/lib/copy";
 
 const WHAT_HAPPENED = [
   { label: "Variable reward loops", description: "Every swipe" },
@@ -20,21 +21,6 @@ const WHAT_HAPPENED = [
   { label: "A typing indicator that never resolves", description: "Someone is always typing. Forever." },
   { label: "Humans reduced to a swipeable card", description: "Judged in 0.3 seconds" },
   { label: "An AI offered to replace you", description: "In your own romantic life" },
-];
-
-const RESEARCH = [
-  {
-    stat: "26,068 participants · 23 peer-reviewed studies",
-    finding: "Dating app users showed significantly worse outcomes for depression, anxiety, and loneliness than non-users.",
-  },
-  {
-    stat: "19.3% experienced ghosting · 23.2% admit to ghosting",
-    finding: "Nobody downloaded the app to become this.",
-  },
-  {
-    stat: "Tinder users reported significantly lower self-esteem than non-users",
-    finding: "The platform monetising your loneliness is also monetising your insecurity.",
-  },
 ];
 
 export default function TruthPage() {
@@ -61,7 +47,7 @@ export default function TruthPage() {
           <p
             style={{ fontFamily: "var(--font-display)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.12em", color: "#AEADAD", marginBottom: "16px" }}
           >
-            WHAT JUST HAPPENED TO YOU
+            WHAT JUST HAPPENED TO YOU · <span style={{ color: "#C44B4B" }}>Product satire</span>
           </p>
           <motion.div
             variants={fadeUpStagger}
@@ -104,35 +90,38 @@ export default function TruthPage() {
           </div>
         </div>
 
-        {/* Research */}
+        {/* Research — real, sourced, linked (no invented peer-reviewed stats). */}
         <div>
           <p
-            style={{ fontFamily: "var(--font-display)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.12em", color: "#AEADAD", marginBottom: "16px" }}
+            style={{ fontFamily: "var(--font-display)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.12em", color: "#AEADAD", marginBottom: "6px" }}
           >
-            THE RESEARCH
+            RESEARCH WE ACTUALLY READ
           </p>
-          <div className="space-y-3">
-            {RESEARCH.map(({ stat, finding }) => (
-              <div
-                key={stat}
-                className="p-4 space-y-1.5"
+          <p style={{ fontFamily: "var(--font-ui)", fontSize: "12px", fontStyle: "italic", color: "#5C5852", marginBottom: "16px" }}>
+            Real, peer-reviewed or reported sources — tap to read them yourself. We don&apos;t invent statistics to sell you a feeling.
+          </p>
+          <div className="space-y-2">
+            {TRUTH_CITATIONS.map((c) => (
+              <a
+                key={c.url}
+                href={c.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4"
                 style={{
-                  background: "#1A1612",
-                  border: "1px solid #2E2720",
-                  borderRadius: "12px",
+                  background: "#141414",
+                  border: "1px solid #2A2A2A",
+                  borderRadius: "2px",
+                  textDecoration: "none",
                 }}
               >
-                <p
-                  style={{ fontFamily: "var(--font-ui)", fontSize: "12px", fontWeight: 600, color: "#C97B2A" }}
-                >
-                  {stat}
+                <p style={{ fontFamily: "var(--font-ui)", fontSize: "12px", fontWeight: 600, color: "#C44B4B", marginBottom: "3px" }}>
+                  {c.author}
                 </p>
-                <p
-                  style={{ fontFamily: "var(--font-ui)", fontSize: "14px", lineHeight: "1.6", color: "#AEADAD" }}
-                >
-                  {finding}
+                <p style={{ fontFamily: "var(--font-ui)", fontSize: "14px", lineHeight: "1.5", color: "#F5F0E8" }}>
+                  {c.title} <span style={{ color: "#9A958C" }}>↗</span>
                 </p>
-              </div>
+              </a>
             ))}
           </div>
         </div>

@@ -28,6 +28,11 @@ export function TopBar() {
     router.push("/ai");
   };
 
+  const handleFilters = () => {
+    setTransitionDirection("up");
+    router.push("/filters");
+  };
+
   return (
     <div
       className="flex items-center shrink-0 relative z-20"
@@ -98,6 +103,24 @@ export function TopBar() {
           {area}
         </span>
       </div>
+
+      {/* Filters — right */}
+      <button
+        onClick={handleFilters}
+        className="flex items-center justify-center shrink-0"
+        style={{
+          width: "48px",
+          height: "48px",
+          borderRadius: "14px",
+          background: "transparent",
+          border: "1px solid var(--app-border)",
+        }}
+        aria-label="Filters"
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M3 5h14M5.5 10h9M8 15h4" stroke="var(--app-text)" strokeWidth="1.6" strokeLinecap="round" />
+        </svg>
+      </button>
 
       {/* AI button — right */}
       <button
