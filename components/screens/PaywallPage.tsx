@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useLurchStore } from "@/lib/store";
 import { CTAButton } from "@/components/inputs/CTAButton";
 import { GhostButton } from "@/components/inputs/GhostButton";
@@ -9,17 +9,16 @@ import { CURIOSITY_TAX_LABEL } from "@/lib/pricing";
 import { COPY } from "@/lib/copy";
 
 // Shown over the feed when Ex on Record (ProfileDetailPanel) is tapped.
-// Dark sheet content (not pastel). Primary simulates the unlock - no real money.
+// Dark sheet content (not pastel). Paying drops you on the absurdist checkout.
 export function PaywallPage() {
-  const { matchName, closePaywall, unlockEx } = useLurchStore();
-  const [declined, setDeclined] = useState(false);
+  const router = useRouter();
+  const { matchName, closePaywall } = useLurchStore();
 
   const who = matchName ? matchName.charAt(0) + matchName.slice(1).toLowerCase() : "Their";
 
   const handlePay = () => {
-    // One beat of satire confirmation, then the "unlock" lands.
-    setDeclined(true);
-    setTimeout(() => unlockEx(), 1100);
+    closePaywall();
+    router.push("/pay");
   };
 
   return (
@@ -37,18 +36,10 @@ export function PaywallPage() {
         {CURIOSITY_TAX_LABEL}
       </p>
 
-      {declined ? (
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic", color: "#C44B4B", lineHeight: 1.5, padding: "16px 0" }}>
-          Payment declined by your self-respect. Unlocking anyway for the demo…
-        </p>
-      ) : (
-        <>
-          <CTAButton onClick={handlePay}>{COPY.curiosityPrimary}</CTAButton>
-          <GhostButton dim onClick={closePaywall}>
-            {COPY.curiositySecondary}
-          </GhostButton>
-        </>
-      )}
+      <CTAButton onClick={handlePay}>{COPY.curiosityPrimary}</CTAButton>
+      <GhostButton dim onClick={closePaywall}>
+        {COPY.curiositySecondary}
+      </GhostButton>
     </div>
   );
 }

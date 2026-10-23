@@ -116,7 +116,7 @@ export default function ScorePage() {
 
         {dividerDone && (
           <div style={{ marginTop: "32px" }}>
-            <CTAButton onClick={handleContinue}>ENTER THE APP</CTAButton>
+            <CTAButton onClick={handleContinue}>Enter the app</CTAButton>
           </div>
         )}
       </div>

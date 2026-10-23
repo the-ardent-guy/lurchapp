@@ -105,7 +105,6 @@ function SectionDivider({ label }: { label: string }) {
 export function MatchesScreen() {
   const router = useRouter();
   const { setActiveTab } = useLurchStore();
-  const [unlocked, setUnlocked] = useState(false);
   const [paywallOpen, setPaywallOpen] = useState(true);
 
   const todayProfiles = LIKED_PROFILES.slice(0, 4);
@@ -116,13 +115,10 @@ export function MatchesScreen() {
     router.push("/feed");
   };
 
-  // Showcase: simulate the unlock so reviewers see the "HD disappointment".
-  const handleUnlock = () => {
-    setUnlocked(true);
-    setPaywallOpen(false);
-  };
+  // "Paying" drops you on the absurdist checkout (tee / veg puff), not a real tx.
+  const handleUnlock = () => router.push("/pay");
 
-  const locked = !unlocked;
+  const locked = true;
 
   return (
     <div style={{ height: "100%", background: "var(--app-bg)", position: "relative", overflow: "hidden" }}>
@@ -133,14 +129,6 @@ export function MatchesScreen() {
         <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", color: "rgba(245,240,232,0.5)", lineHeight: 1.5, marginBottom: "20px" }}>
           People who liked you and your matches.
         </p>
-
-        {unlocked && (
-          <div style={{ background: "#141414", border: "1px solid #2A2A2A", borderRadius: "12px", padding: "14px 16px", marginBottom: "20px" }}>
-            <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic", color: "#9A958C", lineHeight: 1.5 }}>
-              You paid nothing. No real money changes hands here. The faces are unblurred now, and they still won&apos;t message you. That was always the product.
-            </p>
-          </div>
-        )}
 
         <SectionDivider label="Today" />
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "20px" }}>
@@ -158,7 +146,7 @@ export function MatchesScreen() {
             onClick={() => setPaywallOpen(true)}
             style={{
               marginTop: "24px", width: "100%", padding: "14px",
-              background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px",
+              background: "rgba(245,240,232,0.05)", border: "none", borderRadius: "12px",
               fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", cursor: "pointer",
             }}
           >

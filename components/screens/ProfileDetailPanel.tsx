@@ -425,15 +425,15 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
               onClick={onPass}
               aria-label="Pass"
               style={{
-                width: "62px", height: "62px", borderRadius: "9999px",
-                border: `1px solid #3D3D3D`,
-                background: "#141414",
+                width: "60px", height: "60px", borderRadius: "9999px",
+                border: "none",
+                background: "#1C1A18",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 6px 18px -8px rgba(0,0,0,0.8)",
+                boxShadow: "0 8px 24px -10px rgba(0,0,0,0.9)",
               }}
             >
-              <svg width="24" height="24" viewBox="0 0 22 22" fill="none">
-                <path d="M5.5 5.5L16.5 16.5M16.5 5.5L5.5 16.5" stroke="#C44B4B" strokeWidth="2.4" strokeLinecap="round"/>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M6 6L16 16M16 6L6 16" stroke="#C44B4B" strokeWidth="2.3" strokeLinecap="round"/>
               </svg>
             </button>
 
@@ -443,9 +443,9 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
               aria-label="Like"
               style={{
                 width: "72px", height: "72px", borderRadius: "9999px",
-                background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)",
+                background: "#6B1E23", border: "none",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 10px 26px -8px rgba(107,30,35,0.75)",
+                boxShadow: "0 12px 30px -8px rgba(107,30,35,0.85)",
               }}
             >
               <svg width="30" height="30" viewBox="0 0 22 22" fill="none">

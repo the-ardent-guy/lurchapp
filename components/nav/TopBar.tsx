@@ -51,11 +51,11 @@ export function TopBar() {
         onClick={toggleTheme}
         className="flex items-center justify-center shrink-0"
         style={{
-          width: "48px",
-          height: "48px",
-          borderRadius: "14px",
-          background: "transparent",
-          border: "1px solid var(--app-border)",
+          width: "40px",
+          height: "40px",
+          borderRadius: "12px",
+          background: "rgba(255,255,255,0.05)",
+          border: "none",
         }}
         aria-label="Toggle theme"
       >
@@ -109,11 +109,11 @@ export function TopBar() {
         onClick={handleFilters}
         className="flex items-center justify-center shrink-0"
         style={{
-          width: "48px",
-          height: "48px",
-          borderRadius: "14px",
-          background: "transparent",
-          border: "1px solid var(--app-border)",
+          width: "40px",
+          height: "40px",
+          borderRadius: "12px",
+          background: "rgba(255,255,255,0.05)",
+          border: "none",
         }}
         aria-label="Filters"
       >
@@ -127,11 +127,11 @@ export function TopBar() {
         onClick={handleAI}
         className="flex items-center justify-center shrink-0"
         style={{
-          width: "48px",
-          height: "48px",
-          borderRadius: "14px",
-          background: "transparent",
-          border: "1px solid var(--app-border)",
+          width: "40px",
+          height: "40px",
+          borderRadius: "12px",
+          background: "rgba(255,255,255,0.05)",
+          border: "none",
         }}
         aria-label="AI Wingman"
       >

@@ -31,7 +31,7 @@ export function ExitStageGuilty({ onStay, onContinueLeaving }: Props) {
         {COPY.exit1}
       </p>
       <div className="space-y-2 pt-2">
-        <CTAButton onClick={onStay}>STAY</CTAButton>
+        <CTAButton onClick={onStay}>Stay</CTAButton>
         <GhostButton onClick={onContinueLeaving} dim>Leave anyway</GhostButton>
       </div>
     </motion.div>

@@ -25,7 +25,7 @@ export default function SettingsPage() {
         <div style={{ display: "flex", alignItems: "center", gap: "12px", padding: "calc(env(safe-area-inset-top, 0px) + 16px) 20px 14px", borderBottom: "1px solid #2A2A2A" }}>
           <button onClick={() => router.push("/profile")} aria-label="Back" style={{ background: "transparent", border: "none", cursor: "pointer", padding: "4px" }}>
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <path d="M14 5L8 11L14 17" stroke="#C44B4B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M14 5L8 11L14 17" stroke="#F5F0E8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
           <p style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 600, color: "#F5F0E8" }}>Settings</p>
@@ -91,10 +91,10 @@ export default function SettingsPage() {
           <button
             onClick={beginIntercept}
             style={{
-              marginTop: "28px", width: "100%", padding: "16px",
-              background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px",
-              fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.04em",
-              textTransform: "uppercase", color: "#C44B4B", cursor: "pointer",
+              marginTop: "28px", width: "100%", padding: "15px", minHeight: "52px",
+              background: "rgba(196,75,75,0.08)", border: "none", borderRadius: "14px",
+              fontFamily: "var(--font-ui)", fontSize: "15px", fontWeight: 600,
+              color: "#C44B4B", cursor: "pointer",
             }}
           >
             Leave Lurch

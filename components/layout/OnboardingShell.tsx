@@ -25,7 +25,7 @@ export function OnboardingShell({ children, step, totalSteps = ONBOARDING_STEPS,
           paddingRight: "28px",
         }}
       >
-        {showBack ? <BackButton onBack={onBack} /> : <div style={{ width: "56px" }} />}
+        {showBack ? <BackButton onBack={onBack} /> : <div style={{ width: "40px" }} />}
         <OnboardingProgress step={step} totalSteps={totalSteps} bonus={bonusStep} />
       </div>
 

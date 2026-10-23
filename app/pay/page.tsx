@@ -1,11 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ScreenWrapper } from "@/components/layout/ScreenWrapper";
 import { FeedShell } from "@/components/layout/FeedShell";
 
 export default function PayPage() {
   const router = useRouter();
+  const [bought, setBought] = useState<null | "tee" | "puff">(null);
+  const confirmation = bought === "tee"
+    ? "No card was charged. Picture the t-shirt arriving anyway. Picture wearing it. Picture the silence."
+    : bought === "puff"
+    ? "No card was charged. But the thought of the puff kept someone going. Probably the developer."
+    : null;
 
   return (
     <ScreenWrapper>
@@ -61,11 +68,12 @@ export default function PayPage() {
                 It says &ldquo;I matched with someone on Lurch&rdquo; on the front. The back says &ldquo;they left me on read.&rdquo; Wear it on dates. We hear it works.
               </p>
               <button
+                onClick={() => setBought("tee")}
                 style={{
-                  height: "40px", padding: "0 20px",
-                  background: "#6B1E23", borderRadius: "4px",
-                  fontFamily: "var(--font-display)", fontSize: "13px",
-                  fontWeight: 600, color: "#FFFFFF",
+                  height: "44px", padding: "0 22px", cursor: "pointer", border: "none",
+                  background: "#6B1E23", borderRadius: "12px",
+                  fontFamily: "var(--font-ui)", fontSize: "14px",
+                  fontWeight: 600, color: "#F5F0E8",
                 }}
               >
                 ₹799, worth it
@@ -97,12 +105,13 @@ export default function PayPage() {
                 ₹20. Flaky. Warm. Better than most situationships. Your money goes directly to the developer&apos;s snack. We will think of you.
               </p>
               <button
+                onClick={() => setBought("puff")}
                 style={{
-                  height: "40px", padding: "0 20px",
-                  background: "#2E2720", borderRadius: "10px",
-                  fontFamily: "var(--font-display)", fontSize: "13px",
-                  fontWeight: 600, color: "#AEADAD",
-                  border: "1px solid #3A3028",
+                  height: "44px", padding: "0 22px", cursor: "pointer",
+                  background: "rgba(245,240,232,0.06)", borderRadius: "12px",
+                  fontFamily: "var(--font-ui)", fontSize: "14px",
+                  fontWeight: 600, color: "#C9C3B8",
+                  border: "none",
                 }}
               >
                 ₹20, one puff
@@ -110,6 +119,14 @@ export default function PayPage() {
             </div>
 
           </div>
+
+          {confirmation && (
+            <div style={{ background: "#141414", border: "1px solid #2A2A2A", borderRadius: "14px", padding: "18px 20px", marginBottom: "24px" }}>
+              <p style={{ fontFamily: "var(--font-ui)", fontSize: "14px", fontStyle: "italic", lineHeight: 1.6, color: "#C9C3B8" }}>
+                {confirmation}
+              </p>
+            </div>
+          )}
 
           <button
             onClick={() => router.back()}

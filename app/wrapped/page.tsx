@@ -39,7 +39,7 @@ export default function WrappedPage() {
 
         <button
           onClick={() => router.push("/profile")}
-          style={{ marginTop: "24px", width: "100%", padding: "14px", background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", cursor: "pointer" }}
+          style={{ marginTop: "24px", width: "100%", padding: "14px", background: "rgba(245,240,232,0.05)", border: "none", borderRadius: "12px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", cursor: "pointer" }}
         >
           Back to profile
         </button>

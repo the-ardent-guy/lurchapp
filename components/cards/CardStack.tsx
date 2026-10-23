@@ -44,7 +44,7 @@ export function CardStack({ profiles, currentIndex, onSwipeLeft, onSwipeRight, o
               href="https://www.google.com/maps/search/parks+near+me"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ padding: "12px", background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", textDecoration: "none" }}
+              style={{ padding: "12px", background: "rgba(245,240,232,0.05)", border: "none", borderRadius: "12px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", textDecoration: "none" }}
             >
               Touch grass
             </a>

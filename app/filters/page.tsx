@@ -79,7 +79,7 @@ export default function FiltersPage() {
       <div className="h-full overflow-y-auto lurch-scroll" style={{ background: "#0A0A0A" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "12px", padding: "calc(env(safe-area-inset-top, 0px) + 18px) 22px 16px", borderBottom: "1px solid #1E1E1E" }}>
           <button onClick={() => router.push("/feed")} aria-label="Back" style={{ background: "transparent", border: "none", cursor: "pointer", padding: "4px" }}>
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M14 5L8 11L14 17" stroke="#C44B4B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M14 5L8 11L14 17" stroke="#F5F0E8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </button>
           <p style={{ fontFamily: "var(--font-display)", fontSize: "19px", fontWeight: 600, color: "#F5F0E8" }}>Filters</p>
         </div>
@@ -106,7 +106,7 @@ export default function FiltersPage() {
             {heightIndustryStandard && (
               <button
                 onClick={() => setHeightIndustryStandard(false)}
-                style={{ marginTop: "14px", background: "transparent", border: "1px solid #3D3D3D", borderRadius: "10px", padding: "10px 14px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#F5F0E8", cursor: "pointer" }}
+                style={{ marginTop: "14px", background: "rgba(245,240,232,0.05)", border: "none", borderRadius: "12px", padding: "10px 14px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#F5F0E8", cursor: "pointer" }}
               >
                 {COPY.heightEscape}
               </button>

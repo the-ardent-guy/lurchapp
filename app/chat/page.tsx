@@ -39,7 +39,7 @@ function ChatInner() {
       <div style={{ display: "flex", alignItems: "center", gap: "12px", padding: "calc(env(safe-area-inset-top, 0px) + 16px) 20px 14px", borderBottom: "1px solid #2A2A2A" }}>
         <button onClick={() => router.push("/feed")} aria-label="Back" style={{ background: "transparent", border: "none", cursor: "pointer", padding: "4px" }}>
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <path d="M14 5L8 11L14 17" stroke="#C44B4B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M14 5L8 11L14 17" stroke="#F5F0E8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
         <p style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 600, color: "#F5F0E8" }}>{name}</p>
@@ -82,7 +82,7 @@ function ChatInner() {
                 style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   width: "100%", textAlign: "left", gap: "12px",
-                  background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px",
+                  background: "rgba(245,240,232,0.05)", border: "none", borderRadius: "12px",
                   padding: "12px 14px", cursor: "pointer",
                 }}
               >
@@ -99,7 +99,7 @@ function ChatInner() {
         <div style={{ borderTop: "1px solid #2A2A2A", padding: "16px 20px calc(env(safe-area-inset-bottom, 0px) + 16px)", background: "#141414" }}>
           <button
             onClick={() => router.push("/feed")}
-            style={{ width: "100%", background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px", padding: "14px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", cursor: "pointer" }}
+            style={{ width: "100%", background: "rgba(245,240,232,0.05)", border: "none", borderRadius: "12px", padding: "14px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", cursor: "pointer" }}
           >
             Go judge someone else instead
           </button>

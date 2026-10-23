@@ -34,7 +34,7 @@ export function ExitStageDesperate({ onStay, onContinueLeaving }: Props) {
         Your profile will drop in rankings the moment you go inactive. You&apos;ve worked hard to get here. Don&apos;t waste it.
       </p>
       <div className="space-y-2">
-        <CTAButton onClick={onStay}>OKAY, I&apos;LL STAY</CTAButton>
+        <CTAButton onClick={onStay}>Okay, I&apos;ll stay</CTAButton>
         <GhostButton onClick={onContinueLeaving} dim>I know what you&apos;re doing</GhostButton>
       </div>
     </motion.div>
