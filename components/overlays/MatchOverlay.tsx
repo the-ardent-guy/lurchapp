@@ -103,7 +103,7 @@ export function MatchOverlay({ profile, onKeepSwiping, onConversation }: Props) 
             variants={fadeUpStagger}
             initial="initial"
             animate="animate"
-            style={{ background: "#141414", borderRadius: "2px", overflow: "hidden" }}
+            style={{ background: "#141414", borderRadius: "12px", overflow: "hidden" }}
           >
             {stats.map(({ label, value }, i) => (
               <motion.div

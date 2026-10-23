@@ -264,85 +264,92 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
       )}
 
       {isTop && (
-        <motion.div style={{ opacity: lurchOpacity, position: "absolute", top: 20, left: 18, zIndex: 20 }}>
+        <motion.div style={{ opacity: lurchOpacity, position: "absolute", top: 24, left: 22, zIndex: 20, transform: "rotate(-10deg)" }}>
           <span style={{
-            display: "inline-block", transform: "rotate(-8deg)",
-            fontFamily: "var(--font-stamp)", fontSize: "44px", letterSpacing: "0.02em",
-            color: "#6B1E23", lineHeight: 1,
+            display: "inline-block",
+            fontFamily: "var(--font-stamp)", fontSize: "30px", letterSpacing: "0.06em",
+            color: "#F5F0E8", lineHeight: 1, padding: "8px 16px",
+            border: "3px solid #6B1E23", borderRadius: "14px",
+            background: "rgba(107,30,35,0.35)", backdropFilter: "blur(4px)",
           }}>LURCH</span>
         </motion.div>
       )}
 
       {isTop && (
-        <motion.div style={{ opacity: passOpacity, position: "absolute", top: 20, right: 18, zIndex: 20 }}>
+        <motion.div style={{ opacity: passOpacity, position: "absolute", top: 24, right: 22, zIndex: 20, transform: "rotate(10deg)" }}>
           <span style={{
-            display: "inline-block", transform: "rotate(8deg)",
-            fontFamily: "var(--font-stamp)", fontSize: "44px", letterSpacing: "0.02em",
-            color: "#EDE8DF", lineHeight: 1,
-          }}>PASS</span>
+            display: "inline-block",
+            fontFamily: "var(--font-stamp)", fontSize: "30px", letterSpacing: "0.06em",
+            color: "#F5F0E8", lineHeight: 1, padding: "8px 16px",
+            border: "3px solid rgba(245,240,232,0.6)", borderRadius: "14px",
+            background: "rgba(0,0,0,0.35)", backdropFilter: "blur(4px)",
+          }}>NOPE</span>
         </motion.div>
       )}
 
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "16px 20px 22px" }}>
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "18px 22px 26px" }}>
         <p style={{
-          fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: 600,
-          color: "#FFFFFF", lineHeight: "1.4", marginBottom: "2px",
+          fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: 600,
+          color: "#FFFFFF", lineHeight: 1.2, marginBottom: "4px", letterSpacing: "-0.01em",
         }}>
           {profile.name.charAt(0) + profile.name.slice(1).toLowerCase()}{profile.age > 0 ? `, ${profile.age}` : ""}
         </p>
 
         {profile.location && (
           <p style={{
-            fontFamily: "var(--font-ui)", fontSize: "12px",
-            color: "rgba(217,216,216,0.65)", lineHeight: "1.5", marginBottom: "10px",
+            fontFamily: "var(--font-ui)", fontSize: "13px",
+            color: "rgba(245,240,232,0.7)", lineHeight: 1.5, marginBottom: "14px",
           }}>
             {profile.location}
           </p>
         )}
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "12px" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "7px", marginBottom: "14px" }}>
           {profile.extraBadges?.map((b) => <TraitBadge key={b.label} label={b.label} small={b.small} />)}
           {profile.wounds.slice(0, 2).map((w) => <WoundBadge key={w} label={w} />)}
           {profile.attachmentLabel && <AttachmentBadge label={profile.attachmentLabel} />}
         </div>
 
         {profile.matchedBecause && (
-          <div style={{ marginBottom: "10px" }}>
+          <div style={{ marginBottom: "14px" }}>
             <p style={{
               fontFamily: "var(--font-ui)", fontSize: "9px", textTransform: "uppercase",
-              letterSpacing: "0.08em", color: "#8A8070", marginBottom: "3px",
+              letterSpacing: "0.1em", color: "#C44B4B", marginBottom: "4px",
             }}>
               Matched because
             </p>
             <p style={{
-              fontFamily: "var(--font-ui)", fontSize: "12px", fontStyle: "italic",
-              color: "rgba(217,216,216,0.85)", lineHeight: 1.4,
+              fontFamily: "var(--font-ui)", fontSize: "12.5px", fontStyle: "italic",
+              color: "rgba(245,240,232,0.88)", lineHeight: 1.45,
             }}>
               {profile.matchedBecause}
             </p>
           </div>
         )}
 
-        <div style={{ display: "flex", gap: "28px" }}>
-          <div>
-            <p style={{ fontFamily: "var(--font-ui)", fontSize: "11px", color: "rgba(217,216,216,0.6)", marginBottom: "2px" }}>
-              Ghost Risk
-            </p>
-            <p style={{
-              fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 600,
-              color: profile.ghostRisk >= 65 ? "#C44B4B" : "#FFFFFF",
-            }}>
-              {profile.ghostRisk}%
-            </p>
+        {/* Stat pills — glassy, modern */}
+        <div style={{ display: "flex", gap: "8px" }}>
+          <div style={{
+            display: "flex", alignItems: "baseline", gap: "6px",
+            background: "rgba(255,255,255,0.08)", backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255,255,255,0.12)", borderRadius: "9999px",
+            padding: "6px 12px",
+          }}>
+            <span style={{ fontFamily: "var(--font-ui)", fontSize: "10px", color: "rgba(245,240,232,0.6)" }}>Ghost</span>
+            <span style={{
+              fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 600,
+              color: profile.ghostRisk >= 65 ? "#E07B7B" : "#FFFFFF",
+            }}>{profile.ghostRisk}%</span>
           </div>
           {profile.vibeScore !== null && (
-            <div>
-              <p style={{ fontFamily: "var(--font-ui)", fontSize: "11px", color: "rgba(217,216,216,0.6)", marginBottom: "2px" }}>
-                Vibe Score
-              </p>
-              <p style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 600, color: "#FFFFFF" }}>
-                {profile.vibeScore}
-              </p>
+            <div style={{
+              display: "flex", alignItems: "baseline", gap: "6px",
+              background: "rgba(255,255,255,0.08)", backdropFilter: "blur(10px)",
+              border: "1px solid rgba(255,255,255,0.12)", borderRadius: "9999px",
+              padding: "6px 12px",
+            }}>
+              <span style={{ fontFamily: "var(--font-ui)", fontSize: "10px", color: "rgba(245,240,232,0.6)" }}>Vibe</span>
+              <span style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 600, color: "#FFFFFF" }}>{profile.vibeScore}</span>
             </div>
           )}
         </div>

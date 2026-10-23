@@ -9,6 +9,7 @@ import { useColors } from "@/lib/theme";
 import { WoundBadge } from "@/components/cards/WoundBadge";
 import { AttachmentBadge } from "@/components/cards/AttachmentBadge";
 import { TraitBadge } from "@/components/cards/TraitBadge";
+import { lifestyleShots } from "@/lib/data/lifestyle";
 
 interface Props {
   profile: Profile | null;
@@ -17,89 +18,83 @@ interface Props {
   onLike: () => void;
 }
 
-function PhotoCard({ profile }: { profile: Profile }) {
+function HeroPhoto({ profile }: { profile: Profile }) {
   return (
     <div style={{
-      borderRadius: "16px", overflow: "hidden",
+      borderRadius: "20px", overflow: "hidden",
       background: profile.photoColor,
-      height: "260px", position: "relative",
+      height: "440px", position: "relative",
       flexShrink: 0,
     }}>
       {profile.photoUrl ? (
-        <img
-          src={profile.photoUrl}
-          alt=""
-          aria-hidden
-          style={{
-            position: "absolute", inset: 0,
-            width: "100%", height: "100%",
-            objectFit: "cover", objectPosition: "center top",
-          }}
-        />
+        <img src={profile.photoUrl} alt="" aria-hidden
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
       ) : (
-        <span style={{
-          position: "absolute", top: "50%", left: "50%",
-          transform: "translate(-50%, -50%)", fontSize: "160px",
-          fontFamily: "var(--font-display)", color: "#fff", opacity: 0.06,
-          fontWeight: "bold", userSelect: "none", lineHeight: 1, pointerEvents: "none",
-        }}>
+        <span style={{ position: "absolute", top: "40%", left: "50%", transform: "translate(-50%, -50%)", fontSize: "200px", fontFamily: "var(--font-display)", color: "#fff", opacity: 0.06, fontWeight: "bold", lineHeight: 1 }}>
           {profile.name[0]}
         </span>
       )}
 
-      {/* Gradient */}
-      <div style={{
-        position: "absolute", inset: 0,
-        background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 30%, transparent 65%)",
-      }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 28%, transparent 55%)" }} />
 
-      {/* Distance */}
+      {/* Distance pill */}
       <div style={{
-        position: "absolute", top: "14px", left: "14px",
-        height: "28px", background: "rgba(15,13,11,0.6)", backdropFilter: "blur(10px)",
-        borderRadius: "7px", display: "flex", alignItems: "center",
-        gap: "4px", paddingLeft: "8px", paddingRight: "10px",
+        position: "absolute", top: "16px", left: "16px",
+        height: "30px", background: "rgba(0,0,0,0.45)", backdropFilter: "blur(12px)",
+        borderRadius: "9999px", display: "flex", alignItems: "center",
+        gap: "5px", paddingLeft: "11px", paddingRight: "13px",
+        border: "1px solid rgba(255,255,255,0.12)",
       }}>
         <svg width="9" height="12" viewBox="0 0 10 13" fill="none">
-          <path d="M5 0C2.79 0 1 1.79 1 4C1 7 5 13 5 13C5 13 9 7 9 4C9 1.79 7.21 0 5 0ZM5 5.5C4.17 5.5 3.5 4.83 3.5 4C3.5 3.17 4.17 2.5 5 2.5C5.83 2.5 6.5 3.17 6.5 4C6.5 4.83 5.83 5.5 5 5.5Z" fill="rgba(237,232,223,0.8)"/>
+          <path d="M5 0C2.79 0 1 1.79 1 4C1 7 5 13 5 13C5 13 9 7 9 4C9 1.79 7.21 0 5 0ZM5 5.5C4.17 5.5 3.5 4.83 3.5 4C3.5 3.17 4.17 2.5 5 2.5C5.83 2.5 6.5 3.17 6.5 4C6.5 4.83 5.83 5.5 5 5.5Z" fill="rgba(245,240,232,0.85)"/>
         </svg>
-        <span style={{ fontFamily: "var(--font-ui)", fontSize: "11px", color: "rgba(237,232,223,0.85)" }}>
-          {profile.distance ?? "1 km"}
-        </span>
+        <span style={{ fontFamily: "var(--font-ui)", fontSize: "11px", color: "rgba(245,240,232,0.9)" }}>{profile.distance ?? "1 km"}</span>
       </div>
 
-      {/* Info */}
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "14px 16px 18px" }}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginBottom: "10px" }}>
+      {/* Name + badges */}
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "18px 20px 22px" }}>
+        <p style={{ fontFamily: "var(--font-display)", fontSize: "32px", fontWeight: 600, color: "#FFFFFF", lineHeight: 1.15, letterSpacing: "-0.01em", marginBottom: "6px" }}>
+          {profile.name.charAt(0) + profile.name.slice(1).toLowerCase()}, {profile.age}
+        </p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
           {profile.extraBadges?.map((b) => <TraitBadge key={b.label} label={b.label} small={b.small} />)}
           {profile.wounds.slice(0, 2).map((w) => <WoundBadge key={w} label={w} />)}
           {profile.attachmentLabel && <AttachmentBadge label={profile.attachmentLabel} />}
         </div>
-
-        <div style={{ display: "flex", gap: "24px" }}>
-          <div>
-            <p style={{ fontFamily: "var(--font-ui)", fontSize: "10px", color: "rgba(217,216,216,0.55)", marginBottom: "1px" }}>
-              Ghost Risk
-            </p>
-            <p style={{
-              fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 600,
-              color: profile.ghostRisk >= 65 ? "#C44B4B" : "#FFFFFF",
-            }}>
-              {profile.ghostRisk}%
-            </p>
-          </div>
-          {profile.vibeScore !== null && (
-            <div>
-              <p style={{ fontFamily: "var(--font-ui)", fontSize: "10px", color: "rgba(217,216,216,0.55)", marginBottom: "1px" }}>
-                Vibe Score
-              </p>
-              <p style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 600, color: "#FFFFFF" }}>
-                {profile.vibeScore}
-              </p>
-            </div>
-          )}
-        </div>
       </div>
+    </div>
+  );
+}
+
+function Vitals({ profile }: { profile: Profile }) {
+  const replies = profile.ghostRisk >= 70 ? "Replies: eventually, maybe" : profile.ghostRisk >= 45 ? "Replies: when bored" : "Replies: surprisingly fast";
+  const items = [
+    profile.location,
+    profile.attachmentLabel,
+    replies,
+    "Looking for: whatever hurts",
+  ].filter(Boolean) as string[];
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", flexShrink: 0 }}>
+      {items.map((t) => (
+        <span key={t} style={{
+          fontFamily: "var(--font-ui)", fontSize: "12px", color: "#C9C3B8",
+          background: "#141414", border: "1px solid #2A2A2A", borderRadius: "9999px",
+          padding: "7px 13px",
+        }}>{t}</span>
+      ))}
+    </div>
+  );
+}
+
+function LifestylePhoto({ src, caption }: { src: string; caption: string }) {
+  return (
+    <div style={{ borderRadius: "18px", overflow: "hidden", position: "relative", height: "300px", flexShrink: 0, background: "#141414" }}>
+      <img src={src} alt="" aria-hidden style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 45%)" }} />
+      <p style={{ position: "absolute", bottom: "14px", left: "16px", right: "16px", fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic", color: "rgba(245,240,232,0.92)", lineHeight: 1.4 }}>
+        “{caption}”
+      </p>
     </div>
   );
 }
@@ -307,7 +302,7 @@ function ExReviewCard({ profile, colors }: { profile: Profile; colors: ReturnTyp
           style={{
             background: "rgba(107,30,35,0.08)",
             border: "1px solid rgba(107,30,35,0.32)",
-            borderRadius: "2px", padding: "10px 18px",
+            borderRadius: "12px", padding: "10px 18px",
             fontFamily: "var(--font-ui)", fontSize: "12px",
             fontWeight: 600, color: "#C44B4B", letterSpacing: "0.03em",
           }}
@@ -322,6 +317,7 @@ function ExReviewCard({ profile, colors }: { profile: Profile; colors: ReturnTyp
 export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) {
   const colors = useColors();
   const [isDraggingHandle, setIsDraggingHandle] = useState(false);
+  const shots = lifestyleShots(profile?.id ?? "placeholder");
 
   const handleHandleDrag = (_: unknown, info: PanInfo) => {
     setIsDraggingHandle(false);
@@ -365,7 +361,7 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
             }}
           >
             <div style={{
-              width: "40px", height: "4px", borderRadius: "2px",
+              width: "40px", height: "4px", borderRadius: "12px",
               backgroundColor: isDraggingHandle ? "#C44B4B" : colors.border,
               transform: isDraggingHandle ? "scaleX(1.6)" : "scaleX(1)",
               transition: "background-color 0.15s, transform 0.15s",
@@ -396,68 +392,69 @@ export function ProfileDetailPanel({ profile, onClose, onPass, onLike }: Props) 
             )}
           </div>
 
-          {/* Scrollable cards */}
+          {/* Scrollable cards — interleaved like a real dating profile */}
           <div
             className="lurch-scroll"
-            style={{ flex: 1, overflowY: "auto", padding: "0 16px" }}
+            style={{ flex: 1, overflowY: "auto", padding: "0 18px" }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px", paddingBottom: "16px" }}>
-              <PhotoCard profile={profile} />
+            <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingBottom: "20px" }}>
+              <HeroPhoto profile={profile} />
+              <Vitals profile={profile} />
               <PromptCard profile={profile} colors={colors} />
+              <LifestylePhoto src={shots[0].url} caption={shots[0].caption} />
               <TruthsAndLieCard profile={profile} colors={colors} />
               <ShadowPromptCard profile={profile} colors={colors} />
+              <LifestylePhoto src={shots[1].url} caption={shots[1].caption} />
               <ExReviewCard profile={profile} colors={colors} />
             </div>
           </div>
 
-          {/* Action bar — pass / like */}
+          {/* Action bar — pass / like (matches feed chrome) */}
           <div style={{
             flexShrink: 0,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: "32px",
-            padding: "16px 24px 20px",
+            gap: "30px",
+            padding: "16px 24px 22px",
             borderTop: `1px solid ${colors.border}`,
             background: colors.bg,
           }}>
             {/* Pass */}
             <button
               onClick={onPass}
+              aria-label="Pass"
               style={{
-                width: "60px", height: "60px", borderRadius: "50%",
-                border: `1.5px solid ${colors.border}`,
-                background: "transparent",
+                width: "62px", height: "62px", borderRadius: "9999px",
+                border: `1px solid #3D3D3D`,
+                background: "#141414",
                 display: "flex", alignItems: "center", justifyContent: "center",
+                boxShadow: "0 6px 18px -8px rgba(0,0,0,0.8)",
               }}
             >
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M6 6L16 16M16 6L6 16" stroke={colors.muted} strokeWidth="2" strokeLinecap="round"/>
+              <svg width="24" height="24" viewBox="0 0 22 22" fill="none">
+                <path d="M5.5 5.5L16.5 16.5M16.5 5.5L5.5 16.5" stroke="#C44B4B" strokeWidth="2.4" strokeLinecap="round"/>
               </svg>
             </button>
 
             {/* Like */}
             <button
               onClick={onLike}
+              aria-label="Like"
               style={{
-                width: "68px", height: "68px", borderRadius: "50%",
-                background: "#6B1E23",
+                width: "72px", height: "72px", borderRadius: "9999px",
+                background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 4px 16px rgba(107,30,35,0.45)",
+                boxShadow: "0 10px 26px -8px rgba(107,30,35,0.75)",
               }}
             >
-              <svg width="26" height="26" viewBox="0 0 22 22" fill="none">
+              <svg width="30" height="30" viewBox="0 0 22 22" fill="none">
                 <path
                   d="M11 19C11 19 3 13.5 3 8C3 5.5 5 3.5 7.5 3.5C9 3.5 10.3 4.2 11 5.2C11.7 4.2 13 3.5 14.5 3.5C17 3.5 19 5.5 19 8C19 13.5 11 19 11 19Z"
-                  fill="white"
-                  stroke="white"
-                  strokeWidth={1.5}
+                  fill="#F5F0E8"
                 />
               </svg>
             </button>
-
-            {/* Placeholder to balance layout */}
-            <div style={{ width: "60px" }} />
           </div>
         </motion.div>
       )}

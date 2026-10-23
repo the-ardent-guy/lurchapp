@@ -11,7 +11,7 @@ export function WoundBadge({ label }: Props) {
       style={{
         background: "rgba(107,30,35,0.22)",
         border: "1px solid rgba(107,30,35,0.6)",
-        borderRadius: "2px",
+        borderRadius: "12px",
         height: "24px",
         padding: "0 10px",
         display: "inline-flex",

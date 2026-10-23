@@ -52,7 +52,7 @@ export default function ProfilePage() {
             </p>
             <button
               onClick={() => router.push("/onboarding/gender")}
-              style={{ background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)", borderRadius: "2px", padding: "14px 22px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#F5F0E8", cursor: "pointer" }}
+              style={{ background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)", borderRadius: "12px", padding: "14px 22px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#F5F0E8", cursor: "pointer" }}
             >
               Build your damage profile
             </button>
@@ -69,14 +69,14 @@ export default function ProfilePage() {
       <FeedShell>
         <div className="h-full overflow-y-auto lurch-scroll" style={{ padding: "28px 24px 40px" }}>
           {/* Match XP HUD */}
-          <div style={{ background: "#141414", border: "1px solid #2A2A2A", borderRadius: "2px", padding: "18px 20px", marginBottom: "24px" }}>
+          <div style={{ background: "#141414", border: "1px solid #2A2A2A", borderRadius: "12px", padding: "18px 20px", marginBottom: "24px" }}>
             <p style={{ fontFamily: "var(--font-mono, var(--font-display))", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.14em", color: "#C44B4B", marginBottom: "8px" }}>
               Match XP · playful
             </p>
             <p style={{ fontFamily: "var(--font-display)", fontSize: "20px", fontWeight: 600, color: "#F5F0E8", lineHeight: 1.3 }}>
               {COPY.xpHud}
             </p>
-            <div style={{ marginTop: "12px", height: "6px", background: "#0A0A0A", borderRadius: "2px", overflow: "hidden" }}>
+            <div style={{ marginTop: "12px", height: "6px", background: "#0A0A0A", borderRadius: "12px", overflow: "hidden" }}>
               <div style={{ width: "62%", height: "100%", background: "#6B1E23" }} />
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function ProfilePage() {
           <p style={{ fontFamily: "var(--font-display)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.14em", color: "#9A958C", marginBottom: "12px" }}>
             You · SKU
           </p>
-          <div style={{ background: "#141414", border: "1px solid #2A2A2A", borderRadius: "2px", padding: "4px 18px 18px", marginBottom: "8px" }}>
+          <div style={{ background: "#141414", border: "1px solid #2A2A2A", borderRadius: "12px", padding: "4px 18px 18px", marginBottom: "8px" }}>
             <SkuRow label="Height" value="Taller in my main photo" />
             <SkuRow label="Job" value="Between things, thriving" />
             <SkuRow label="Attachment" value={attachmentLabelValue ?? "Undiagnosed"} />

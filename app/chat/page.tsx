@@ -54,7 +54,7 @@ function ChatInner() {
           </p>
         )}
         {messages.map((m, i) => (
-          <div key={i} style={{ alignSelf: "flex-end", maxWidth: "80%", background: "#6B1E23", color: "#F5F0E8", borderRadius: "2px", padding: "10px 14px", fontFamily: "var(--font-ui)", fontSize: "14px", lineHeight: 1.4 }}>
+          <div key={i} style={{ alignSelf: "flex-end", maxWidth: "80%", background: "#6B1E23", color: "#F5F0E8", borderRadius: "12px", padding: "10px 14px", fontFamily: "var(--font-ui)", fontSize: "14px", lineHeight: 1.4 }}>
             {m}
           </div>
         ))}
@@ -82,7 +82,7 @@ function ChatInner() {
                 style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   width: "100%", textAlign: "left", gap: "12px",
-                  background: "transparent", border: "1px solid #3D3D3D", borderRadius: "2px",
+                  background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px",
                   padding: "12px 14px", cursor: "pointer",
                 }}
               >
@@ -99,7 +99,7 @@ function ChatInner() {
         <div style={{ borderTop: "1px solid #2A2A2A", padding: "16px 20px calc(env(safe-area-inset-bottom, 0px) + 16px)", background: "#141414" }}>
           <button
             onClick={() => router.push("/feed")}
-            style={{ width: "100%", background: "transparent", border: "1px solid #3D3D3D", borderRadius: "2px", padding: "14px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", cursor: "pointer" }}
+            style={{ width: "100%", background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px", padding: "14px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", cursor: "pointer" }}
           >
             Go judge someone else instead
           </button>

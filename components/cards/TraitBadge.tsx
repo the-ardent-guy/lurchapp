@@ -11,7 +11,7 @@ export function TraitBadge({ label, small = false }: Props) {
       style={{
         background: "transparent",
         border: "1px solid #6B1E23",
-        borderRadius: "2px",
+        borderRadius: "12px",
         height: "24px",
         padding: "0 10px",
         display: "inline-flex",

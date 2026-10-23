@@ -11,7 +11,7 @@ export function AttachmentBadge({ label }: Props) {
       style={{
         background: "transparent",
         border: "1px solid #3D3D3D",
-        borderRadius: "2px",
+        borderRadius: "12px",
         height: "24px",
         padding: "0 10px",
         display: "inline-flex",

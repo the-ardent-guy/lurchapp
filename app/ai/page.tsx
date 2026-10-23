@@ -80,7 +80,7 @@ export default function AIPage() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
             {simulated ? (
-              <div style={{ background: colors.surface, border: `1px solid ${colors.border}`, borderRadius: "2px", padding: "18px 20px" }}>
+              <div style={{ background: colors.surface, border: `1px solid ${colors.border}`, borderRadius: "12px", padding: "18px 20px" }}>
                 <p style={{ fontFamily: "var(--font-ui)", fontSize: "14px", fontStyle: "italic", color: colors.text, lineHeight: 1.6 }}>
                   No real money changed hands — this is a showcase. But imagine: your wingman is now live, saying &ldquo;hey&rdquo; on your behalf, with a smiley, to people who will not reply.
                 </p>

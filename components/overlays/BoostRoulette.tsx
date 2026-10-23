@@ -61,7 +61,7 @@ export function BoostRoulette({ open, onClose }: Props) {
 
         {/* Reel */}
         <div style={{
-          background: "#0A0A0A", border: "1px solid #2A2A2A", borderRadius: "2px",
+          background: "#0A0A0A", border: "1px solid #2A2A2A", borderRadius: "12px",
           padding: "28px 16px", textAlign: "center", marginBottom: "20px",
         }}>
           {phase === "result" ? (

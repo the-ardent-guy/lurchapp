@@ -26,7 +26,7 @@ export default function WrappedPage() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
           {STATS.map((s) => (
-            <div key={s.label} style={{ background: "#141414", border: "1px solid #2A2A2A", borderRadius: "2px", padding: "20px" }}>
+            <div key={s.label} style={{ background: "#141414", border: "1px solid #2A2A2A", borderRadius: "12px", padding: "20px" }}>
               <p style={{ fontFamily: "var(--font-mono, var(--font-display))", fontSize: "34px", fontWeight: 700, color: "#F5F0E8", letterSpacing: "-0.02em" }}>{s.big}</p>
               <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", marginTop: "4px" }}>{s.label}</p>
             </div>
@@ -39,7 +39,7 @@ export default function WrappedPage() {
 
         <button
           onClick={() => router.push("/profile")}
-          style={{ marginTop: "24px", width: "100%", padding: "14px", background: "transparent", border: "1px solid #3D3D3D", borderRadius: "2px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", cursor: "pointer" }}
+          style={{ marginTop: "24px", width: "100%", padding: "14px", background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", cursor: "pointer" }}
         >
           Back to profile
         </button>

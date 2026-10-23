@@ -46,7 +46,7 @@ export default function SettingsPage() {
                     key={v}
                     onClick={() => setHaptics(v)}
                     style={{
-                      flex: 1, padding: "10px", borderRadius: "2px", cursor: "pointer",
+                      flex: 1, padding: "10px", borderRadius: "12px", cursor: "pointer",
                       background: on ? "#6B1E23" : "transparent",
                       border: `1px solid ${on ? "#6B1E23" : "#3D3D3D"}`,
                       color: on ? "#F5F0E8" : "#9A958C",
@@ -92,7 +92,7 @@ export default function SettingsPage() {
             onClick={beginIntercept}
             style={{
               marginTop: "28px", width: "100%", padding: "16px",
-              background: "transparent", border: "1px solid #3D3D3D", borderRadius: "2px",
+              background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px",
               fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.04em",
               textTransform: "uppercase", color: "#C44B4B", cursor: "pointer",
             }}

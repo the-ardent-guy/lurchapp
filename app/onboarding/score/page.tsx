@@ -76,7 +76,7 @@ export default function ScorePage() {
           style={{
             background: "#141414",
             border: "1px solid #2A2A2A",
-            borderRadius: "2px",
+            borderRadius: "12px",
             padding: "0 24px",
             marginBottom: "32px",
           }}

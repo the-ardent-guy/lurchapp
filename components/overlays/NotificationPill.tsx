@@ -38,7 +38,7 @@ export function NotificationPill() {
               background: "#161616",
               border: "1px solid #3D3D3D",
               borderLeft: "2px solid #6B1E23",
-              borderRadius: "2px",
+              borderRadius: "12px",
               boxShadow: "0px 4px 16px rgba(0,0,0,0.5)",
               padding: "9px 14px",
               pointerEvents: "auto",

@@ -27,7 +27,7 @@ function MiniCard({ profile, blurred }: { profile: typeof STATIC_PROFILES[0]; bl
       style={{
         width: "100%",
         height: "160px",
-        borderRadius: "2px",
+        borderRadius: "12px",
         overflow: "hidden",
         background: profile.photoColor,
         position: "relative",
@@ -135,7 +135,7 @@ export function MatchesScreen() {
         </p>
 
         {unlocked && (
-          <div style={{ background: "#141414", border: "1px solid #2A2A2A", borderRadius: "2px", padding: "14px 16px", marginBottom: "20px" }}>
+          <div style={{ background: "#141414", border: "1px solid #2A2A2A", borderRadius: "12px", padding: "14px 16px", marginBottom: "20px" }}>
             <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic", color: "#9A958C", lineHeight: 1.5 }}>
               You paid nothing — no real money changes hands here. The faces are unblurred. They still will not message you. That was always the product.
             </p>
@@ -158,7 +158,7 @@ export function MatchesScreen() {
             onClick={() => setPaywallOpen(true)}
             style={{
               marginTop: "24px", width: "100%", padding: "14px",
-              background: "transparent", border: "1px solid #3D3D3D", borderRadius: "2px",
+              background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px",
               fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", cursor: "pointer",
             }}
           >

@@ -57,7 +57,7 @@ export default function NotFound() {
           textAlign: "center",
           background: "#6B1E23",
           border: "1px solid rgba(245,240,232,0.14)",
-          borderRadius: "2px",
+          borderRadius: "12px",
           padding: "16px 24px",
           fontFamily: "var(--font-ui)",
           fontSize: "13px",

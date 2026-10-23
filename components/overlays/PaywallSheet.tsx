@@ -70,7 +70,7 @@ export function PaywallSheet({
         )}
 
         {blurredContent && (
-          <div style={{ position: "relative", marginBottom: "18px", borderRadius: "2px", overflow: "hidden" }}>
+          <div style={{ position: "relative", marginBottom: "18px", borderRadius: "12px", overflow: "hidden" }}>
             <div style={{ filter: "blur(14px)", pointerEvents: "none", transform: "scale(1.05)" }}>{blurredContent}</div>
             <div style={{ position: "absolute", inset: 0, background: "var(--lurch-blur-tint, rgba(107,30,35,0.35))" }} />
           </div>

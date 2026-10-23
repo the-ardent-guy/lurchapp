@@ -36,7 +36,7 @@ export function CardStack({ profiles, currentIndex, onSwipeLeft, onSwipeRight, o
           <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
             <button
               onClick={() => router.push("/filters")}
-              style={{ padding: "13px", background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)", borderRadius: "2px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "#F5F0E8", cursor: "pointer" }}
+              style={{ padding: "13px", background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)", borderRadius: "12px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "#F5F0E8", cursor: "pointer" }}
             >
               Adjust filters
             </button>
@@ -44,7 +44,7 @@ export function CardStack({ profiles, currentIndex, onSwipeLeft, onSwipeRight, o
               href="https://www.google.com/maps/search/parks+near+me"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ padding: "12px", background: "transparent", border: "1px solid #3D3D3D", borderRadius: "2px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", textDecoration: "none" }}
+              style={{ padding: "12px", background: "transparent", border: "1px solid #3D3D3D", borderRadius: "12px", fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", textDecoration: "none" }}
             >
               Touch grass
             </a>

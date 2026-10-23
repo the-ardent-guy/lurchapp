@@ -170,7 +170,7 @@ export default function FeedPage() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setFatigueOpen(false)}
-            style={{ display: "block", width: "100%", textAlign: "center", background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)", borderRadius: "2px", padding: "16px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#F5F0E8", textDecoration: "none", marginBottom: "4px" }}
+            style={{ display: "block", width: "100%", textAlign: "center", background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)", borderRadius: "12px", padding: "16px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#F5F0E8", textDecoration: "none", marginBottom: "4px" }}
           >
             Touch grass
           </a>

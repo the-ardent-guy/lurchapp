@@ -111,7 +111,7 @@ export default function TruthPage() {
                 style={{
                   background: "#141414",
                   border: "1px solid #2A2A2A",
-                  borderRadius: "2px",
+                  borderRadius: "12px",
                   textDecoration: "none",
                 }}
               >
