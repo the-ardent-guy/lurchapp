@@ -35,10 +35,12 @@ export function NotificationPill() {
             exit={{ opacity: 0, x: "calc(100% + 24px)" }}
             transition={{ type: "spring", stiffness: 400, damping: 32, mass: 0.8 }}
             style={{
-              background: "#FFAEAE",
-              borderRadius: "20px",
-              boxShadow: "0px 2px 10px rgba(0,0,0,0.18)",
-              padding: "8px 14px",
+              background: "#161616",
+              border: "1px solid #3D3D3D",
+              borderLeft: "2px solid #6B1E23",
+              borderRadius: "2px",
+              boxShadow: "0px 4px 16px rgba(0,0,0,0.5)",
+              padding: "9px 14px",
               pointerEvents: "auto",
             }}
           >
@@ -48,7 +50,7 @@ export function NotificationPill() {
                 fontWeight: 500,
                 fontSize: "12px",
                 lineHeight: "1.45",
-                color: "#262626",
+                color: "#F5F0E8",
               }}
             >
               {current.message}
