@@ -1,131 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLurchStore } from "@/lib/store";
-import { formatCountdown } from "@/lib/utils";
-import { DarkPatternLabel } from "@/components/typography/DarkPatternLabel";
+import { CTAButton } from "@/components/inputs/CTAButton";
+import { GhostButton } from "@/components/inputs/GhostButton";
+import { TechniqueLabel } from "@/components/typography/TechniqueLabel";
+import { CURIOSITY_TAX_LABEL } from "@/lib/pricing";
+import { COPY } from "@/lib/copy";
 
-const CHECK_ICON = (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <path d="M2.5 7L5.5 10L11.5 4" stroke="#4A7C59" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const FEATURES = [
-  "See who liked you — 4 people are waiting",
-  "Send the first message before she forgets you exist",
-  "5 Boosts/month, brief expensive bursts of hope",
-  "Read Receipts, know exactly when you were ignored",
-];
-
-function MatchCountdown({ expiryTimestamp, matchName }: { expiryTimestamp: number; matchName: string }) {
-  const [remaining, setRemaining] = useState(expiryTimestamp - Date.now());
-  useEffect(() => {
-    const id = setInterval(() => setRemaining(expiryTimestamp - Date.now()), 1000);
-    return () => clearInterval(id);
-  }, [expiryTimestamp]);
-
-  return (
-    <p style={{
-      fontFamily: "var(--font-display)", fontSize: "17px",
-      color: "#323232", lineHeight: 1.35, marginBottom: "6px",
-    }}>
-      {matchName}&apos;s message will expire in{" "}
-      <span style={{ color: "#E94057" }}>{formatCountdown(remaining)}</span>
-    </p>
-  );
-}
-
+// Shown over the feed when Ex on Record (ProfileDetailPanel) is tapped.
+// Dark sheet content (not pastel). Paying drops you on the absurdist checkout.
 export function PaywallPage() {
   const router = useRouter();
-  const { matchName, expiryTimestamp, closePaywall } = useLurchStore();
-  const expiry = expiryTimestamp ?? Date.now() + 24 * 60 * 60 * 1000;
+  const { matchName, closePaywall } = useLurchStore();
+
+  const who = matchName ? matchName.charAt(0) + matchName.slice(1).toLowerCase() : "Their";
+
+  const handlePay = () => {
+    closePaywall();
+    router.push("/pay");
+  };
 
   return (
-    <div style={{
-      background: "linear-gradient(125deg, rgb(230,230,230) 10%, rgb(247,196,196) 95%)",
-      padding: "28px 24px 24px",
-    }}>
-      {/* Timer */}
-      {matchName ? (
-        <MatchCountdown expiryTimestamp={expiry} matchName={matchName} />
-      ) : (
-        <p style={{
-          fontFamily: "var(--font-display)", fontSize: "17px",
-          color: "#323232", lineHeight: 1.35, marginBottom: "6px",
-        }}>
-          Your matches will expire in{" "}
-          <span style={{ color: "#E94057" }}>{formatCountdown(expiry - Date.now())}</span>
-        </p>
-      )}
+    <div style={{ padding: "28px 24px calc(env(safe-area-inset-bottom, 0px) + 24px)", background: "#161616" }}>
+      <TechniqueLabel technique={COPY.curiosityTechnique} detail="Social Proof" style={{ marginBottom: "14px" }} />
 
-      {/* Technique label */}
-      <DarkPatternLabel style={{ fontSize: "14px", marginBottom: "24px" }}>
-        Technique: Loss Aversion + Artificial Scarcity
-      </DarkPatternLabel>
-
-      {/* White inner card */}
-      <div style={{
-        background: "#FDFDFD", borderRadius: "14px",
-        padding: "18px 18px 16px", marginBottom: "16px",
-      }}>
-        <p style={{
-          fontFamily: "var(--font-display)", fontSize: "22px",
-          color: "#323232", marginBottom: "16px",
-        }}>
-          INR 499<span style={{ fontSize: "16px", color: "#707070" }}>/month</span>
-        </p>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          {FEATURES.map((f) => (
-            <div key={f} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
-              <span style={{ flexShrink: 0, marginTop: "2px" }}>{CHECK_ICON}</span>
-              <p style={{
-                fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic",
-                color: "#323232", lineHeight: 1.45,
-              }}>
-                {f}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Candid copy */}
-      <p style={{
-        fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic",
-        fontWeight: 500, color: "#323232", lineHeight: 1.55, marginBottom: "16px",
-      }}>
-        You would pay anything just to have someone talk to you. Not because you&apos;re desperate. Because you&apos;re human and you&apos;re lonely and this app has spent the last ten minutes engineering exactly that feeling.
+      <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "24px", fontWeight: 600, lineHeight: 1.2, color: "#F5F0E8", marginBottom: "10px" }}>
+        {who}&apos;s ex on record
+      </h2>
+      <p style={{ fontFamily: "var(--font-ui)", fontSize: "14px", fontStyle: "italic", lineHeight: 1.55, color: "#9A958C", marginBottom: "18px" }}>
+        {COPY.exRecord}
       </p>
 
-      {/* CTA */}
-      <button
-        onClick={() => { closePaywall(); router.push("/pay"); }}
-        style={{
-          display: "flex", alignItems: "center", justifyContent: "center",
-          width: "100%", height: "46px",
-          background: "#8B1A1A", borderRadius: "14px",
-          fontFamily: "var(--font-display)", fontSize: "16px",
-          fontWeight: 600, color: "#EAE6E6", textAlign: "center",
-          marginBottom: "12px",
-        }}
-      >
-        Subscribe to your loneliness
-      </button>
+      <p style={{ fontFamily: "var(--font-display)", fontSize: "20px", fontWeight: 700, color: "#F5F0E8", marginBottom: "16px" }}>
+        {CURIOSITY_TAX_LABEL}
+      </p>
 
-      {/* Ghost dismiss */}
-      <button
-        onClick={closePaywall}
-        style={{
-          display: "block", width: "100%", textAlign: "center",
-          fontFamily: "var(--font-ui)", fontSize: "12px",
-          fontStyle: "italic", fontWeight: 500, color: "#323232",
-        }}
-      >
-        no thanks, i&apos;m okay being left on read
-      </button>
+      <CTAButton onClick={handlePay}>{COPY.curiosityPrimary}</CTAButton>
+      <GhostButton dim onClick={closePaywall}>
+        {COPY.curiositySecondary}
+      </GhostButton>
     </div>
   );
 }

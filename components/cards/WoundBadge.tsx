@@ -4,11 +4,13 @@ interface Props {
   label: string;
 }
 
+// Wound tag - oxblood-tinted, not candy pink. One accent system.
 export function WoundBadge({ label }: Props) {
   return (
     <span
       style={{
-        background: "#EB7676",
+        background: "rgba(107,30,35,0.22)",
+        border: "1px solid rgba(107,30,35,0.6)",
         borderRadius: "12px",
         height: "24px",
         padding: "0 10px",
@@ -16,7 +18,7 @@ export function WoundBadge({ label }: Props) {
         alignItems: "center",
         fontFamily: "var(--font-ui)",
         fontSize: "11.5px",
-        color: "#101010",
+        color: "#F0DCDA",
         whiteSpace: "nowrap",
         flexShrink: 0,
       }}

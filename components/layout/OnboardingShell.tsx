@@ -2,6 +2,7 @@
 
 import { OnboardingProgress } from "@/components/nav/OnboardingProgress";
 import { BackButton } from "@/components/nav/BackButton";
+import { ONBOARDING_STEPS } from "@/lib/pricing";
 
 interface Props {
   children: React.ReactNode;
@@ -12,7 +13,7 @@ interface Props {
   bonusStep?: boolean;
 }
 
-export function OnboardingShell({ children, step, totalSteps = 4, showBack = true, onBack, bonusStep = false }: Props) {
+export function OnboardingShell({ children, step, totalSteps = ONBOARDING_STEPS, showBack = true, onBack, bonusStep = false }: Props) {
   return (
     <div className="flex flex-col h-full" style={{ background: "#0F0D0B" }}>
       <div
@@ -24,7 +25,7 @@ export function OnboardingShell({ children, step, totalSteps = 4, showBack = tru
           paddingRight: "28px",
         }}
       >
-        {showBack ? <BackButton onBack={onBack} /> : <div style={{ width: "56px" }} />}
+        {showBack ? <BackButton onBack={onBack} /> : <div style={{ width: "40px" }} />}
         <OnboardingProgress step={step} totalSteps={totalSteps} bonus={bonusStep} />
       </div>
 

@@ -104,8 +104,10 @@ interface PaywallSlice {
   matchName: string | null;
   expiryTimestamp: number | null;
   isPaywallOpen: boolean;
+  exUnlocked: boolean;
   openPaywall: (matchName: string) => void;
   closePaywall: () => void;
+  unlockEx: () => void; // showcase: simulate the Ex on Record unlock
 }
 
 interface NotificationSlice {
@@ -123,6 +125,13 @@ interface ExitInterceptSlice {
   resetIntercept: () => void;
 }
 
+interface FiltersSlice {
+  heightIndustryStandard: boolean;
+  classistMode: boolean;
+  setHeightIndustryStandard: (v: boolean) => void;
+  setClassistMode: (v: boolean) => void;
+}
+
 interface UISlice {
   activeTab: TabId;
   activeTransitionDirection: "up" | "down";
@@ -138,6 +147,7 @@ type LurchStore = OnboardingSlice &
   PaywallSlice &
   NotificationSlice &
   ExitInterceptSlice &
+  FiltersSlice &
   UISlice;
 
 // ─── Slice creators ───────────────────────────────────────────────────────────
@@ -211,8 +221,9 @@ const createFeedSlice: StateCreator<LurchStore, [], [], FeedSlice> = (set, get) 
       const matchProfile = profiles[currentCardIndex];
       get().setMatch(matchProfile);
     }
+    // Advance without wrapping so the end-of-deck state is reachable.
     set((s) => ({
-      currentCardIndex: (s.currentCardIndex + 1) % s.profiles.length,
+      currentCardIndex: Math.min(s.currentCardIndex + 1, s.profiles.length),
     }));
   },
   setMatch: (profile) => set({ matchedProfile: profile, hasMatched: true }),
@@ -231,6 +242,7 @@ const createPaywallSlice: StateCreator<LurchStore, [], [], PaywallSlice> = (set)
   matchName: null,
   expiryTimestamp: null,
   isPaywallOpen: false,
+  exUnlocked: false,
   openPaywall: (matchName) =>
     set((s) => ({
       matchName,
@@ -238,6 +250,7 @@ const createPaywallSlice: StateCreator<LurchStore, [], [], PaywallSlice> = (set)
       isPaywallOpen: true,
     })),
   closePaywall: () => set({ isPaywallOpen: false }),
+  unlockEx: () => set({ exUnlocked: true, isPaywallOpen: false }),
 });
 
 const createNotificationSlice: StateCreator<LurchStore, [], [], NotificationSlice> = (set) => ({
@@ -265,6 +278,13 @@ const createExitInterceptSlice: StateCreator<LurchStore, [], [], ExitInterceptSl
   resetIntercept: () => set({ stage: 0, isIntercepting: false }),
 });
 
+const createFiltersSlice: StateCreator<LurchStore, [], [], FiltersSlice> = (set) => ({
+  heightIndustryStandard: false,
+  classistMode: false,
+  setHeightIndustryStandard: (v) => set({ heightIndustryStandard: v }),
+  setClassistMode: (v) => set({ classistMode: v }),
+});
+
 const createUISlice: StateCreator<LurchStore, [], [], UISlice> = (set) => ({
   activeTab: "feed",
   activeTransitionDirection: "up",
@@ -283,5 +303,6 @@ export const useLurchStore = create<LurchStore>()((...a) => ({
   ...createPaywallSlice(...a),
   ...createNotificationSlice(...a),
   ...createExitInterceptSlice(...a),
+  ...createFiltersSlice(...a),
   ...createUISlice(...a),
 }));

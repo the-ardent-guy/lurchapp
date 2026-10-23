@@ -12,8 +12,13 @@ interface Props {
   onTabChange: (tab: TabId) => void;
 }
 
-const ACTIVE = "#E94057";
+// Active state reads as bright/legible; the oxblood accent carries the brand
+// via the top indicator bar + badge dot (oxblood is too dark to signal "active"
+// as a tint against a near-black bar).
+const ACTIVE = "#F5F0E8";
 const INACTIVE = "#AEADAD";
+const INDICATOR = "#6B1E23"; // oxblood accent
+const BADGE = "#C44B4B";
 
 function FeedIcon({ active }: { active: boolean }) {
   const c = active ? ACTIVE : INACTIVE;
@@ -66,7 +71,7 @@ const TABS: {
   { id: "feed",     label: "Discover", icon: (a) => <FeedIcon active={a} /> },
   { id: "messages", label: "Matches",  icon: (a) => <HeartIcon active={a} />, badge: true },
   { id: "wingman",  label: "Chat",     icon: (a) => <ChatIcon active={a} /> },
-  { id: "profile",  label: "Profile",  icon: (a) => <User size={22} color={a ? ACTIVE : INACTIVE} strokeWidth={a ? 2 : 1.5} fill={a ? "rgba(233,64,87,0.1)" : "none"} /> },
+  { id: "profile",  label: "Profile",  icon: (a) => <User size={22} color={a ? ACTIVE : INACTIVE} strokeWidth={a ? 2 : 1.5} fill={a ? "rgba(107,30,35,0.1)" : "none"} /> },
 ];
 
 export function TabBar({ activeTab, onTabChange }: Props) {
@@ -117,13 +122,27 @@ export function TabBar({ activeTab, onTabChange }: Props) {
             {...scalePressProps}
             onClick={() => handleTabPress(id)}
             className="flex-1 flex flex-col items-center justify-center gap-1"
+            style={{ position: "relative" }}
           >
+            {/* Oxblood accent indicator on the active tab */}
+            <span
+              aria-hidden
+              style={{
+                position: "absolute",
+                top: 0,
+                width: "22px",
+                height: "2px",
+                background: INDICATOR,
+                opacity: isActive ? 1 : 0,
+                transition: "opacity 0.2s",
+              }}
+            />
             <div className="relative">
               {icon(isActive)}
               {badge && (
                 <span
                   className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full"
-                  style={{ background: ACTIVE }}
+                  style={{ background: BADGE }}
                 />
               )}
             </div>

@@ -1,0 +1,55 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   LURCH — Editorial Brutalist Confession design tokens
+   Shared contract. This file is intended to be IDENTICAL in the marketing
+   (lurchout) and app (lurch-app) codebases. Do not fork values — if a token
+   changes, change it here and copy the whole file across.
+
+   One accent only: oxblood (--lurch-accent). Hot-pink as brand is retired.
+   Lime (--lurch-stamp) is a rare stamp, max 1–2 uses per screen.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Color roles */
+  --lurch-canvas:          #0A0A0A;
+  --lurch-canvas-elevated: #141414;
+  --lurch-sheet:           #161616;
+  --lurch-sheet-overlay:   rgba(0, 0, 0, 0.72);
+  --lurch-text:            #F5F0E8;
+  --lurch-text-muted:      #9A958C;
+  --lurch-text-faint:      #5C5852;
+  --lurch-accent:          #6B1E23; /* OXBLOOD — primary CTAs, wordmark, active tab */
+  --lurch-accent-hot:      #8F2A31; /* CTA pressed / hover */
+  --lurch-accent-text:     #F5F0E8; /* text on accent */
+  --lurch-stamp:           #C8F000; /* LIME — rare stamp only */
+  --lurch-border:          #2A2A2A;
+  --lurch-border-strong:   #3D3D3D;
+  --lurch-danger:          #C44B4B; /* destructive / Classist Mode / urgent alert text */
+  --lurch-blur-tint:       rgba(107, 30, 35, 0.35);
+  --lurch-success-mute:    #4A5C45;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radius — hard edges default (brutalist) */
+  --radius-none: 0;
+  --radius-hard: 2px;   /* default cards, buttons, chips */
+  --radius-sheet: 12px; /* top corners of bottom sheet only */
+  --radius-full: 9999px;
+
+  /* Border / shadow */
+  --border-width: 1px;
+  --shadow-none: none;
+  --shadow-stamp: 4px 4px 0 var(--lurch-accent); /* marketing wordmark only */
+
+  /* Type stacks */
+  --lurch-font-display: "Fraunces", "Libre Baskerville", Georgia, serif;
+  --lurch-font-ui: "Instrument Sans", "Satoshi", "Inter", system-ui, sans-serif;
+  --lurch-font-mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
+}

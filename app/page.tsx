@@ -4,22 +4,26 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ScreenWrapper } from "@/components/layout/ScreenWrapper";
+import { ModalOverlay } from "@/components/layout/ModalOverlay";
+import { CTAButton } from "@/components/inputs/CTAButton";
+import { GhostButton } from "@/components/inputs/GhostButton";
 import { useLurchStore } from "@/lib/store";
 import { scalePressProps } from "@/lib/animations";
+import { COPY } from "@/lib/copy";
 
 export default function SplashPage() {
   const router = useRouter();
   const setTransitionDirection = useLurchStore((s) => s.setTransitionDirection);
-  const [shaking, setShaking] = useState(false);
+  const [signInOpen, setSignInOpen] = useState(false);
 
   const handleBegin = () => {
     setTransitionDirection("up");
     router.push("/onboarding/gender");
   };
 
-  const handleSignIn = () => {
-    setShaking(true);
-    setTimeout(() => setShaking(false), 500);
+  const handleGuestContinue = () => {
+    setSignInOpen(false);
+    handleBegin();
   };
 
   return (
@@ -36,7 +40,7 @@ export default function SplashPage() {
           }}
         />
 
-        {/* Top gradient — keeps status bar / logo legible over the photo */}
+        {/* Top gradient - keeps status bar / logo legible over the photo */}
         <div
           style={{
             position: "absolute",
@@ -77,7 +81,8 @@ export default function SplashPage() {
                 fontFamily: "var(--font-heading)",
                 fontWeight: 600,
                 fontSize: "clamp(58px, 18vw, 84px)",
-                color: "#E94057",
+                color: "#F5F0E8",
+                textShadow: "3px 3px 0 #6B1E23",
                 transform: "rotate(-4deg)",
                 lineHeight: 1,
               }}
@@ -86,7 +91,7 @@ export default function SplashPage() {
             </h1>
           </div>
 
-          {/* Headline — centered but pushed a bit below true center */}
+          {/* Headline - centered but pushed a bit below true center */}
           <div
             style={{
               position: "absolute",
@@ -104,7 +109,7 @@ export default function SplashPage() {
                 fontWeight: 600,
                 fontSize: "clamp(42px, 13vw, 62px)",
                 lineHeight: 1.05,
-                color: "#E4CECE",
+                color: "#F5F0E8",
               }}
             >
               We match you
@@ -115,7 +120,7 @@ export default function SplashPage() {
                 fontWeight: 600,
                 fontSize: "clamp(42px, 13vw, 62px)",
                 lineHeight: 1.05,
-                color: "#E4CECE",
+                color: "#F5F0E8",
               }}
             >
               on your trauma.
@@ -154,24 +159,24 @@ export default function SplashPage() {
               style={{
                 display: "block",
                 width: "100%",
-                background: "#E94057",
-                border: "none",
-                borderRadius: "15px",
+                background: "linear-gradient(180deg, #7E2A31 0%, #661D22 100%)",
+                border: "1px solid rgba(245,240,232,0.16)",
+                borderRadius: "16px",
                 padding: "18px 24px",
+                minHeight: "58px",
                 fontFamily: "var(--font-ui)",
                 fontSize: "16px",
                 fontWeight: 600,
-                color: "#FFFFFF",
+                color: "#FBF7F0",
                 cursor: "pointer",
+                boxShadow: "0 12px 30px -8px rgba(107,30,35,0.6), inset 0 1px 0 rgba(245,240,232,0.18)",
               }}
             >
-              Begin Your Damage Profile
+              Create account
             </motion.button>
 
             <motion.button
-              onClick={handleSignIn}
-              animate={shaking ? { x: [0, -6, 6, -4, 4, 0] } : {}}
-              transition={{ duration: 0.35 }}
+              onClick={() => setSignInOpen(true)}
               style={{
                 display: "block",
                 width: "100%",
@@ -181,15 +186,62 @@ export default function SplashPage() {
                 border: "none",
                 fontFamily: "var(--font-ui)",
                 fontSize: "14px",
-                color: "#E9DEDE",
+                color: "#F5F0E8",
                 cursor: "pointer",
               }}
             >
-              Already have an account? <span style={{ color: "#E94057" }}>Sign In</span>
+              Already have an account? <span style={{ color: "#C44B4B" }}>Sign In</span>
             </motion.button>
           </div>
         </div>
       </div>
+
+      {/* Sign In - satire sheet. No auth vendor; guest-only showcase. */}
+      <ModalOverlay isOpen={signInOpen} onClose={() => setSignInOpen(false)}>
+        <div style={{ padding: "32px 28px calc(env(safe-area-inset-bottom, 0px) + 28px)" }}>
+          <p
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "10px",
+              textTransform: "uppercase",
+              letterSpacing: "0.18em",
+              color: "#C44B4B",
+              marginBottom: "14px",
+            }}
+          >
+            Welcome back
+          </p>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontSize: "30px",
+              fontWeight: 600,
+              lineHeight: 1.15,
+              color: "#F5F0E8",
+              marginBottom: "12px",
+            }}
+          >
+            {COPY.signinSheet}
+          </h2>
+          <p
+            style={{
+              fontFamily: "var(--font-ui)",
+              fontSize: "14px",
+              fontStyle: "italic",
+              lineHeight: 1.6,
+              color: "#9A958C",
+              marginBottom: "28px",
+            }}
+          >
+            There is nothing to sign into. There never was. You can start a damage profile
+            right now. No password. No one checking.
+          </p>
+          <CTAButton onClick={handleGuestContinue}>Continue as guest</CTAButton>
+          <GhostButton dim onClick={() => setSignInOpen(false)}>
+            Back
+          </GhostButton>
+        </div>
+      </ModalOverlay>
     </ScreenWrapper>
   );
 }

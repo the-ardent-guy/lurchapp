@@ -37,7 +37,7 @@ export function WarmNote({ visible }: Props) {
     const currentText = PARAGRAPHS[para];
 
     if (!currentText) {
-      // All paragraphs done — show footer after a beat
+      // All paragraphs done - show footer after a beat
       const t = setTimeout(() => setFooterVisible(true), FOOTER_DELAY);
       return () => clearTimeout(t);
     }
@@ -52,7 +52,7 @@ export function WarmNote({ visible }: Props) {
     }
 
     if (para < PARAGRAPHS.length - 1) {
-      // Paragraph done — pause then advance to next
+      // Paragraph done - pause then advance to next
       const t = setTimeout(
         () => setPhase({ para: para + 1, chars: 0 }),
         PARA_PAUSE
@@ -60,7 +60,7 @@ export function WarmNote({ visible }: Props) {
       return () => clearTimeout(t);
     }
 
-    // Last paragraph finished — show footer
+    // Last paragraph finished - show footer
     const t = setTimeout(() => setFooterVisible(true), FOOTER_DELAY);
     return () => clearTimeout(t);
   }, [phase, visible]);
@@ -70,7 +70,7 @@ export function WarmNote({ visible }: Props) {
   return (
     <div style={{ maxWidth: "88%", display: "flex", flexDirection: "column", gap: "22px" }}>
 
-      {/* Heading — Cal Sans, not typed */}
+      {/* Heading - Cal Sans, not typed */}
       <p style={{
         fontFamily: "var(--font-display)",
         fontSize: "22px",
@@ -108,7 +108,7 @@ export function WarmNote({ visible }: Props) {
                   display: "inline-block",
                   width: "2px",
                   height: "1em",
-                  background: "#E94057",
+                  background: "#C44B4B",
                   marginLeft: "2px",
                   verticalAlign: "text-bottom",
                   animation: "cursorBlink 0.9s step-end infinite",
@@ -119,7 +119,7 @@ export function WarmNote({ visible }: Props) {
         );
       })}
 
-      {/* Footer — fades in after typing completes */}
+      {/* Footer - fades in after typing completes */}
       <AnimatePresence>
         {footerVisible && (
           <motion.p

@@ -18,7 +18,7 @@ export function DividerLine({ onComplete, className = "", accent = false }: Prop
         initial="initial"
         animate="animate"
         onAnimationComplete={onComplete}
-        style={{ height: "1px", background: accent ? "#8B1A1A" : "#2E2720" }}
+        style={{ height: "1px", background: accent ? "#6B1E23" : "#2E2720" }}
       />
     </div>
   );

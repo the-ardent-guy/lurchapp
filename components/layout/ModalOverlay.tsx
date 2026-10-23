@@ -10,7 +10,7 @@ interface Props {
   preventClose?: boolean;
 }
 
-export function ModalOverlay({ isOpen, onClose, children, backdropOpacity = 0.92, preventClose = false }: Props) {
+export function ModalOverlay({ isOpen, onClose, children, backdropOpacity = 0.72, preventClose = false }: Props) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -19,15 +19,15 @@ export function ModalOverlay({ isOpen, onClose, children, backdropOpacity = 0.92
           animate={{ opacity: 1, transition: { duration: 0.25, ease: "easeOut" } }}
           exit={{ opacity: 0, transition: { duration: 0.2, ease: "easeIn" } }}
           className="fixed inset-0 z-[100] flex items-end justify-center"
-          style={{ background: `rgba(15, 13, 11, ${backdropOpacity})` }}
+          style={{ background: `rgba(0, 0, 0, ${backdropOpacity})` }}
           onClick={!preventClose ? onClose : undefined}
         >
           <motion.div
             initial={{ y: "100%" }}
-            animate={{ y: 0, transition: { duration: 0.35, ease: "easeOut" } }}
-            exit={{ y: "100%", transition: { duration: 0.25, ease: "easeIn" } }}
-            className="w-full max-w-md rounded-t-2xl overflow-hidden"
-            style={{ background: "#1A1612", border: "1px solid #2E2720", borderBottom: "none" }}
+            animate={{ y: 0, transition: { duration: 0.36, ease: [0.32, 0.72, 0, 1] } }}
+            exit={{ y: "100%", transition: { duration: 0.24, ease: "easeIn" } }}
+            className="w-full max-w-md overflow-hidden"
+            style={{ background: "#161616", border: "1px solid #2A2A2A", borderBottom: "none", borderTopLeftRadius: "12px", borderTopRightRadius: "12px" }}
             onClick={(e) => e.stopPropagation()}
           >
             {children}
