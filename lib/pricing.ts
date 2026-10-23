@@ -15,7 +15,7 @@ export const PAY_JOKE_TEE_INR = 799; // /pay absurdist tee - do NOT "fix" into 2
 export const PAY_JOKE_PUFF_INR = 20; // /pay veg puff - India gag, keep
 
 export const ONBOARDING_STEPS = 7; // gender, preference, attachment, wounds, interests, processing, score
-export const SWIPE_FATIGUE_AFTER = 12; // swipes before the fatigue interstitial
+export const SWIPE_FATIGUE_AFTER = 8; // swipes before the fatigue interstitial
 
 // Convenience formatted labels
 export const CURIOSITY_TAX_LABEL = `₹${CURIOSITY_TAX_INR}/mo`;

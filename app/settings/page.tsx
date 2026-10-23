@@ -87,6 +87,16 @@ export default function SettingsPage() {
             </button>
           </Row>
 
+          {/* The receipt - routes straight to the reckoning / share card */}
+          <Row>
+            <button
+              onClick={() => router.push("/wrapped")}
+              style={{ background: "transparent", border: "none", cursor: "pointer", padding: 0, fontFamily: "var(--font-ui)", fontSize: "15px", color: "#F5F0E8", textAlign: "left" }}
+            >
+              See what Lurch did to you →
+            </button>
+          </Row>
+
           {/* Leave */}
           <button
             onClick={beginIntercept}

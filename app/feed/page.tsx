@@ -165,15 +165,15 @@ export default function FeedPage() {
           <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "26px", fontWeight: 600, lineHeight: 1.2, color: "#F5F0E8", marginBottom: "20px" }}>
             {COPY.fatigue}
           </h2>
-          <a
-            href="https://www.google.com/maps/search/parks+near+me"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setFatigueOpen(false)}
-            style={{ display: "block", width: "100%", textAlign: "center", background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)", borderRadius: "12px", padding: "16px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#F5F0E8", textDecoration: "none", marginBottom: "4px" }}
+          <button
+            onClick={() => {
+              setFatigueOpen(false);
+              router.push("/wrapped");
+            }}
+            style={{ display: "block", width: "100%", textAlign: "center", background: "#6B1E23", border: "1px solid rgba(245,240,232,0.14)", borderRadius: "12px", padding: "16px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#F5F0E8", cursor: "pointer", marginBottom: "4px" }}
           >
-            Touch grass
-          </a>
+            See what this did to you
+          </button>
           <GhostButton dim onClick={() => setFatigueOpen(false)}>
             Continue damaging
           </GhostButton>
