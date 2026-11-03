@@ -1,6 +1,18 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Inter, Bebas_Neue } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+
+// Softique Demo — the app's display face, used for the LURCH wordmark so the
+// logo is identical to the app.
+const softique = localFont({
+  src: [
+    { path: "../public/fonts/SoftiqueDemo-SemiBold.otf", weight: "600", style: "normal" },
+    { path: "../public/fonts/SoftiqueDemo-Bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-logo",
+  display: "swap",
+});
 
 // Three families only. Instrument Serif for headings and big numbers,
 // Inter for UI and body, Bebas Neue for stamps.
@@ -54,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${instrumentSerif.variable} ${inter.variable} ${bebasNeue.variable}`}
+      className={`${instrumentSerif.variable} ${inter.variable} ${bebasNeue.variable} ${softique.variable}`}
     >
       <body>{children}</body>
     </html>
