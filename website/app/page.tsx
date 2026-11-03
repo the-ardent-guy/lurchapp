@@ -106,6 +106,40 @@ function FakeStats() {
   );
 }
 
+// ─── Image band (approved addition) ───
+function Band() {
+  return (
+    <section
+      style={{
+        position: "relative",
+        minHeight: "58vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        borderTop: "1px solid var(--border)",
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/band-bed.webp"
+        alt=""
+        aria-hidden="true"
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+      />
+      <div
+        aria-hidden="true"
+        style={{ position: "absolute", inset: 0, background: "linear-gradient(0deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 100%)" }}
+      />
+      <div className="wrap" style={{ position: "relative", textAlign: "center" }}>
+        <h2 className="display" style={{ fontSize: "clamp(32px, 6vw, 64px)" }}>
+          Still together. Technically.
+        </h2>
+      </div>
+    </section>
+  );
+}
+
 // ─── 4. How it works ───
 function HowItWorks() {
   const steps = [
@@ -291,8 +325,8 @@ function Seriously() {
 // ─── 9. Merch ───
 function Merch() {
   const items: { name: string; tag: string; price?: string; img?: string }[] = [
-    { name: "Romantically Freelancing tee", tag: "Available for select projects.", price: "₹699", img: "/tee-natural-bone.png" },
-    { name: "Serial Monogamist tee", tag: "In a situationship economy.", price: "₹699", img: "/tee-washed-black.png" },
+    { name: "Serial Monogamist tee", tag: "In a situationship economy.", price: "₹699", img: "/merch-serial-monogamist.webp" },
+    { name: "Romantically Freelancing tee", tag: "Available for select projects.", price: "₹699", img: "/merch-romantically-freelancing.webp" },
     { name: "Ghost Probability 87% tee", tag: "You already know." },
     { name: "Situationship Veteran cap", tag: "Served. Never discharged." },
     { name: "I Agree to Become Inventory tote", tag: "Carries your groceries and your baggage." },
@@ -365,8 +399,30 @@ function FaqSection() {
 // ─── 11. Final CTA ───
 function FinalCta() {
   return (
-    <section className="section" style={{ borderTop: "1px solid var(--border)", textAlign: "center" }}>
-      <div className="wrap">
+    <section
+      className="section"
+      style={{
+        position: "relative",
+        borderTop: "1px solid var(--border)",
+        textAlign: "center",
+        overflow: "hidden",
+        minHeight: "66vh",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/lonely.webp"
+        alt=""
+        aria-hidden="true"
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+      />
+      <div
+        aria-hidden="true"
+        style={{ position: "absolute", inset: 0, background: "linear-gradient(0deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.6) 100%)" }}
+      />
+      <div className="wrap" style={{ position: "relative" }}>
         <h2 className="display" style={{ fontSize: "clamp(40px, 8vw, 80px)", marginBottom: "var(--s5)" }}>
           You&apos;ll be back anyway.
         </h2>
@@ -408,6 +464,7 @@ export default function Home() {
       <main>
         <Hero />
         <FakeStats />
+        <Band />
         <HowItWorks />
         <Features />
         <Testimonials />
