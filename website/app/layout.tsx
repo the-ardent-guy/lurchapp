@@ -1,40 +1,73 @@
-import type { Metadata } from "next";
-import { Fraunces, Courier_Prime, DM_Sans } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Instrument_Serif, Inter, Bebas_Neue } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const fraunces = Fraunces({
+// Softique Demo — the app's display face, used for the LURCH wordmark so the
+// logo is identical to the app.
+const softique = localFont({
+  src: [
+    { path: "../public/fonts/SoftiqueDemo-SemiBold.otf", weight: "600", style: "normal" },
+    { path: "../public/fonts/SoftiqueDemo-Bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-logo",
+  display: "swap",
+});
+
+// Three families only. Instrument Serif for headings and big numbers,
+// Inter for UI and body, Bebas Neue for stamps.
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
+  weight: "400",
   style: ["normal", "italic"],
-  // Fraunces is a variable font. Without the opsz axis, next/font pins optical
-  // size at its default (14 - a text cut), which renders far too wide and heavy
-  // at display sizes. Including it re-enables automatic optical sizing.
-  axes: ["opsz"],
-  variable: "--font-display",
+  variable: "--font-serif",
+  display: "swap",
 });
 
-const courier = Courier_Prime({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-mono",
+  variable: "--font-ui",
+  display: "swap",
 });
 
-const dmSans = DM_Sans({
+const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
-  variable: "--font-body",
+  weight: "400",
+  variable: "--font-stamp",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "LURCH — Finally, love optimised.",
-  description: "Real connection. Algorithmically guaranteed.",
+  title: "Lurch | Finally, love optimised.",
+  description:
+    "Lurch matches you on your trauma. A satirical dating app that shows how real ones keep you swiping. Free. Try it now.",
   openGraph: {
-    title: "LURCH — Finally, love optimised.",
-    description: "Real connection. Algorithmically guaranteed.",
+    title: "Lurch | Finally, love optimised.",
+    description:
+      "Lurch matches you on your trauma. A satirical dating app that shows how real ones keep you swiping. Free. Try it now.",
+    type: "website",
+    url: "https://lurchout.vercel.app",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lurch | Finally, love optimised.",
+    description:
+      "Lurch matches you on your trauma. A satirical dating app that shows how real ones keep you swiping. Free. Try it now.",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0A0A0A",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${courier.variable} ${dmSans.variable}`}>
+    <html
+      lang="en"
+      className={`${instrumentSerif.variable} ${inter.variable} ${bebasNeue.variable} ${softique.variable}`}
+    >
       <body>{children}</body>
     </html>
   );
