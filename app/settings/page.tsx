@@ -73,7 +73,7 @@ export default function SettingsPage() {
           {/* Reduced motion note */}
           <Row>
             <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", color: "#9A958C", lineHeight: 1.6 }}>
-              If your device asks for reduced motion, the score theatre, the sheets and the swipe physics all calm down on their own.
+              Reduced motion is on. We stopped the shaking. Your feelings are your problem.
             </p>
           </Row>
 

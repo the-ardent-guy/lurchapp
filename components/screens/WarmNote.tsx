@@ -8,7 +8,7 @@ interface Props {
 }
 
 const PARAGRAPHS = [
-  "You don't need an app to do an analysis of you. You're not a dataset. You're not a compatibility score or a wound index.",
+  "No app can do an analysis of you. You're not a dataset. You're not a compatibility score or a wound index.",
   "A very beautiful person once told me: be kind and have courage. I'd like to add, wear a nice perfume, fix your dressing, and read a book. You're good to go.",
   "For the women reading this: you have spent your whole life being evaluated. Your looks, your weight, your laugh, whether you're too much or not enough. This app is about to do it again. Just know that the evaluation says nothing true about you. It never has.",
 ];

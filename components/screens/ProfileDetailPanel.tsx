@@ -294,7 +294,7 @@ function ExReviewCard({ profile, colors }: { profile: Profile; colors: ReturnTyp
           fontFamily: "var(--font-ui)", fontSize: "12px", fontStyle: "italic",
           color: colors.muted, letterSpacing: "0.02em",
         }}>
-          Unlocked. No money changed hands. The review was never going to help you.
+          Done. No money moved. The review was never going to help you.
         </p>
       ) : (
         <button
@@ -307,7 +307,7 @@ function ExReviewCard({ profile, colors }: { profile: Profile; colors: ReturnTyp
             fontWeight: 600, color: "#C44B4B", letterSpacing: "0.03em",
           }}
         >
-          Unlock for ₹299/mo
+          Read it for ₹299/mo
         </button>
       )}
     </div>

@@ -9,7 +9,7 @@ export const COPY = {
   curiosityTitle: "Someone liked you. Identity is a premium feature.",
   curiosityBody: "This is how the industry funds itself.",
   curiosityTechnique: "Loss Aversion",
-  curiosityPrimary: `Unlock my dopamine (₹${CURIOSITY_TAX_INR}/mo)`,
+  curiosityPrimary: `Pay ₹${CURIOSITY_TAX_INR} to feel wanted`,
   curiositySecondary: "I'm fine being free and unseen",
   curiosityAlt: "Subscribe to your loneliness",
 
@@ -58,7 +58,7 @@ export const COPY = {
   notFound: "This route ghosted you.",
   notFoundSub: "404: expectations.",
   wrapped: "You swiped left on 400 people. Your type is still your ex.",
-  exRecord: "Their ex left a review. Blurred for your protection and our ARR.",
+  exRecord: "Their ex left a review. Blurred for your protection and our revenue.",
   superLurch: `Spend ₹${SUPER_LURCH_INR} to jump the queue of people they will also ignore.`,
   superResult: "Delivered to their Notifications Graveyard.",
   inventory: "I agree to become inventory.",

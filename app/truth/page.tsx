@@ -131,7 +131,7 @@ export default function TruthPage() {
           <p
             style={{ fontFamily: "var(--font-ui)", fontSize: "15px", fontStyle: "italic", lineHeight: "1.75", color: "#F0EDED" }}
           >
-            Intimacy is not found. It is built slowly, with someone imperfect, in a context where you both show up repeatedly, in a body that is physically present, doing something that matters.
+            You can&apos;t download intimacy. You build it slowly, with one flawed person, in the same room, again.
           </p>
           <p
             style={{ fontFamily: "var(--font-ui)", fontSize: "15px", fontStyle: "italic", lineHeight: "1.75", color: "#F0EDED" }}
@@ -141,7 +141,7 @@ export default function TruthPage() {
           <p
             style={{ fontFamily: "var(--font-ui)", fontSize: "15px", fontStyle: "italic", lineHeight: "1.75", color: "#F0EDED" }}
           >
-            You don&apos;t need a better algorithm. You might need a better Tuesday evening.
+            Your algorithm is fine. Your Tuesday evenings are the problem.
           </p>
         </div>
 

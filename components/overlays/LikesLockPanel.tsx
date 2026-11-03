@@ -30,7 +30,7 @@ export function LikesLockPanel() {
           4 people liked you
         </p>
         <p className="text-xs" style={{ fontFamily: "var(--font-ui)", color: "#8A8070" }}>
-          Unlock to see who
+          Pay to see who
         </p>
       </div>
       <button
