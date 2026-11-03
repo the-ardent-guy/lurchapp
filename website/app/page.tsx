@@ -325,8 +325,8 @@ function Seriously() {
 // ─── 9. Merch ───
 function Merch() {
   const items: { name: string; tag: string; price?: string; img?: string }[] = [
-    { name: "Serial Monogamist tee", tag: "In a situationship economy.", price: "₹699", img: "/merch-serial-monogamist.webp" },
-    { name: "Romantically Freelancing tee", tag: "Available for select projects.", price: "₹699", img: "/merch-romantically-freelancing.webp" },
+    { name: "Serial Monogamist tee", tag: "In a situationship economy.", price: "₹699", img: "/tee-natural-bone.png" },
+    { name: "Romantically Freelancing tee", tag: "Available for select projects.", price: "₹699", img: "/tee-washed-black.png" },
     { name: "Ghost Probability 87% tee", tag: "You already know." },
     { name: "Situationship Veteran cap", tag: "Served. Never discharged." },
     { name: "I Agree to Become Inventory tote", tag: "Carries your groceries and your baggage." },
