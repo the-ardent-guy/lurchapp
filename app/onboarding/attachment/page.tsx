@@ -12,8 +12,8 @@ type AttachmentOption = "anxious" | "avoidant" | "disorganized" | "secure";
 
 const OPTIONS: { style: AttachmentOption; label: string; selectedLabel?: string; sub: string }[] = [
   { style: "anxious",     label: "Anxious",          sub: "I re-read the last message eleven times" },
-  { style: "avoidant",    label: "Avoidant",          sub: "I need space ( ongoing. )" },
-  { style: "disorganized",label: "Fearful - Avoidant",sub: "I want closeness & it terrifies me." },
+  { style: "avoidant",    label: "Avoidant",          sub: "I need space (ongoing)" },
+  { style: "disorganized",label: "Fearful-avoidant",sub: "I want closeness and it terrifies me." },
   { style: "secure",      label: "Secure", selectedLabel: "Secure, bitch.", sub: "I have a therapist & I'm fine" },
 ];
 

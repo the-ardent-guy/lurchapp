@@ -132,7 +132,7 @@ export default function PreferencePage() {
               color: "#AEADAD",
             }}
           >
-            The algorithm needs to know. Your heart already does. Your mother has opinions too.
+            The algorithm needs to know. Your mother already has a list.
           </p>
         </div>
 

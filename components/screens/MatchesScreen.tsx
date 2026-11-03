@@ -179,7 +179,7 @@ export function MatchesScreen() {
                 {COPY.curiosityTitle}
               </h3>
               <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic", color: "#9A958C", lineHeight: 1.55, marginBottom: "16px" }}>
-                {COPY.curiosityBody} You would pay anything just to have someone talk to you, and this app has spent the last ten minutes building exactly that feeling.
+                {COPY.curiosityBody} You&apos;d pay anything for someone to talk to you. We spent ten minutes making sure.
               </p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: "9px", marginBottom: "18px" }}>

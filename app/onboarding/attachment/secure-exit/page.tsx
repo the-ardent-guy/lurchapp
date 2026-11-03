@@ -41,7 +41,7 @@ export default function SecureExitPage() {
             style={{ fontFamily: "var(--font-ui)", fontSize: "14px", lineHeight: "1.6", color: "#AEADAD" }}
           >
             <p>
-              You don&apos;t need an algorithm to find connection. You probably make friends easily, communicate your needs, and leave situations that aren&apos;t working for you. We genuinely have nothing to offer you here.
+              An algorithm won&apos;t help you find connection. You probably make friends easily, communicate your needs, and leave situations that aren&apos;t working for you. We genuinely have nothing to offer you here.
             </p>
             <p>You must have a lot of money.</p>
             <p>

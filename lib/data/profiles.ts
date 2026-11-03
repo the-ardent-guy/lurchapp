@@ -97,7 +97,7 @@ export const STATIC_PROFILES: Profile[] = [
       ],
       lieIndex: 1,
     },
-    matchedBecause: "you both called it complicated. it wasn't complicated.",
+    matchedBecause: "You both called it complicated. It wasn't complicated.",
     shadowPrompt: {
       question: "What I'm actually looking for:",
       answer: "Someone patient enough to wait while I figure out why I keep leaving before they can.",
