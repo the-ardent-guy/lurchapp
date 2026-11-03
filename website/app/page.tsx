@@ -1,5 +1,4 @@
 import Nav from "@/components/Nav";
-import HeroPhone from "@/components/HeroPhone";
 import FeatureFlip from "@/components/FeatureFlip";
 import Faq from "@/components/Faq";
 import FakeNotifications from "@/components/FakeNotifications";
@@ -13,16 +12,47 @@ const anchor = { scrollMarginTop: "80px" } as const;
 // ─── 2. Hero ───
 function Hero() {
   return (
-    <section id="top" style={{ ...anchor, paddingTop: "calc(64px + 48px)", paddingBottom: "var(--s7)" }}>
-      <div className="wrap hero-grid">
-        <div>
+    <section
+      id="top"
+      style={{
+        ...anchor,
+        position: "relative",
+        minHeight: "88vh",
+        display: "flex",
+        alignItems: "center",
+        overflow: "hidden",
+        paddingTop: "calc(64px + 40px)",
+        paddingBottom: "var(--s7)",
+      }}
+    >
+      {/* Full-bleed banner, like the app home screen */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/hero-couple.webp"
+        alt=""
+        aria-hidden="true"
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+      />
+      {/* Dark gradient so the headline stays legible over the photo */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.78) 42%, rgba(10,10,10,0.3) 100%), linear-gradient(0deg, rgba(10,10,10,0.75) 0%, rgba(10,10,10,0) 45%)",
+        }}
+      />
+
+      <div className="wrap" style={{ position: "relative" }}>
+        <div style={{ maxWidth: "620px" }}>
           <p className="eyebrow" style={{ marginBottom: "var(--s4)" }}>
             THE DATING APP, FINALLY HONEST
           </p>
           <h1 className="display" style={{ fontSize: "clamp(44px, 8vw, 80px)", marginBottom: "var(--s4)" }}>
             Finally, love optimised.
           </h1>
-          <p style={{ fontSize: "20px", color: "var(--muted)", maxWidth: "34ch", marginBottom: "var(--s5)" }}>
+          <p style={{ fontSize: "20px", color: "var(--text)", opacity: 0.85, maxWidth: "34ch", marginBottom: "var(--s5)" }}>
             We match you on your trauma. Not for bots. For baggage.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--s3)", marginBottom: "var(--s4)" }}>
@@ -38,12 +68,8 @@ function Hero() {
             Rated 4.9 by people who haven&apos;t left yet.
           </p>
         </div>
-
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <HeroPhone />
-        </div>
       </div>
-      <div id="hero-end" aria-hidden="true" />
+      <div id="hero-end" aria-hidden="true" style={{ position: "absolute", bottom: 0 }} />
     </section>
   );
 }
