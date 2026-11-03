@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useReducedMotion } from "framer-motion";
 import { ScreenWrapper } from "@/components/layout/ScreenWrapper";
 import { ProgressBar } from "@/components/indicators/ProgressBar";
 import { ProcessingStatus } from "@/components/screens/ProcessingStatus";
@@ -9,10 +10,11 @@ import { ProcessingFootnote } from "@/components/screens/ProcessingFootnote";
 import { useLurchStore } from "@/lib/store";
 import { computeScores } from "@/lib/utils";
 
-const DURATION_MS = 7000;
-
 export default function ProcessingPage() {
   const router = useRouter();
+  const reduced = !!useReducedMotion();
+  // Fake-algorithm dwell: spec wants ≥4.0s / ≤6.5s normally, ≤1.5s reduced.
+  const DURATION_MS = reduced ? 1400 : 5500;
   const { wounds, honestAnswer, setScores, setTransitionDirection } = useLurchStore();
   const [done, setDone] = useState(false);
   const navigated = useRef(false);
@@ -42,7 +44,7 @@ export default function ProcessingPage() {
             fontSize: "10px",
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: "#E94057",
+            color: "#C44B4B",
             marginBottom: "14px",
           }}>
             LURCH DIAGNOSTIC SYSTEM
@@ -60,13 +62,32 @@ export default function ProcessingPage() {
           <ProgressBar durationMs={DURATION_MS} onComplete={handleComplete} />
         </div>
 
-        {/* Middle: status lines — fills remaining space */}
+        {/* Middle: status lines - fills remaining space */}
         <div className="flex-1">
-          <ProcessingStatus onSequenceComplete={() => setDone(true)} />
+          <ProcessingStatus reducedMotion={reduced} onSequenceComplete={() => setDone(true)} />
         </div>
 
-        {/* Bottom: footnote */}
+        {/* Bottom: footnote (+ skip, reduced-motion only) */}
         <ProcessingFootnote />
+        {reduced && (
+          <button
+            onClick={handleComplete}
+            style={{
+              marginTop: "16px",
+              alignSelf: "center",
+              background: "transparent",
+              border: "none",
+              fontFamily: "var(--font-ui)",
+              fontSize: "12px",
+              color: "#9A958C",
+              textDecoration: "underline",
+              textUnderlineOffset: "3px",
+              cursor: "pointer",
+            }}
+          >
+            Skip the theatrics
+          </button>
+        )}
       </div>
     </ScreenWrapper>
   );

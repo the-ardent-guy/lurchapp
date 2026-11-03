@@ -5,6 +5,7 @@ import { stageSlideIn } from "@/lib/animations";
 import { CTAButton } from "@/components/inputs/CTAButton";
 import { useRouter } from "next/navigation";
 import { useLurchStore } from "@/lib/store";
+import { COPY } from "@/lib/copy";
 
 interface Props {
   onLeave: () => void;
@@ -47,6 +48,11 @@ export function ExitStageConfession({ onLeave }: Props) {
         style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 600, color: "#F0EDED" }}
       >
         You can leave now.
+      </p>
+      <p
+        style={{ fontFamily: "var(--font-ui)", fontSize: "13px", fontStyle: "italic", lineHeight: "1.6", color: "#9A958C" }}
+      >
+        {COPY.exit3}
       </p>
       <CTAButton onClick={handleLeave}>Take me to the truth</CTAButton>
     </motion.div>

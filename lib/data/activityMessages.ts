@@ -1,5 +1,5 @@
 export const ACTIVITY_MESSAGES = [
-  "Priya is active right now — she's typed and deleted twice",
+  "Priya is active right now. She's typed and deleted twice",
   "Someone viewed your profile three times without swiping",
   "Someone super-lurched you. We can't tell you who without a subscription.",
   "Your ex just joined. We thought you should know.",

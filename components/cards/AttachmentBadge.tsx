@@ -4,11 +4,13 @@ interface Props {
   label: string;
 }
 
+// Attachment label - neutral brutalist outline chip.
 export function AttachmentBadge({ label }: Props) {
   return (
     <span
       style={{
-        background: "#EB7676",
+        background: "transparent",
+        border: "1px solid #3D3D3D",
         borderRadius: "12px",
         height: "24px",
         padding: "0 10px",
@@ -16,7 +18,7 @@ export function AttachmentBadge({ label }: Props) {
         alignItems: "center",
         fontFamily: "var(--font-ui)",
         fontSize: "11.5px",
-        color: "#101010",
+        color: "#C9C3B8",
         whiteSpace: "nowrap",
         flexShrink: 0,
       }}

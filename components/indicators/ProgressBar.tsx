@@ -65,8 +65,8 @@ export function ProgressBar({ durationMs, onComplete }: Props) {
         className="h-full rounded-full"
         style={{
           width: `${fill * 100}%`,
-          background: "#E94057",
-          boxShadow: "0 0 10px rgba(233,64,87,0.7)",
+          background: "#6B1E23",
+          boxShadow: "0 0 10px rgba(107,30,35,0.7)",
           transition: "none",
         }}
       />

@@ -33,7 +33,7 @@ export function TypewriterText({ text, speedMs = 28, onComplete }: Props) {
     <span style={{ fontFamily: "var(--font-display)", fontSize: "15px", lineHeight: "1.5", color: "#F0EDED" }}>
       {displayed}
       {index < text.length && (
-        <span className="animate-pulse" style={{ color: "#E94057" }}>|</span>
+        <span className="animate-pulse" style={{ color: "#C44B4B" }}>|</span>
       )}
     </span>
   );

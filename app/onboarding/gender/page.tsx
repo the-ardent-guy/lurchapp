@@ -21,8 +21,8 @@ function GenderRow({ label, selected, onSelect }: { label: string; selected: boo
         width: "100%",
         padding: "18px 20px",
         borderRadius: "15px",
-        background: selected ? "#E94057" : "transparent",
-        border: `1px solid ${selected ? "#E94057" : "rgba(232,230,234,0.25)"}`,
+        background: selected ? "#6B1E23" : "transparent",
+        border: `1px solid ${selected ? "#6B1E23" : "rgba(232,230,234,0.25)"}`,
         cursor: "pointer",
         transition: "background 0.15s, border-color 0.15s",
         flexShrink: 0,
@@ -33,7 +33,7 @@ function GenderRow({ label, selected, onSelect }: { label: string; selected: boo
           fontFamily: "var(--font-display)",
           fontSize: "16px",
           lineHeight: "1.5",
-          color: selected ? "#0F0D0B" : "#F0EDED",
+          color: selected ? "#F5F0E8" : "#F0EDED",
           fontWeight: 600,
           textAlign: "left",
         }}
@@ -54,7 +54,7 @@ function GenderRow({ label, selected, onSelect }: { label: string; selected: boo
             fill="none"
             style={{ flexShrink: 0 }}
           >
-            <path d="M4 10L8 14L16 6" stroke="#0F0D0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M4 10L8 14L16 6" stroke="#F5F0E8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </motion.svg>
         )}
         {!selected && (
@@ -176,7 +176,7 @@ export default function GenderPage() {
         </div>
       </OnboardingShell>
 
-      {/* Floating aside — the app commenting on how long you've been scrolling */}
+      {/* Floating aside - the app commenting on how long you've been scrolling */}
       <AnimatePresence>
         {showScrollComment && (
           <motion.p

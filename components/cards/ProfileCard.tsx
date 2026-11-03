@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useTransform, animate, useReducedMotion } from "framer-motion";
 import type { PanInfo } from "framer-motion";
 import type { Profile } from "@/lib/store";
 import { WoundBadge } from "./WoundBadge";
 import { AttachmentBadge } from "./AttachmentBadge";
 import { TraitBadge } from "./TraitBadge";
+
+export interface SwipeSignal {
+  dir: "left" | "right" | "up";
+  nonce: number;
+}
 
 interface Props {
   profile: Profile;
@@ -15,6 +20,9 @@ interface Props {
   onSwipeUp?: () => void;
   isTop: boolean;
   stackIndex: number;
+  // Incremented by the visible Like/Pass buttons to fly the top card the same
+  // way a gesture does.
+  swipeSignal?: SwipeSignal | null;
 }
 
 const SWIPE_THRESHOLD = 100;
@@ -25,15 +33,37 @@ const STACK_SPRING = { type: "spring" as const, stiffness: 300, damping: 28 };
 const SETTLE_SPRING = { type: "spring" as const, stiffness: 300, damping: 40 };
 const FLY_OFF_SPRING = { type: "spring" as const, stiffness: 200, damping: 24 };
 
-export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isTop, stackIndex }: Props) {
+export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isTop, stackIndex, swipeSignal }: Props) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-12, 12]);
   const lurchOpacity = useTransform(x, [FADE_START, FADE_END], [0, 1]);
   const passOpacity = useTransform(x, [-FADE_END, -FADE_START], [1, 0]);
   const [isDragging, setIsDragging] = useState(false);
+  const reduced = useReducedMotion();
 
   const isUnavailable = profile.id === "unavailable";
+
+  // Button-driven swipe - matches the gesture fly-off (or instant under
+  // reduced motion). Fires the matching handler when the card is off-screen.
+  const lastNonce = useRef(swipeSignal?.nonce ?? 0);
+  useEffect(() => {
+    if (!isTop || !swipeSignal || swipeSignal.nonce === lastNonce.current) return;
+    lastNonce.current = swipeSignal.nonce;
+    if (swipeSignal.dir === "up") {
+      onSwipeUp?.();
+      return;
+    }
+    const right = swipeSignal.dir === "right";
+    const handler = right ? onSwipeRight : onSwipeLeft;
+    if (reduced) {
+      handler();
+      return;
+    }
+    const target = right ? window.innerWidth + 200 : -(window.innerWidth + 200);
+    animate(x, target, FLY_OFF_SPRING).then(() => handler());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [swipeSignal, isTop]);
 
   const handleDragEnd = (_: unknown, info: PanInfo) => {
     setIsDragging(false);
@@ -42,8 +72,14 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
     const absY = Math.abs(offset.y);
 
     if (absY > absX) {
-      if (offset.y < -80 || velocity.y < -500) onSwipeUp?.();
-      animate(y, 0, SETTLE_SPRING);
+      if (offset.y < -80 || velocity.y < -500) {
+        // Reset instantly so the card doesn't spring back behind the opening
+        // detail panel (that bounce was the "it comes again" glitch).
+        y.set(0);
+        onSwipeUp?.();
+      } else {
+        animate(y, 0, SETTLE_SPRING);
+      }
       return;
     }
 
@@ -58,7 +94,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
       return;
     }
 
-    // Threshold not met — natural settle back to center, no bounce
+    // Threshold not met - natural settle back to center, no bounce
     animate(x, 0, SETTLE_SPRING);
     animate(y, 0, SETTLE_SPRING);
   };
@@ -102,7 +138,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
             <p style={{
               fontFamily: "var(--font-display)", fontSize: "10px",
               textTransform: "uppercase", letterSpacing: "0.18em",
-              color: "#E94057", marginBottom: "20px",
+              color: "#C44B4B", marginBottom: "20px",
             }}>
               Profile Unavailable
             </p>
@@ -171,7 +207,7 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
       onDragStart={() => setIsDragging(true)}
       onDragEnd={handleDragEnd}
     >
-      {/* Color always renders first — card is never transparent while photo loads */}
+      {/* Color always renders first - card is never transparent while photo loads */}
       <div style={{ position: "absolute", inset: 0, background: profile.photoColor }} />
 
       {profile.photoUrl ? (
@@ -234,85 +270,92 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
       )}
 
       {isTop && (
-        <motion.div style={{ opacity: lurchOpacity, position: "absolute", top: 20, left: 18, zIndex: 20 }}>
+        <motion.div style={{ opacity: lurchOpacity, position: "absolute", top: 24, left: 22, zIndex: 20, transform: "rotate(-10deg)" }}>
           <span style={{
-            display: "inline-block", transform: "rotate(-8deg)",
-            fontFamily: "var(--font-stamp)", fontSize: "44px", letterSpacing: "0.02em",
-            color: "#8B1A1A", lineHeight: 1,
+            display: "inline-block",
+            fontFamily: "var(--font-stamp)", fontSize: "30px", letterSpacing: "0.06em",
+            color: "#F5F0E8", lineHeight: 1, padding: "8px 16px",
+            border: "3px solid #6B1E23", borderRadius: "14px",
+            background: "rgba(107,30,35,0.35)", backdropFilter: "blur(4px)",
           }}>LURCH</span>
         </motion.div>
       )}
 
       {isTop && (
-        <motion.div style={{ opacity: passOpacity, position: "absolute", top: 20, right: 18, zIndex: 20 }}>
+        <motion.div style={{ opacity: passOpacity, position: "absolute", top: 24, right: 22, zIndex: 20, transform: "rotate(10deg)" }}>
           <span style={{
-            display: "inline-block", transform: "rotate(8deg)",
-            fontFamily: "var(--font-stamp)", fontSize: "44px", letterSpacing: "0.02em",
-            color: "#EDE8DF", lineHeight: 1,
-          }}>PASS</span>
+            display: "inline-block",
+            fontFamily: "var(--font-stamp)", fontSize: "30px", letterSpacing: "0.06em",
+            color: "#F5F0E8", lineHeight: 1, padding: "8px 16px",
+            border: "3px solid rgba(245,240,232,0.6)", borderRadius: "14px",
+            background: "rgba(0,0,0,0.35)", backdropFilter: "blur(4px)",
+          }}>NOPE</span>
         </motion.div>
       )}
 
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "16px 20px 22px" }}>
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "18px 22px 26px" }}>
         <p style={{
-          fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: 600,
-          color: "#FFFFFF", lineHeight: "1.4", marginBottom: "2px",
+          fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: 600,
+          color: "#FFFFFF", lineHeight: 1.2, marginBottom: "4px", letterSpacing: "-0.01em",
         }}>
           {profile.name.charAt(0) + profile.name.slice(1).toLowerCase()}{profile.age > 0 ? `, ${profile.age}` : ""}
         </p>
 
         {profile.location && (
           <p style={{
-            fontFamily: "var(--font-ui)", fontSize: "12px",
-            color: "rgba(217,216,216,0.65)", lineHeight: "1.5", marginBottom: "10px",
+            fontFamily: "var(--font-ui)", fontSize: "13px",
+            color: "rgba(245,240,232,0.7)", lineHeight: 1.5, marginBottom: "14px",
           }}>
             {profile.location}
           </p>
         )}
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "12px" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "7px", marginBottom: "14px" }}>
           {profile.extraBadges?.map((b) => <TraitBadge key={b.label} label={b.label} small={b.small} />)}
           {profile.wounds.slice(0, 2).map((w) => <WoundBadge key={w} label={w} />)}
           {profile.attachmentLabel && <AttachmentBadge label={profile.attachmentLabel} />}
         </div>
 
         {profile.matchedBecause && (
-          <div style={{ marginBottom: "10px" }}>
+          <div style={{ marginBottom: "14px" }}>
             <p style={{
               fontFamily: "var(--font-ui)", fontSize: "9px", textTransform: "uppercase",
-              letterSpacing: "0.08em", color: "#8A8070", marginBottom: "3px",
+              letterSpacing: "0.1em", color: "#C44B4B", marginBottom: "4px",
             }}>
               Matched because
             </p>
             <p style={{
-              fontFamily: "var(--font-ui)", fontSize: "12px", fontStyle: "italic",
-              color: "rgba(217,216,216,0.85)", lineHeight: 1.4,
+              fontFamily: "var(--font-ui)", fontSize: "12.5px", fontStyle: "italic",
+              color: "rgba(245,240,232,0.88)", lineHeight: 1.45,
             }}>
               {profile.matchedBecause}
             </p>
           </div>
         )}
 
-        <div style={{ display: "flex", gap: "28px" }}>
-          <div>
-            <p style={{ fontFamily: "var(--font-ui)", fontSize: "11px", color: "rgba(217,216,216,0.6)", marginBottom: "2px" }}>
-              Ghost Risk
-            </p>
-            <p style={{
-              fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 600,
-              color: profile.ghostRisk >= 65 ? "#E94057" : "#FFFFFF",
-            }}>
-              {profile.ghostRisk}%
-            </p>
+        {/* Stat pills - glassy, modern */}
+        <div style={{ display: "flex", gap: "8px" }}>
+          <div style={{
+            display: "flex", alignItems: "baseline", gap: "6px",
+            background: "rgba(255,255,255,0.08)", backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255,255,255,0.12)", borderRadius: "9999px",
+            padding: "6px 12px",
+          }}>
+            <span style={{ fontFamily: "var(--font-ui)", fontSize: "10px", color: "rgba(245,240,232,0.6)" }}>Ghost</span>
+            <span style={{
+              fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 600,
+              color: profile.ghostRisk >= 65 ? "#E07B7B" : "#FFFFFF",
+            }}>{profile.ghostRisk}%</span>
           </div>
           {profile.vibeScore !== null && (
-            <div>
-              <p style={{ fontFamily: "var(--font-ui)", fontSize: "11px", color: "rgba(217,216,216,0.6)", marginBottom: "2px" }}>
-                Vibe Score
-              </p>
-              <p style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 600, color: "#FFFFFF" }}>
-                {profile.vibeScore}
-              </p>
+            <div style={{
+              display: "flex", alignItems: "baseline", gap: "6px",
+              background: "rgba(255,255,255,0.08)", backdropFilter: "blur(10px)",
+              border: "1px solid rgba(255,255,255,0.12)", borderRadius: "9999px",
+              padding: "6px 12px",
+            }}>
+              <span style={{ fontFamily: "var(--font-ui)", fontSize: "10px", color: "rgba(245,240,232,0.6)" }}>Vibe</span>
+              <span style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 600, color: "#FFFFFF" }}>{profile.vibeScore}</span>
             </div>
           )}
         </div>

@@ -32,9 +32,9 @@ function InterestChip({ label }: { label: string }) {
         fontSize: "14px",
         lineHeight: 1,
         fontWeight: 600,
-        background: "#E94057",
-        border: "1px solid #E94057",
-        color: "#0F0D0B",
+        background: "#6B1E23",
+        border: "1px solid #6B1E23",
+        color: "#F5F0E8",
         cursor: "default",
         transition: "all 0.15s",
         whiteSpace: "nowrap",
@@ -56,7 +56,7 @@ export default function InterestsPage() {
 
   return (
     <ScreenWrapper>
-      <OnboardingShell step={5} totalSteps={8}>
+      <OnboardingShell step={5}>
         <div style={{ marginBottom: "32px" }}>
           <h1
             style={{

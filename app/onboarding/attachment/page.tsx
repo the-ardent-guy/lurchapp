@@ -57,22 +57,22 @@ function AttachmentRow({
       style={{
         display: "flex", alignItems: "flex-start", justifyContent: "space-between",
         width: "100%", padding: "16px 20px", borderRadius: "15px",
-        background: selected ? "#E94057" : "transparent",
-        border: `1px solid ${selected ? "#E94057" : "rgba(232,230,234,0.25)"}`,
+        background: selected ? "#6B1E23" : "transparent",
+        border: `1px solid ${selected ? "#6B1E23" : "rgba(232,230,234,0.25)"}`,
         cursor: "pointer", flexShrink: 0, gap: "12px",
       }}
     >
       <div style={{ display: "flex", flexDirection: "column", gap: "4px", flex: 1, alignItems: "flex-start" }}>
         <span style={{
           fontFamily: "var(--font-display)", fontSize: "18px", lineHeight: "1.5",
-          color: selected ? "#0F0D0B" : "#F0EDED", fontWeight: 600, textAlign: "left",
+          color: selected ? "#F5F0E8" : "#F0EDED", fontWeight: 600, textAlign: "left",
         }}>
           {selected && selectedLabel ? selectedLabel : label}
         </span>
         {sub && (
           <span style={{
             fontFamily: "var(--font-ui)", fontSize: "12px", fontStyle: "italic",
-            lineHeight: "1.28", color: selected ? "rgba(0,0,0,0.5)" : "#FDA6A6", textAlign: "left",
+            lineHeight: "1.28", color: selected ? "rgba(245,240,232,0.6)" : "#AEADAD", textAlign: "left",
           }}>
             {sub}
           </span>
@@ -84,7 +84,7 @@ function AttachmentRow({
             exit={{ opacity: 0, scale: 0.6 }} transition={{ duration: 0.15 }}
             width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0, marginTop: "3px" }}
           >
-            <path d="M4 10L8 14L16 6" stroke="#0F0D0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M4 10L8 14L16 6" stroke="#F5F0E8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </motion.svg>
         )}
       </AnimatePresence>
@@ -187,7 +187,7 @@ export default function AttachmentPage() {
 
   return (
     <ScreenWrapper>
-      {/* Popup at ScreenWrapper level — clears OnboardingShell overflow-hidden */}
+      {/* Popup at ScreenWrapper level - clears OnboardingShell overflow-hidden */}
       <AnimatePresence>
         {showPopup && currentRound && (
           <SecurePopup

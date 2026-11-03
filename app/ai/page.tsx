@@ -21,7 +21,7 @@ export default function AIPage() {
             fontSize: "11px",
             textTransform: "uppercase",
             letterSpacing: "0.18em",
-            color: "#E94057",
+            color: "#C44B4B",
             marginBottom: "14px",
           }}>
             LURCH AI
@@ -77,8 +77,8 @@ export default function AIPage() {
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-            <CTAButton onClick={() => router.push("/pay")}>LET AI BE YOU — ₹299/MO</CTAButton>
-            <GhostButton dim>I&apos;ll embarrass myself, thanks</GhostButton>
+            <CTAButton onClick={() => router.push("/pay")}>Let AI be you (₹299/mo)</CTAButton>
+            <GhostButton dim onClick={() => router.push("/feed")}>I&apos;ll embarrass myself, thanks</GhostButton>
           </div>
 
         </div>

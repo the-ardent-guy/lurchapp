@@ -18,10 +18,10 @@ export default async function OpengraphImage() {
           fontFamily: "Georgia, serif",
         }}
       >
-        <div style={{ display: "flex", fontSize: 140, fontWeight: 700, color: "#E94057", letterSpacing: -4 }}>
+        <div style={{ display: "flex", fontSize: 140, fontWeight: 700, color: "#F5F0E8", letterSpacing: -4 }}>
           LURCH
         </div>
-        <div style={{ display: "flex", fontSize: 40, color: "#E4CECE", marginTop: 12 }}>
+        <div style={{ display: "flex", fontSize: 40, color: "#F5F0E8", marginTop: 12 }}>
           We match you on your trauma.
         </div>
       </div>

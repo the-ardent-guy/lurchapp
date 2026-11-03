@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../styles/lurch-tokens.css";
 
 @font-face {
   font-family: 'Cravelo';
@@ -51,17 +52,20 @@
 }
 
 @theme {
-  /* Colours */
-  --color-bg:        #0F0D0B;
-  --color-surface-1: #1A1612;
-  --color-surface-2: #231E18;
-  --color-border:    #2E2720;
-  --color-text:      #EDE8DF;
-  --color-muted:     #8A8070;
-  --color-accent:    #8B1A1A;
-  --color-warning:   #C97B2A;
-  --color-success:   #4A7C59;
-  --color-ghost:     #C0392B;
+  /* Colours — one accent system: oxblood. Hot-pink-as-brand retired. */
+  --color-bg:         #0A0A0A;
+  --color-surface-1:  #141414;
+  --color-surface-2:  #1E1A16;
+  --color-border:     #2A2A2A;
+  --color-text:       #F5F0E8;
+  --color-muted:      #9A958C;
+  --color-accent:     #6B1E23; /* OXBLOOD */
+  --color-accent-hot: #8F2A31;
+  --color-warning:    #C97B2A;
+  --color-success:    #4A5C45;
+  --color-ghost:      #C44B4B;
+  --color-danger:     #C44B4B;
+  --color-stamp:      #C8F000;
 
   /* Fonts */
   --font-display: 'Clash Display', sans-serif;
@@ -131,6 +135,13 @@ body {
   --app-text: #F0EDED;
   --app-muted: #AEADAD;
   --app-whisper: #6A6060;
+
+  /* One accent: oxblood. --app-danger is the readable warm-red for urgent
+     TEXT on dark (countdowns, high ghost-risk) where oxblood would be too dark. */
+  --app-accent: #6B1E23;
+  --app-accent-hot: #8F2A31;
+  --app-accent-text: #F5F0E8;
+  --app-danger: #C44B4B;
 }
 
 .phone-shell[data-theme="light"] {
@@ -142,12 +153,32 @@ body {
   --app-text: #1A1210;
   --app-muted: #5A5550;
   --app-whisper: #9A9590;
+
+  --app-accent: #6B1E23;
+  --app-accent-hot: #8F2A31;
+  --app-accent-text: #F5F0E8;
+  --app-danger: #B03A3A;
+}
+
+/* Desktop / laptop: float a true-to-life phone instead of a full-height strip.
+   Lock to the phone aspect ratio (430:932) so a short or tall laptop viewport
+   never crunches or stretches the phone-proportioned screens inside. */
+@media (min-width: 431px) {
+  .phone-shell {
+    /* 32px breathing room top+bottom; never taller than a real phone */
+    height: min(calc(100dvh - 32px), 932px);
+    /* Width follows height to preserve 430:932 → phone shape at any window size */
+    width: min(430px, calc((100dvh - 32px) * 0.4614));
+    max-width: 430px;
+    border-radius: 40px;
+  }
 }
 
 @media (max-width: 430px) {
   .phone-shell {
     box-shadow: none;
     max-width: 100%;
+    border-radius: 0;
   }
 }
 

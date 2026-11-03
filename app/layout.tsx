@@ -32,16 +32,16 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "LURCH — Finally, love optimised.",
+  title: "Lurch. Finally, love optimised.",
   description: "We match you on your trauma.",
   openGraph: {
-    title: "LURCH — Finally, love optimised.",
+    title: "Lurch. Finally, love optimised.",
     description: "We match you on your trauma.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LURCH — Finally, love optimised.",
+    title: "Lurch. Finally, love optimised.",
     description: "We match you on your trauma.",
   },
 };

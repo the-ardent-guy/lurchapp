@@ -48,7 +48,7 @@ export default function HonestPage() {
 
   return (
     <ScreenWrapper>
-      <OnboardingShell step={6}>
+      <OnboardingShell step={1} totalSteps={1} bonusStep>
         <div style={{ marginBottom: "24px", flexShrink: 0 }}>
           <h1
             style={{ fontFamily: "var(--font-heading)", fontSize: "40px", fontWeight: 600, lineHeight: "1.1", color: "#F0EDED", marginBottom: "8px" }}
