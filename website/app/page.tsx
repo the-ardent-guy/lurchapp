@@ -50,10 +50,10 @@ function Hero() {
             THE DATING APP, FINALLY HONEST
           </p>
           <h1 className="display" style={{ fontSize: "clamp(44px, 8vw, 80px)", marginBottom: "var(--s4)" }}>
-            Finally, love optimised.
+            We match you on your trauma.
           </h1>
           <p style={{ fontSize: "20px", color: "var(--text)", opacity: 0.85, maxWidth: "34ch", marginBottom: "var(--s5)" }}>
-            We match you on your trauma. Not for bots. For baggage.
+            Every profile checked. Not for bots. For baggage.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--s3)", marginBottom: "var(--s4)" }}>
             <a className="btn" href={APP_URL} target="_blank" rel="noopener noreferrer">
@@ -133,7 +133,7 @@ function Band() {
       />
       <div className="wrap" style={{ position: "relative", textAlign: "center" }}>
         <h2 className="display" style={{ fontSize: "clamp(32px, 6vw, 64px)" }}>
-          Still together. Technically.
+          Peak intimacy.
         </h2>
       </div>
     </section>
@@ -173,12 +173,12 @@ function HowItWorks() {
 // ─── 5. Features (flip cards) ───
 function Features() {
   const feats = [
-    { front: "Wound Matching™", frontSub: "We match what left a mark.", stamp: "TECHNIQUE: FAKE DEPTH", back: "Your pain is now a filter." },
-    { front: "Ghost Probability", frontSub: "Know the odds.", stamp: "TECHNIQUE: VARIABLE REWARD", back: "87% they vanish. You'll still say “hey”." },
-    { front: "Ex on Record", frontSub: "Their last match left a review.", stamp: "TECHNIQUE: CURIOSITY PAYWALL", back: "Blurred for your protection and our revenue." },
-    { front: "Boost", frontSub: "30 minutes at the top.", stamp: "TECHNIQUE: GAMBLING", back: "Odds not disclosed." },
-    { front: "Smart Filters", frontSub: "Only your type.", stamp: "TECHNIQUE: CHOICE OVERLOAD", back: "Default height 6′02″+. We removed most humans." },
-    { front: "Haptics of Rejection", frontSub: "Feel every no.", stamp: "TECHNIQUE: RETENTION", back: "Soft or hard. Finally, a choice." },
+    { iconKey: "wound", front: "Wound Matching™", frontSub: "We match what left a mark.", stamp: "TECHNIQUE: FAKE DEPTH", back: "Your pain is now a filter." },
+    { iconKey: "ghost", front: "Ghost Probability", frontSub: "Know the odds.", stamp: "TECHNIQUE: VARIABLE REWARD", back: "87% they vanish. You'll still say “hey”." },
+    { iconKey: "record", front: "Ex on Record", frontSub: "Their last match left a review.", stamp: "TECHNIQUE: CURIOSITY PAYWALL", back: "Blurred for your protection and our revenue." },
+    { iconKey: "boost", front: "Boost", frontSub: "30 minutes at the top.", stamp: "TECHNIQUE: GAMBLING", back: "Odds not disclosed." },
+    { iconKey: "filters", front: "Smart Filters", frontSub: "Only your type.", stamp: "TECHNIQUE: CHOICE OVERLOAD", back: "Default height 6′02″+. We removed most humans." },
+    { iconKey: "haptics", front: "Haptics of Rejection", frontSub: "Feel every no.", stamp: "TECHNIQUE: RETENTION", back: "Soft or hard. Finally, a choice." },
   ];
   return (
     <section id="features" className="section" style={{ ...anchor, borderTop: "1px solid var(--border)" }}>
@@ -187,8 +187,8 @@ function Features() {
           Features you&apos;ll love. Features that love your money.
         </h2>
         <div className="grid-features">
-          {feats.map((f) => (
-            <FeatureFlip key={f.front} {...f} />
+          {feats.map((f, i) => (
+            <FeatureFlip key={f.front} index={String(i + 1).padStart(2, "0")} {...f} />
           ))}
         </div>
       </div>
@@ -327,11 +327,6 @@ function Merch() {
   const items: { name: string; tag: string; price?: string; img?: string }[] = [
     { name: "Serial Monogamist tee", tag: "In a situationship economy.", price: "₹699", img: "/tee-natural-bone.png" },
     { name: "Romantically Freelancing tee", tag: "Available for select projects.", price: "₹699", img: "/tee-washed-black.png" },
-    { name: "Ghost Probability 87% tee", tag: "You already know." },
-    { name: "Situationship Veteran cap", tag: "Served. Never discharged." },
-    { name: "I Agree to Become Inventory tote", tag: "Carries your groceries and your baggage." },
-    { name: "Left on Read socks", tag: "They won't text back either." },
-    { name: "Red Flag sticker pack", tag: "Twelve flags. You'll ignore them all." },
   ];
   return (
     <section id="merch" className="section" style={{ ...anchor, borderTop: "1px solid var(--border)" }}>
@@ -434,6 +429,36 @@ function FinalCta() {
   );
 }
 
+// ─── App screens showcase ───
+function AppScreens() {
+  return (
+    <section className="section" style={{ ...anchor, borderTop: "1px solid var(--border)", textAlign: "center" }}>
+      <div className="wrap">
+        <p className="eyebrow" style={{ marginBottom: "var(--s3)" }}>The app itself</p>
+        <h2 className="display" style={{ fontSize: "clamp(32px, 5vw, 48px)", marginBottom: "var(--s3)" }}>
+          Yes. It&apos;s a real app.
+        </h2>
+        <p style={{ fontSize: "16px", color: "var(--muted)", maxWidth: "46ch", margin: "0 auto var(--s6)" }}>
+          Free to download. Free to regret. It scans your damage and matches accordingly.
+        </p>
+        <div className="app-shot">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/app-screens.webp"
+            alt="Two Lurch app screens: the home screen and the damage-analysis diagnostic."
+            loading="lazy"
+          />
+        </div>
+        <div style={{ marginTop: "var(--s6)" }}>
+          <a className="btn" href={APP_URL} target="_blank" rel="noopener noreferrer" style={{ fontSize: "18px", padding: "16px 36px" }}>
+            Try now
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── 12. Footer ───
 function Footer() {
   return (
@@ -466,6 +491,7 @@ export default function Home() {
         <FakeStats />
         <Band />
         <HowItWorks />
+        <AppScreens />
         <Features />
         <Testimonials />
         <Pricing />
