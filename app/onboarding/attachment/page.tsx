@@ -182,7 +182,7 @@ export default function AttachmentPage() {
 
   const handleContinue = () => {
     setTransitionDirection("up");
-    router.push("/onboarding/wounds");
+    router.push("/onboarding/interests");
   };
 
   return (

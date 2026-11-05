@@ -152,9 +152,11 @@ type LurchStore = OnboardingSlice &
 
 // ─── Slice creators ───────────────────────────────────────────────────────────
 
-function filterProfiles(pref: string | null): Profile[] {
-  if (pref !== "women" && pref !== "men") return STATIC_PROFILES;
-  return STATIC_PROFILES.filter((p) => !p.gender || p.gender === (pref === "men" ? "man" : "woman"));
+// The deck is young women only (founder decision). Preference no longer changes
+// the roster — whatever the user picks, the roster stays the young-women set.
+// The `pref` arg is kept so setPreference can keep calling this unchanged.
+function filterProfiles(_pref: string | null): Profile[] {
+  return STATIC_PROFILES.filter((p) => !p.gender || p.gender === "woman");
 }
 
 const createOnboardingSlice: StateCreator<LurchStore, [], [], OnboardingSlice> = (set) => ({
@@ -207,7 +209,7 @@ const createScoreSlice: StateCreator<LurchStore, [], [], ScoreSlice> = (set) => 
 });
 
 const createFeedSlice: StateCreator<LurchStore, [], [], FeedSlice> = (set, get) => ({
-  profiles: STATIC_PROFILES,
+  profiles: filterProfiles(null),
   currentCardIndex: 0,
   matchedProfile: null,
   hasMatched: false,

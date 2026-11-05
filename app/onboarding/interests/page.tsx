@@ -56,7 +56,7 @@ export default function InterestsPage() {
 
   return (
     <ScreenWrapper>
-      <OnboardingShell step={5}>
+      <OnboardingShell step={4}>
         <div style={{ marginBottom: "32px" }}>
           <h1
             style={{
