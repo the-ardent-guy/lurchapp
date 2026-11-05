@@ -68,7 +68,9 @@ export function CardStack({ profiles, currentIndex, onSwipeLeft, onSwipeRight, o
             onSwipeLeft={isTop ? onSwipeLeft : () => {}}
             onSwipeRight={isTop ? onSwipeRight : () => {}}
             onSwipeUp={isTop ? onSwipeUp : undefined}
-            swipeSignal={isTop ? swipeSignal : null}
+            // Signal goes to every card so non-top cards absorb the nonce and
+            // don't re-fire when promoted (see ProfileCard swipe effect).
+            swipeSignal={swipeSignal}
           />
         );
       })}

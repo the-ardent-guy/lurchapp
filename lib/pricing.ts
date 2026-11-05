@@ -14,7 +14,7 @@ export const MERCH_TEE_INR = 699; // marketing shop tee
 export const PAY_JOKE_TEE_INR = 799; // /pay absurdist tee - do NOT "fix" into 299
 export const PAY_JOKE_PUFF_INR = 20; // /pay veg puff - India gag, keep
 
-export const ONBOARDING_STEPS = 7; // gender, preference, attachment, wounds, interests, processing, score
+export const ONBOARDING_STEPS = 6; // gender, preference, attachment, interests, processing, score
 export const SWIPE_FATIGUE_AFTER = 8; // swipes before the fatigue interstitial
 
 // Convenience formatted labels

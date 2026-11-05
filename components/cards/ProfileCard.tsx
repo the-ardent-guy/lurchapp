@@ -48,8 +48,12 @@ export function ProfileCard({ profile, onSwipeLeft, onSwipeRight, onSwipeUp, isT
   // reduced motion). Fires the matching handler when the card is off-screen.
   const lastNonce = useRef(swipeSignal?.nonce ?? 0);
   useEffect(() => {
-    if (!isTop || !swipeSignal || swipeSignal.nonce === lastNonce.current) return;
+    if (!swipeSignal || swipeSignal.nonce === lastNonce.current) return;
+    // Consume this nonce on EVERY mounted card, even non-top ones. Otherwise a
+    // card promoted to the top after a button-swipe would see the still-current
+    // nonce as new and fire again - one tap cascading into a rampage of swipes.
     lastNonce.current = swipeSignal.nonce;
+    if (!isTop) return;
     if (swipeSignal.dir === "up") {
       onSwipeUp?.();
       return;
