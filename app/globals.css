@@ -124,6 +124,12 @@ body {
   position: relative;
   overflow: hidden;
   background: #0F0D0B;
+  /* Make this the sizing container for the screens inside. On desktop the shell
+     width is derived from the viewport HEIGHT (aspect-ratio lock below), so any
+     font sized in vw (viewport width) balloons out of the narrow frame and
+     overlaps. Headline/logo use cqw instead so they scale to THIS frame, not the
+     window. On mobile the shell is full-width, so cqw == vw and nothing changes. */
+  container-type: inline-size;
   /* Clean border + shadow on desktop to lift the shell from the dark surround */
   box-shadow: 0 0 0 1px rgba(255,255,255,0.07), 0 40px 100px rgba(0,0,0,0.9);
 

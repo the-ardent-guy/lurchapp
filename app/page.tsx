@@ -80,7 +80,7 @@ export default function SplashPage() {
               style={{
                 fontFamily: "var(--font-heading)",
                 fontWeight: 600,
-                fontSize: "clamp(58px, 18vw, 84px)",
+                fontSize: "clamp(48px, 18cqw, 84px)",
                 color: "#F5F0E8",
                 textShadow: "3px 3px 0 #6B1E23",
                 transform: "rotate(-4deg)",
@@ -107,7 +107,7 @@ export default function SplashPage() {
               style={{
                 fontFamily: "var(--font-heading)",
                 fontWeight: 600,
-                fontSize: "clamp(42px, 13vw, 62px)",
+                fontSize: "clamp(36px, 13cqw, 62px)",
                 lineHeight: 1.05,
                 color: "#F5F0E8",
               }}
@@ -118,7 +118,7 @@ export default function SplashPage() {
               style={{
                 fontFamily: "var(--font-heading)",
                 fontWeight: 600,
-                fontSize: "clamp(42px, 13vw, 62px)",
+                fontSize: "clamp(36px, 13cqw, 62px)",
                 lineHeight: 1.05,
                 color: "#F5F0E8",
               }}
