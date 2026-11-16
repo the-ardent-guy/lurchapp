@@ -90,7 +90,7 @@ function FakeStats() {
             <div key={s.label}>
               <div
                 className="serif"
-                style={{ fontSize: "clamp(40px, 6vw, 64px)", lineHeight: 1, marginBottom: "var(--s2)" }}
+                style={{ fontSize: "clamp(40px, 5vw, 56px)", lineHeight: 1.05, marginBottom: "var(--s2)" }}
               >
                 {s.n}
               </div>
